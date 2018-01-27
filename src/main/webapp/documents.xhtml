@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+
+</h:head>
+<h:body>
+
+    <h:form>
+        <p:outputPanel autoUpdate="true" rendered="#{accessController.currentEmployee.roles.get(0).role.equals('ADMINISTRATOR')}">
+            <p:inputText value="#{diagnosticAndTreatmentProtocolsController.documentStoragePath}" style="width: 100%"/>
+            <br/>
+            <p:commandButton action="#{diagnosticAndTreatmentProtocolsController.init()}" value="Перезагрузить документы из хранилища"
+                    update="@all"/>
+        </p:outputPanel>
+        <br/>
+        <p:tree id="docs" value="#{diagnosticAndTreatmentProtocolsController.root}" var="doc" selectionMode="single" dynamic="true" style="width: 100%">
+            <p:treeNode expandedIcon="ui-icon-folder-open" collapsedIcon="ui-icon-folder-collapsed" icon="#{doc.type}">
+                <a href="#{doc.path}" target="_blank">#{doc.name}</a>
+            </p:treeNode>
+        </p:tree>
+    </h:form>
+
+</h:body>
+
+
+</html>

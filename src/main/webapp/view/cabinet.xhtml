@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core">
+<head>
+    <meta charset="UTF-8"/>
+    <title>welcome</title>
+</head>
+<h:body>
+    <h:link outcome="admin" value="goToAdmin"/>
+    <h:link outcome="patients" value="goToAdminnistratorPage"/>
+    <div class="form-group">
+        <div class="col-sm-7">
+        </div>
+        <div class="col-sm-5 submitWrap">
+            <h:commandButton id="btnLoginId" value="#{i18n['registration.enter']}"
+                             action="#{authorizationController.logout()}"
+                             styleClass="btn btn-primary btn-lg">
+                <f:ajax render="authorizationForm" execute="authorizationForm"/>
+            </h:commandButton>
+        </div>
+    </div>
+    <h:commandButton value="logout" action="#{authorizationController.logout}"/>
+</h:body>
+</html>

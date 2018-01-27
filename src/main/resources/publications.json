@@ -1,0 +1,57 @@
+{
+    "videoMaterials": [
+        {
+            "url": "https://www.youtube.com/embed/2yyamQRsVi4",
+            "title": "Работа врача в отделении",
+            "description": "Работа врача в отделении"
+        },
+        {
+            "url": "https://www.youtube.com/embed/3-ULR37aElY",
+            "title": "Работа медсестры",
+            "description": "Работа медсестры"
+        },
+        {
+            "url": "https://www.youtube.com/embed/PdYOZfnX9ck",
+            "title": "Работа лаборанта",
+            "description": "Работа лаборанта"
+        },
+        {
+            "url": "https://www.youtube.com/embed/i7tN9au18z0",
+            "title": "Работа врача в реанимации",
+            "description": "Работа врача в реанимации"
+        },
+        {
+            "url": "https://www.youtube.com/embed/x3z-4HqBYQQ",
+            "title": "Работа медсестры в реанимации",
+            "description": "Работа медсестры в реанимации"
+        },
+        {
+            "url": "https://www.youtube.com/embed/IjPzqQPb944",
+            "title": "Работа врача в гемодиализе",
+            "description": "Работа врача в гемодиализе"
+        },
+        {
+            "url": "https://www.youtube.com/embed/iCMPCjWhBng",
+            "title": "Работа медсестры в гемодиализе",
+            "description": "Работа медсестры в гемодиализе"
+        },
+        {
+            "url": "https://www.youtube.com/embed/FXzrtSzqbdU",
+            "title": "Доступ к медицинской карте",
+            "description": "Доступ к медицинской карте"
+        },
+        {
+            "url": "https://www.youtube.com/embed/BDiUJl-5CfI",
+            "title": "Операция",
+            "description": "Операция"
+        }
+
+    ],
+    "news": [
+        {
+            "title": "Произведены обновления",
+            "date": 1449184300000,
+            "description": "<div style=\"margin-top: 3.6pt; margin-bottom: 6pt; margin-left: 0.31in; text-indent: -0.31in; direction: ltr; unicode-bidi: embed; word-break: normal;\"><span style=\"font-size:15.0pt\"><span style=\"font-family: Arial; font-size: 100%;\">•</span></span><u><span style=\"font-size: 15pt; font-family: 'Century Gothic'; font-variant: small-caps;\">Изменены формы клинической истории болезни, обоснование клинического диагноза</span></span></div><div style=\"margin-top: 3.6pt; margin-bottom: 6pt; margin-left: 0.31in; text-indent: -0.31in; direction: ltr; unicode-bidi: embed; word-break: normal;\"><span style=\"font-size:15.0pt\"><span style=\"font-family: Arial; font-size: 100%;\">•</span></span><u><span style=\"font-size: 15pt; font-family: 'Century Gothic'; font-variant: small-caps;\">Убраны казахские названия полей в автоматически забиваемых результатах анализов</span></span></div>"
+        }
+    ]
+}

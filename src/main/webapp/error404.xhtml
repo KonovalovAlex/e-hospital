@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <meta http-equiv="refresh" content="5;#{request.contextPath}/view/cabinet.xhtml" />
+</h:head>
+<h:body style="text-align: center">
+    <img src="#{request.contextPath}/resources/img/worker_repair_computer.jpg"/>
+    <h3 align="center"><h:outputText style="color: olivedrab;" value="Произошла ошибка или недопустимое действие! Сейчас вы будете перенаправлены на главную страницу."/></h3>
+    <h3><h:link outcome="cabinet">Вернуться самостоятельно</h:link></h3>
+</h:body>
+</html>

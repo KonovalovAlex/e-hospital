@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://java.sun.com/jstl/core"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+        >
+<script type="text/javascript">
+</script>
+<body>
+
+    <ui:composition>
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <h:link outcome="cabinet">
+                <h:graphicImage  class="navbar-brand" name="/img/logo.png" style="height: 80px;"/>
+            </h:link>
+        </div>
+        <h:form>
+            <script type="text/javascript">
+            function openMenu(){
+                $("#menuConsultationNotice").toggleClass("open");
+            }
+            function openAlertMenu(){
+                $("#menuAlertNotice").toggleClass("open");
+            }
+
+            function dontCloseMenu(e) {
+                $('.dropdown-menu').click(function(e) {
+                    e.stopPropagation();
+                });
+            }
+
+        </script>
+
+            <ul class="nav navbar-top-links navbar-right">
+                <li class="dropdown">
+                    <h:link id="departmentNameTitleId" title="Название вашего отделения" rendered="#{accessController.currentEmployee.department != null}">
+                        <i class="fa fa-hospital-o fa-fw"></i>
+                        #{accessController.currentEmployee.department.name}
+                    </h:link>
+                    <h:link rendered="#{accessController.currentEmployee.department == null}">
+                        <i class="fa fa-hospital-o fa-fw"></i>
+                        <h:outputText value="Администратор"/>
+                    </h:link>
+                </li>
+
+                <li class="dropdown">
+                    <a target="_blank" href="#{request.contextPath}/documents.xhtml">
+                        <i class="fa fa-newspaper-o fa-fw"></i>
+                        Протоколы диагностики и лечения
+                    </a>
+                </li>
+
+                <li class="dropdown">
+                    <a id="videoLesssonsIconId" title="Здесь вы можете найти видеоинструкции для работы с программой." target="_blank" href="#{request.contextPath}/publications.xhtml">
+                        <i class="fa fa-video-camera fa-fw"></i>
+                        Видеоуроки
+                    </a>
+                </li>
+                <!--<p:tooltip for="videoLesssonsIconId" trackMouse="true"  value="Здесь вы можете найти видеоинструкции для работы с программой." />-->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-newspaper-o fa-fw"></i>
+                        Новости                                    <span class="badge"><h:outputText value="1"/></span> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu message-dropdown" style="min-width: 800%;">
+                        <c:forEach items="#{publicationController.publications.news}" var="news">
+                            <li class="message-preview">
+                                <a href="#">
+                                    <div class="media">
+                                        <div class="media-body">
+                                            <h5 class="media-heading"><strong>#{news.title}</strong>
+                                            </h5>
+                                            <p class="small text-muted"><i class="fa fa-clock-o"></i> Добавлено #{news.date.toLocaleString()} </p>
+                                            <p><h:outputText value="#{news.description}" escape="false" /></p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </c:forEach>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+
+
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a id="microphoneIconId" title="Здесь вы можете тренировать навыки голосового ввода." target="_blank" href="#{request.contextPath}/view/voice-input.html">
+                        <i class="fa fa-microphone fa-fw"></i>
+                    </a>
+                    <!--<p:tooltip for="microphoneIconId" trackMouse="true"  value="Здесь вы можете тренировать навыки голосового ввода." />-->
+                    <!--<ul class="dropdown-menu dropdown-alerts">-->
+                    <!--</ul>-->
+                    <!-- /.dropdown-alerts -->
+                </li>
+                <h:panelGroup id="consultationsPanelGroup">
+                <li id="menuConsultationNotice" class="dropdown">
+                    <a id="envelopIconId" onclick="dontCloseMenu()" title="Здесь находятся все вызовы вас на консультацию." class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-envelope fa-fw"></i>
+                        <h:panelGroup rendered="#{consultationsPoolController.getPendingConsultationsCountForEmployee(accessController.currentEmployee) > 0}">
+                            <span class="badge"><h:outputText id="consultationCount" value="#{consultationsPoolController.getPendingConsultationsCountForEmployee(accessController.currentEmployee)}"/></span> <i class="fa fa-caret-down"></i>
+                        </h:panelGroup>
+                    </a>
+                    <!--<p:tooltip for="envelopIconId" trackMouse="true"  value="Здесь находятся все вызовы вас на консультацию." />-->
+                    <ul class="dropdown-menu dropdown-messages" style="width:500px;padding:15px">
+                        <h:panelGroup layout="block" id="consultationNotices">
+                        <li><h:outputText style="text-align: center" rendered="#{consultationsPoolController.getPendingConsultationsCountForEmployee(accessController.currentEmployee) == 0}" value="Нет активных запросов на консультацию"/> </li>
+
+
+                        <c:forEach items="#{consultationsPoolController.getPendingConsultationsListForEmployee(accessController.currentEmployee)}" var="employeeNotice">
+                        <li>
+                                <div>
+                                    <strong>#{employeeNotice.creator.fullName}</strong>
+                                                <span class="pull-right text-muted">
+                                                    <em><h:outputText value="#{i18n[employeeNotice.creator.specializationEnum]}"/> </em>
+                                                </span>
+                                </div>
+                                <div style="text-align: justify">#{employeeNotice.description}</div>
+                                    <h:outputLink value="#{request.contextPath}/view/cabinet/patient-medcard.xhtml">
+                                    <h:outputText value="Пациент #{employeeNotice.medicalCard.patient.fullName}" />
+                                        <f:param name="medicalCardId" value="#{employeeNotice.medicalCard.id}" />
+                                    </h:outputLink><br/>
+                                <c:set var="reply" value="#{employeeNotice.reply}" scope="request" />
+                                <em><h:outputText value="Ответ:"/></em>
+                                <p:inputTextarea style="width: 100%;  background-image:none" value="#{reply}"/>
+                            <div style="float: left">
+                            <p:commandLink update="consultationsPanelGroup, consultationNotices,consultationCount" value="Отозваться" actionListener="#{consultationsPoolController.respond(employeeNotice, accessController.currentEmployee, reply)}"/>
+                            </div>
+                            <div>
+                            <p:commandLink update="consultationsPanelGroup, consultationNotices,consultationCount" value="Отказать" actionListener="#{consultationsPoolController.refuse(employeeNotice, accessController.currentEmployee, reply)}"/>
+                            <span class="pull-right text-muted">
+                                                    <em><h:outputText style="margin-right: 20px" value="#{employeeNotice.date}" converter="#{localDateTimeConverter}"/> </em>
+                                                </span>
+                            </div>
+                            </li>
+                            <li class="divider"></li>
+                        </c:forEach>
+                        </h:panelGroup>
+                    </ul>
+                </li>
+                </h:panelGroup>
+                <p:poll interval="23" update="consultationsPanelGroup, consultationNotices, consultationCount" />
+
+                <h:panelGroup id="alertsPanelGroup">
+                <li class="dropdown" id="menuAlertNotice" >
+                    <a id="alertsIconId" class="dropdown-toggle" title="Здесь находятся все оповещения для вас." data-toggle="dropdown" href="#">
+                        <i class="fa fa-bell fa-fw"></i>
+                        <h:panelGroup rendered="#{alertsBufferController.getPendingAlertsCountForEmployee(accessController.currentEmployee) > 0}">
+                            <span class="badge"><h:outputText id="alertsCount" value="#{alertsBufferController.getPendingAlertsCountForEmployee(accessController.currentEmployee)}"/></span> <i class="fa fa-caret-down"></i>
+                        </h:panelGroup>
+                    </a>
+                    <!--    <p:tooltip for="alertsIconId" trackMouse="true"  value="Здесь находятся все оповещения для вас." />-->
+                    <ul class="dropdown-menu dropdown-alerts" style="width:500px;padding:15px">
+                        <h:panelGroup layout="block" id="alertNotices">
+                            <li><h:outputText style="text-align: center" rendered="#{alertsBufferController.getPendingAlertsCountForEmployee(accessController.currentEmployee) == 0}" value="Оповещении нет"/> </li>
+                            <li><h:commandLink style="text-align: center" rendered="#{alertsBufferController.getPendingAlertsCountForEmployee(accessController.currentEmployee) > 1}" onclick="openAlertMenu()" value="Удалить все оповещения" actionListener="#{alertsBufferController.removeAllAlertForEmployee(accessController.currentEmployee)}" update="alertsPanelGroup" /> </li>
+
+                        <c:forEach items="#{alertsBufferController.getPendingAlertsListForEmployee(accessController.currentEmployee)}" var="alert">
+                            <li class="divider"></li>
+                            <li>
+                                <div style="text-align: justify">#{alert.description}</div><br/>
+                                <div style="float: left">
+                                    <p:commandLink update="alertNotices,alertsCount" value="Ok" actionListener="#{alertsBufferController.respond(alert)}"/>
+                            <span class="pull-right text-muted">
+                                                    <em><h:outputText style="margin-right: 20px" value="#{alert.date}" converter="#{localDateTimeConverter}"/> </em>
+                                            </span>
+                            </div>
+                        </li>
+                            <br/>
+                </c:forEach>
+                </h:panelGroup>
+                </ul>
+                </li>
+                </h:panelGroup>
+                <p:poll interval="11" listener="#{alertsBufferController.checkData}" update="alertsPanelGroup, alertNotices, alertsCount" />
+
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" title="Нажмите для выхода." data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i><h:outputText value="#{accessController.currentEmployee.fullName}"/><i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><h:link outcome="cabinet"><i class="fa fa-user fa-fw"></i>Профиль пользователя</h:link>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="#{request.contextPath}/j_spring_security_logout"><i class="fa fa-sign-out fa-fw"> </i>
+                                #{i18n['cabinet.header.exit']}
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+            <!-- /.dropdown -->
+            </ul>
+        <!-- /.navbar-top-links -->
+
+        <!-- /.navbar-static-side -->
+        <!--</nav>-->
+        </h:form>
+    </ui:composition>
+</body>
+</html>

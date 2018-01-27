@@ -1,0 +1,35 @@
+p<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance "
+         xsi:noNamespaceSchemaLocation="ehcache.xsd" updateCheck="true"
+         name="cacheManager"
+         monitoring="autodetect" dynamicConfig="true">
+
+    <diskStore path="user.home/ehcacheEntriesStore" />
+
+    <defaultCache maxEntriesLocalHeap="10000" eternal="false"
+                  timeToIdleSeconds="120" timeToLiveSeconds="120" diskSpoolBufferSizeMB="30"
+                  maxEntriesLocalDisk="100000" diskExpiryThreadIntervalSeconds="120"
+                  memoryStoreEvictionPolicy="LRU" statistics="true">
+        <persistence strategy="localTempSwap"/>
+    </defaultCache>
+
+
+    <cache name="serviceCache"
+        maxBytesLocalHeap="500M"
+        eternal="false"
+        timeToIdleSeconds="300"
+        overflowToDisk="true"
+        maxElementsOnDisk="1000"
+        memoryStoreEvictionPolicy="LRU"/>
+
+    <cache  name="org.hibernate.cache.StandardQueryCache"
+            maxEntriesLocalHeap="500000"
+            eternal="false"
+            timeToLiveSeconds="300">
+        <persistence strategy="localTempSwap"/>
+    </cache>
+    <cache name="org.hibernate.cache.spi.UpdateTimestampsCache"
+           maxEntriesLocalHeap="50000" eternal="true">
+        <persistence strategy="localTempSwap"/>
+    </cache>
+</ehcache>

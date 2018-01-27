@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <link rel="stylesheet" type="text/css" href="/resources/bootstrap/css/bootstrap.css"/>
+</h:head>
+<f:view>
+
+    <h:link value="go to registration" outcome="cabinet"/>
+
+</f:view>
+<h:body>
+    <div class="container">
+        <div class="row">
+            <h:form class="form-horizontal">
+                <fieldset>
+                    <legend>Registration Patient</legend>
+
+                    <div class="form-group">
+                        <h:outputLabel class="col-md-4 control-label" for="Name">name</h:outputLabel>
+                        <div class="col-md-5">
+                            <h:inputText value="#{patientController.patient.name}" id="Name" name="Name" type="text" placeholder="username"
+                                         class="form-control input-md"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h:outputLabel class="col-md-4 control-label" for="surName">surName</h:outputLabel>
+                        <div class="col-md-5">
+                            <h:inputText value="#{patientController.patient.surName}" id="surName" name="surName" type="text" placeholder="surName"
+                                         class="form-control input-md"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <h:outputLabel class="col-md-4 control-label" for="address">address</h:outputLabel>
+                        <div class="col-md-5">
+                            <h:inputText value="#{patientController.patient.address}" id="address" name="address" type="text" placeholder="address"
+                                         class="form-control input-md"/>
+                        </div>
+                    </div>
+                </fieldset>
+            </h:form>
+        </div>
+    </div>
+    <p:accordionPanel multiple="true" >
+        <p:tab title="one">
+            <h:form>
+                <h:inputText value="#{patientController.patient.name}"/>
+                <h:inputText value="#{patientController.patient.surName}"/>
+                <p:commandButton action="#{patientController.findPatient}" value="найти"/>
+            </h:form>
+        </p:tab>
+    </p:accordionPanel>
+</h:body>
+</html>

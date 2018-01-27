@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:composition>
+        <h:form>
+            <p:poll interval="19" update="patientsCount"/>
+            <h:panelGroup id="patientsCount">
+                <ul class="nav" id="side-menu">
+                    <li class="sidebar-search">
+                        <div class="input-group custom-search-form">
+                            <input type="text" class="form-control" placeholder=" #{i18n['cabinet.left_menu.search']}"/>
+                                    <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-search"/>
+                                    </button>
+                                </span>
+                        </div>
+                    </li>
+                    <h5 style="text-align: center; color: #40a4e5"><b>Пациенты:</b></h5>
+                    <li>
+                        <h:link id="incomingMenuId" outcome="incoming patients" class="active"
+                                title="Пациенты, направленные из регистратуры или другого отделения.">
+                            <i class="glyphicon glyphicon-chevron-right"/>
+                            #{i18n["cabinet.left_menu.incoming_patients_to_department"]}
+                            <h:panelGroup rendered="#{countsInDepartmentsViewScopeController.incomingPatientsCountForDepartment > 0}">
+                                <span class="badge">#{countsInDepartmentsViewScopeController.updateAndGetIncomingPatientsCountForDepartment()}</span>
+                            </h:panelGroup>
+                        </h:link>
+                    </li>
+                    <li>
+                        <h:link title="Все пациенты, находящиеся на лечении в отделении." outcome="all patients in department" class="active">
+                            <i class="glyphicon glyphicon-user"/>
+                            #{i18n["cabinet.left_menu.all_patients_in_department"]}
+
+                        </h:link>
+                    </li>
+                    <li>
+                        <h:link outcome="empty chamber and bed patients in department" class="active">
+                            <i class="glyphicon glyphicon-user"/>
+                            #{i18n["cabinet.left_menu.empty_chamber_and_bed"]}
+                        </h:link>
+                    </li>
+                    <li>
+                        <h:link title="Пациенты из других отделении, к которым вы(сотрудник) получили доступ." outcome="my patients" class="active">
+                            <i class="glyphicon glyphicon-send"/>
+                            #{i18n["cabinet.left_menu.other_patients"]}
+                            <h:panelGroup rendered="#{poolDepartmentMenuCountsService.getAccessedForDepartmentPatientsCountForDepartment(accessController.currentEmployee.department) > 0}"/>
+                        </h:link>
+                    </li>
+                    <li>
+                        <h:link title="Отсюда можно получить доступ к любому пациенту в приемном покое или в других отделениях." outcome="patients in hospital" class="active">
+                            <i class="glyphicon glyphicon-list"/>
+                            &#160;В больнице
+                        </h:link>
+                    </li>
+                    <li>
+                        <h:panelGroup>
+                            <h:link title="Сюда попадают все запрошенные наркотические вещества со всех отделений" outcome="drugs" class="active">
+                                <i class="glyphicon glyphicon-list"/>
+                                &#160;Наркотические средства
+                            </h:link>
+                        </h:panelGroup>
+                    </li>
+                    <li>
+                    <h:link outcome="reports" class="active">
+                        <i class="glyphicon glyphicon-th-list"></i>
+                        Отчеты
+                    </h:link>
+                    </li>
+                    <br/>
+                    <h5 style="text-align: center; color: #40a4e5"><b>Пациенты с обновлениями в:</b></h5>
+                    <li>
+                        <h:link title="Пациенты, которым создана &quot;Карта основных показателей&quot; на сегодня" outcome="patients with observations reanimation for today" class="active"><i
+                                class="glyphicon glyphicon-eye-open"/>
+                            листах наблюдения
+                            <h:panelGroup rendered="#{countsLeftMenuForReanimationNurseViewScopeController.emptyDailyObservationsCountForReanimation > 0}">
+                                <span class="badge">#{countsLeftMenuForReanimationNurseViewScopeController.updateAndGetEmptyDailyObservationsCountForReanimation()}</span>
+                            </h:panelGroup>
+                        </h:link>
+                    </li>
+                    <li>
+                        <h:link title="Сюда попадают пациенты c ещё невыполненными назначениями на сегодня." outcome="patients with empty disposals reanimation for today" class="active"><i
+                                class="glyphicon glyphicon-ok-circle"/>
+                            листах назначения
+                            <h:panelGroup rendered="#{countsLeftMenuForNurseViewScopeController.todayEmptyNormalDisposalsCount > 0}">
+                                <span class="badge">#{countsLeftMenuForNurseViewScopeController.updateAndGetTodayEmptyNormalDisposalsCount()}</span>
+                            </h:panelGroup>
+                        </h:link>
+                    </li>
+                    <li>
+                        <h:link title="Сюда попадают пациенты c ещё невыполненными реанимационными назначениями на сегодня." outcome="empty resuscitation patients for today" class="active"><i
+                                class="glyphicon glyphicon-flash"/>
+                            реанимационных мероприятих
+                            <h:panelGroup rendered="#{countsLeftMenuForReanimationNurseViewScopeController.todayEmptyResuscitationDisposalsMedicalCardsCount > 0}">
+                                <span class="badge">#{countsLeftMenuForReanimationNurseViewScopeController.updateAndGetTodayEmptyResuscitationDisposalsCount()}</span>
+                            </h:panelGroup>
+                        </h:link>
+                    </li>
+                    <li>
+                        <h:link title="Пациенты, которым создана &quot;Карта основных показателей&quot; на сегодня" outcome="today transfusion patients" class="active"><i
+                                class="glyphicon glyphicon-user"/>
+                            инфузионно-трасфузионной программе
+                            <h:panelGroup rendered="#{countsLeftMenuForReanimationNurseViewScopeController.todayPatientsCountWithCharts > 0}">
+                                <span class="badge">#{countsLeftMenuForReanimationNurseViewScopeController.updateAndGetTodayPatientsCountWithCharts()}</span>
+                            </h:panelGroup>
+                        </h:link>
+                    </li>
+                    <li>
+                        <h:link title="Пациенты, которым создана &quot;Карта основных показателей&quot; на сегодня" outcome="today hydrobalans patients" class="active"><i
+                                class="glyphicon glyphicon-tint"/>
+                            гидробалансе
+                            <h:panelGroup rendered="#{countsLeftMenuForReanimationNurseViewScopeController.todayPatientsCountWithCharts > 0}">
+                                <span class="badge">#{countsLeftMenuForReanimationNurseViewScopeController.updateAndGetTodayPatientsCountWithCharts()}</span>
+                            </h:panelGroup>
+                        </h:link>
+                    </li>
+                    <li>
+                        <h:link title="Сюда попадают пациенты c ещё невыполненными дополнительными назначениями на сегодня." outcome="today additional disposal patients" class="active"><i
+                                class="glyphicon glyphicon-plus"/>
+                            доп. назначениях
+                            <h:panelGroup rendered="#{countsLeftMenuForReanimationNurseViewScopeController.todayAdditionalDisposalPatientsCount > 0}">
+                                <span class="badge">#{countsLeftMenuForReanimationNurseViewScopeController.updateAndGetTodayAdditionalDisposalPatientsCount()}</span>
+                            </h:panelGroup>
+                        </h:link>
+                    </li>
+                    <li>
+                        <h:link title="Сюда попадают пациенты с особой диетой" outcome="today diet" class="active"><i
+                                class="glyphicon glyphicon-cutlery"/>
+                            диете
+                            <h:panelGroup rendered="#{countsLeftMenuForReanimationNurseViewScopeController.todayDietPatientsCount > 0}">
+                                <span class="badge">#{countsLeftMenuForReanimationNurseViewScopeController.updateAndGetTodayDietPatientsCount()}</span>
+                            </h:panelGroup>
+                        </h:link>
+                    </li>
+                    <li>
+                        <h:link title="Сюда попадают пациенты, биоматериал которых в необходимое время(&quot;Дата для выполнения&quot;) нужно доставить в лабораторию(врач назначил им анализы)." outcome="today analyzes" class="active"><i
+                                class="glyphicon glyphicon-filter"/>
+                            доставкe биоматериала
+                            <h:panelGroup rendered="#{CountsLeftMenuForNurseViewScopeController.todayAnalyzesCountForDepartment > 0}">
+                                <span class="badge">#{CountsLeftMenuForNurseViewScopeController.updateAndGetTodayAnalyzesCountForDepartment()}</span>
+                            </h:panelGroup>
+                        </h:link>
+                    </li>
+
+                </ul>
+            </h:panelGroup>
+        </h:form>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,36 @@
+#big-form .form-group {
+    white-space:pre-line;
+}
+.ui-outputlabel {
+    margin-right: 5px;
+}
+div .form-group {
+   margin: 2px;
+}
+
+.well.auth-box {
+    margin-top: 20px;
+}
+.jumbotron {
+    margin-top: 20px;
+}
+
+/*checkboxes*/
+.ui-state-highlight .ui-icon {
+    background-color: #6e6e6e;
+}
+
+/*This style remove text underline*/
+u{
+    text-decoration: none !important;
+}
+/*autocomplete*/
+ul{
+    display: inline-block;
+}
+.ui-autocomplete-multiple-container {
+    width: 100% !important;
+}
+.ui-autocomplete{
+    width: 80%;
+}

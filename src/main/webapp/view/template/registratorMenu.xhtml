@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+        >
+<ui:composition>
+    <h:form>
+        <p:poll interval="19" update="patientsCount2"/>
+        <h:panelGroup id="patientsCount2">
+            <ul class="nav" id="side-menu">
+                <li class="sidebar-search">
+                    <div class="input-group custom-search-form">
+                        <input type="text" class="form-control" placeholder=" #{i18n['cabinet.left_menu.search']}"/>
+                                        <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </span>
+                    </div>
+                </li>
+                <li>
+                    <h:link outcome="search patient" class="active"><i
+                            class="glyphicon glyphicon-plus"></i> #{i18n["patient.search-or-register"]}</h:link>
+                </li>
+                <li>
+                    <h:link outcome="admissionRoom" class="active"><i
+                            class="glyphicon glyphicon-user"></i> #{i18n["cabinet.left_menu.arrived_patients"]}</h:link>
+                </li>
+                <li>
+                    <h:link outcome="refusers" class="active"><i
+                            class="glyphicon glyphicon-user"></i> Отказники</h:link>
+                </li>
+                <li>
+                    <h:link id="hospitalMenuId" outcome="patients in hospital" class="active">
+                        <i class="glyphicon glyphicon-list"/>&#160;В больнице
+                    </h:link>
+                    <p:tooltip for="hospitalMenuId" trackMouse="true"  value="Отсюда можно получить доступ к любому пациенту в приемном покое или в других отделениях." />
+                </li>
+                <li>
+                    <h:link id="biomaterialMenuId" outcome="today analyzes" class="active">
+                        <i class="glyphicon glyphicon-filter"></i> доставкой биоматериала
+                        <h:panelGroup rendered="#{CountsLeftMenuForNurseViewScopeController.getTodayAnalyzesCountForDepartment() > 0}">
+                            <span class="badge">#{CountsLeftMenuForNurseViewScopeController.getTodayAnalyzesCountForDepartment()}</span>
+                        </h:panelGroup>
+                    </h:link>
+                </li>
+            </ul>
+        </h:panelGroup>
+    </h:form>
+</ui:composition>
+</html>

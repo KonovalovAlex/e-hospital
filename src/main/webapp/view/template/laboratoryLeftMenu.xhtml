@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+<ui:composition>
+    <ul class="nav" id="side-menu">
+        <li class="sidebar-search">
+            <div class="input-group custom-search-form">
+                <input type="text" class="form-control" placeholder=" #{i18n['cabinet.left_menu.search']}"/>
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">
+                        <i class="fa fa-search"/>
+                    </button>
+                </span>
+            </div>
+        </li>
+        <h5 style="text-align: center; color: #40a4e5"><b>Анализы:</b> </h5>
+        <li>
+            <h:link outcome="requested analysis" class="active"><i
+                    class="glyphicon glyphicon-share-alt"/>&#160;<h:outputText value="Запрошенные плановые"/> </h:link>
+        </li>
+        <li>
+            <h:link outcome="extra analysis" class="active"><i
+                    class="glyphicon glyphicon-share-alt"/>&#160;<h:outputText value="Запрошенные экстренные"/> </h:link>
+        </li>
+        <li>
+            <h:link outcome="make analysis" style="cursor: help;" title="Возможность создать анализ на любого пациента в больнице, если врач по какой-либо причине не отправил запрос." class="active"><i
+                    class="glyphicon glyphicon-share-alt"/>&#160;<h:outputText value="Создать анализ без запроса"/> </h:link>
+        </li>
+        <li>
+            <h:link outcome="prepared analysis" style="cursor: help;" title="Сюда попадают заполненные, но еще не отправленные анализы" class="active"><i
+                    class="glyphicon glyphicon-time"/>&#160;<h:outputText value="Подгтовленные"/> </h:link>
+        </li>
+        <li>
+            <h:link outcome="made analysis" class="active"><i
+                    class="glyphicon glyphicon-ok-circle"/>&#160;<h:outputText value="Выполненные"/> </h:link>
+        </li>
+        <li>
+            <h:link outcome="analyzes blank" style="cursor: help;" class="active"><i
+                    class="glyphicon glyphicon-file"/>&#160;<h:outputText value="Посмотреть бланки" title="Здесь вы можете посмотреть пустые бланки анализов"/> </h:link>
+        </li>
+        <li>
+            <h:link outcome="journal analysis" class="active"><i
+                    class="glyphicon glyphicon-book"/>&#160;<h:outputText value="Журнал"/> </h:link>
+        </li>
+
+    </ul>
+</ui:composition>
+</html>

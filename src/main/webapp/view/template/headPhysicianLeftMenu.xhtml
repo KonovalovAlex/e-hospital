@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+<ui:composition>
+    <ul class="nav" id="side-menu">
+        <li class="sidebar-search">
+            <div class="input-group custom-search-form">
+                <input type="text" class="form-control" placeholder=" #{i18n['cabinet.left_menu.search']}"/>
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">
+                        <i class="fa fa-search"/>
+                    </button>
+                </span>
+            </div>
+        </li>
+        <li>
+            <h:link outcome="patient statistics" class="active"><i
+                    class="glyphicon glyphicon-stats"/>&#160;<h:outputText value="Статистика"/> </h:link>
+        </li>
+        <li>
+            <h:link outcome="user monitoring" class="active"><i
+                    class="glyphicon glyphicon-stats"/>&#160;<h:outputText value="Статистика пользователей"/> </h:link>
+        </li>
+        <li>
+            <h:link outcome="patient report" class="active">
+                <i class="glyphicon glyphicon-stats"/>&#160;<h:outputText value="Формирование отчетов"/>
+            </h:link>
+        </li>
+
+        <li>
+            <h:link outcome="reports" class="active">
+                <i class="glyphicon glyphicon-th-list"></i>
+                Отчеты
+            </h:link>
+        </li>
+    </ul>
+</ui:composition>
+</html>

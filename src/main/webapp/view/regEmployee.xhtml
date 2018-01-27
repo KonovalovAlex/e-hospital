@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:sec="http://www.springframework.org/security/tags">
+<h:head>
+    <link rel="stylesheet" type="text/css" href="/resources/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="/resources/bootstrap/css/alex/style.css/"/>
+</h:head>
+
+<h:body>
+    <h:link value="go to registration" outcome="temporaryPage"/>
+    <div class="container auth">
+        <div class="clearfix"></div>
+        <div id="big-form" class="well auth-box">
+            <p:accordionPanel>
+                <p:tab title="Registration">
+                    <h:form class="well auth-box">
+                        <fieldset>
+                            <div class="form-group">
+
+                                <h:outputLabel value="registrDate" styleClass="control-label"/>
+
+                                <div class="">
+                                    <p:calendar converter="#{localDateConverter}"
+                                                value="#{employeeController.employee.registerDate}"
+                                                pattern="dd.MM.yyyy"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <h:outputLabel value="Name" styleClass="control-label"/>
+
+                                <div>
+                                    <h:inputText validatorMessage="поле обязательно для заполнение min=2 max=20"
+                                                 value="#{employeeController.employee.firstName}" id="firstname"
+                                                 type="text">
+                                        <f:validateLength minimum="2" maximum="20" for="firstname"/></h:inputText>
+                                </div>
+                                <div>
+                                    <h:message for="firstname" style="color:#000000"/></div>
+                            </div>
+
+                            <div class="form-group">
+                                <h:outputLabel value="Lastname" styleClass="control-label"/>
+
+                                <div>
+                                    <h:inputText validatorMessage="поле обязательно для заполнение min=2 max=20"
+                                                 value="#{employeeController.employee.lastName}" id="lastName"
+                                                 type="text">
+                                        <f:validateLength minimum="2" maximum="20"/></h:inputText></div>
+                                <h:message for="lastName" style="color:#000000"/>
+                            </div>
+                            <div class="form-group">
+                                <h:outputLabel value="Patronymic" styleClass="control-label"/>
+
+                                <div>
+                                    <h:inputText value="#{employeeController.employee.patronymic}" id="patronymic"
+                                                 type="text">
+                                        <f:validateRequired for="patronymic"/></h:inputText></div>
+                                <h:message for="patronymic" style="color:#000000"/>
+                            </div>
+                            <div class="form-group">
+                                <h:outputLabel value="Birthday" styleClass="control-label"/>
+
+                                <div class="">
+                                    <p:calendar converter="#{localDateConverter}"
+                                                value="#{employeeController.employee.birthday}"
+                                                pattern="dd.MM.yyyy"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <h:outputLabel value="Login" styleClass="control-label"/>
+
+                                <div>
+                                    <h:inputText value="#{employeeController.employee.login}" id="login" name="login"
+                                                 type="text"
+                                                 min="1">
+                                        <f:validateRequired for="login"/></h:inputText></div>
+                                <h:message for="login" style="color:#000000"/>
+                            </div>
+                            <div class="form-group">
+                                <h:outputLabel value="Password" styleClass="control-label"/>
+
+                                <div>
+                                    <h:inputText validatorMessage="поле обязательно для заполнение min=2 max=20"
+                                                 value="#{employeeController.employee.password}" id="password"
+                                                 type="text" min="1">
+                                        <f:validateLength minimum="2" maximum="20"/><f:validateRequired
+                                            for="password"/></h:inputText></div>
+                                <h:message for="password" style="color:#000000"/>
+                            </div>
+
+                            <div class="form-group">
+                                <h:outputLabel value="Phone Number" styleClass="control-label"/>
+
+                                <div>
+                                    <h:inputText validatorMessage="поле обязательно для заполнения"
+                                                 value="#{employeeController.employee.telephone}" type="text"
+                                                 id="phone"/></div>
+                                <h:message for="phone" style="color:#000000"/>
+                            </div>
+                            <div class="form-group">
+                                <h:outputLabel value="Email" styleClass="control-label"/>
+
+                                <div>
+                                    <h:inputText styleClass="control-label" id="email" required="true" label="email"
+                                                 requiredMessage="Please enter your email address."
+                                                 validatorMessage="Invalid email format"
+                                                 value="#{employeeController.employee.email}">
+                                        <!--<f:validateRegex-->
+                                        <!--pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />-->
+
+                                    </h:inputText>
+                                </div>
+                                <h:message for="email" style="color:#000000"/>
+                            </div>
+                            <div class="form-group">
+                                <h:outputLabel value="iin" styleClass="control-label"/>
+
+                                <div>
+                                    <h:inputText value="#{employeeController.employee.iin}" type="text"
+                                                 id="iin"><f:validateRequired for="iin"/></h:inputText></div>
+                                <h:message for="iin" style="color:#000000"/>
+                            </div>
+                            <div class="form-group">
+                                <h:outputLabel value="keyToObtainDrugs" styleClass="control-label"/>
+
+                                <div>
+                                    <h:inputText value="#{employeeController.employee.keyToObtainDrugs}" type="text"
+                                                 id="keyToObtainDrugs"><f:validateRequired
+                                            for="keyToObtainDrugs"/></h:inputText></div>
+                                <h:message for="iin" style="color:#000000"/>
+                            </div>
+                            <div class="form-group">
+                                <h:selectOneMenu value="#{employeeController.employee.specializationEnum}"
+                                                 style="margin:auto;"
+                                                 styleClass="control-label">
+                                    <f:selectItems value="#{employeeController.items}"/>
+                                </h:selectOneMenu>
+                            </div>
+
+                            <p:commandButton value="registr" class="btn btn-primary center" style="margin:auto;"
+                                             action="#{employeeController.registr()}"/>
+                        </fieldset>
+                    </h:form>
+                </p:tab>
+            </p:accordionPanel>
+        </div>
+    </div>
+    <div>
+        <h:form>
+            <h:inputText value="#{employeeController.employee.iin}" title="searchClient" required="true">
+                <f:validateLength minimum="12" maximum="12"/>
+            </h:inputText>
+            <p:commandButton value="search" class="btn btn-primary center" style="margin:auto;"
+                             action="#{employeeController.searchClient}"/>
+        </h:form>
+        <table>
+            <tr>
+            </tr>
+            <ui:repeat value="#{employeeController.getList}" var="patient">
+                <tr>
+                    <td>#{patient.firstName}</td>
+                    <td>#{patient.lastName}</td>
+                    <td>#{patient.patronymic}</td>
+                    <td><h:form>
+                        <h:commandButton value="showOrEditForm" action="#{employeeController.showOrEditForm}"/>
+                    </h:form></td>
+                    <h:inputText binding="#{input1}"/>
+                    <h:commandButton value="Test" action="#{myBean.execute(input1.value)}"/>
+                </tr>
+            </ui:repeat>
+        </table>
+    </div>
+</h:body>
+
+</html>
+

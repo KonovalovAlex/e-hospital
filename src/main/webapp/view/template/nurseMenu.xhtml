@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <h:panelGroup rendered="#{!accessController.currentEmployee.department.departmentEnum.toString().equals('REANIMATION')}">
+        <ui:insert name="normal">
+            <ui:include src="nurseMenuForNormalDepartments.xhtml"/>
+        </ui:insert>
+    </h:panelGroup>
+    <h:panelGroup rendered="#{accessController.currentEmployee.department.departmentEnum.toString().equals('REANIMATION')}">
+        <ui:insert name="reanimation">
+            <ui:include src="nurseMenuForReanimation.xhtml"/>
+        </ui:insert>
+    </h:panelGroup>
+
+</html>

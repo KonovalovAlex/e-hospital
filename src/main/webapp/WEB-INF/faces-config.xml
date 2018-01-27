@@ -1,0 +1,1421 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+    http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+
+
+    <application>
+        <el-resolver>
+            org.springframework.web.jsf.el.SpringBeanFacesELResolver
+        </el-resolver>
+        <resource-bundle>
+            <base-name>i18n</base-name>
+            <var>i18n</var>
+        </resource-bundle>
+
+        <message-bundle>messages</message-bundle>
+
+        <locale-config>
+            <default-locale>ru_RU</default-locale>
+        </locale-config>
+    </application>
+
+    <factory>
+        <exception-handler-factory>kz.astonline.ehospital.handler.ViewExpiredExceptionHandlerFactory</exception-handler-factory>
+    </factory>
+
+    <converter>
+        <converter-for-class>java.lang.Enum</converter-for-class>
+        <converter-class>javax.faces.convert.EnumConverter</converter-class>
+    </converter>
+
+    <lifecycle>
+        <phase-listener id="nocache">kz.astonline.ehospital.jsf.listener.CacheControlPhaseListener</phase-listener>
+    </lifecycle>
+
+    <navigation-rule>
+        <from-view-id>/*</from-view-id>
+        <navigation-case>
+            <from-outcome>login</from-outcome>
+            <to-view-id>/login.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+
+        <navigation-case>
+            <from-outcome>registration</from-outcome>
+            <to-view-id>/view/cabinet/admission/registration.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>refusers</from-outcome>
+            <to-view-id>/view/cabinet/admission/refusers.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>cabinet</from-outcome>
+            <to-view-id>/view/cabinet.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>rating employee</from-outcome>
+            <to-view-id>/view/cabinet/rating-employyes.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>edit profile</from-outcome>
+            <to-view-id>/view/edit-profile.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>chart temp sheet</from-outcome>
+            <to-view-id>/view/form/tempsheet/chart-temp-sheet.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>create temp sheet</from-outcome>
+            <to-view-id>/view/form/tempsheet/create-temp-sheet.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>operation chart</from-outcome>
+            <to-view-id>/view/form/operation/operationchart/view.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>operation chart graphic</from-outcome>
+            <to-view-id>/view/form/operation/operationchart/graphic.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>create operation chart</from-outcome>
+            <to-view-id>/view/form/operation/operationchart/edit.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+
+        <navigation-case>
+            <from-outcome>employees</from-outcome>
+            <to-view-id>/view/cabinet/administration/employees.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>register employee</from-outcome>
+            <to-view-id>/view/cabinet/administration/register-employee.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>edit employee</from-outcome>
+            <to-view-id>/view/cabinet/administration/edit-employee.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>patient statistics</from-outcome>
+            <to-view-id>/view/cabinet/headphysician/patient-statistics.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>patient report</from-outcome>
+            <to-view-id>/view/cabinet/headphysician/report.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>full scrin report</from-outcome>
+            <to-view-id>/view/cabinet/headphysician/full-scrin-report.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>user monitoring</from-outcome>
+            <to-view-id>/view/cabinet/headphysician/user-monitoring.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>minutesofanesthetic view</from-outcome>
+            <to-view-id>/view/form/minutesofanesthetic/view.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>minutesofanesthetic edit</from-outcome>
+            <to-view-id>/view/form/minutesofanesthetic/edit.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>option</from-outcome>
+            <to-view-id>/view/cabinet/admission/patient-view.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>view patient history</from-outcome>
+            <to-view-id>/view/cabinet/admission/view-patient-history.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>medical card</from-outcome>
+            <to-view-id>/view/cabinet/patient-medcard.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>transfer to department</from-outcome>
+            <to-view-id>/view/cabinet/transfer-to-department.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>request drug</from-outcome>
+            <to-view-id>/view/cabinet/request-drug.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>drugs</from-outcome>
+            <to-view-id>/view/cabinet/drugs.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>reports</from-outcome>
+            <to-view-id>/view/cabinet/reports.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>drugs dictionary</from-outcome>
+            <to-view-id>/view/cabinet/administration/drugs-dictionary.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>reason doctor</from-outcome>
+            <to-view-id>/view/cabinet/reason-doctor.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>admissionRoom</from-outcome>
+            <to-view-id>/view/cabinet/admission/admission-room.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>create medical card</from-outcome>
+            <to-view-id>/view/cabinet/admission/create-medical-card.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>scale barter</from-outcome>
+            <to-view-id>/view/form/neuroinsultcenter/scalebarter/edit.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>scale barter view</from-outcome>
+            <to-view-id>/view/form/neuroinsultcenter/scalebarter/view.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>glasgow сoma scale edit</from-outcome>
+            <to-view-id>/view/form/neuroinsultcenter/glasgowcomascale/edit.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>glasgow сoma scale view</from-outcome>
+            <to-view-id>/view/form/neuroinsultcenter/glasgowcomascale/view.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>mobility index rivermid edit</from-outcome>
+            <to-view-id>/view/form/neuroinsultcenter/mobilityindexrivermid/edit.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>mobility index rivermid view</from-outcome>
+            <to-view-id>/view/form/neuroinsultcenter/mobilityindexrivermid/view.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>intravenous thrombolysis edit</from-outcome>
+            <to-view-id>/view/form/neuroinsultcenter/intravenousthrombolysis/edit.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>intravenous thrombolysis view</from-outcome>
+            <to-view-id>/view/form/neuroinsultcenter/intravenousthrombolysis/view.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>modified rankin scale</from-outcome>
+            <to-view-id>/view/form/neuroinsultcenter/modifiedrankinscale/edit.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>modified rankin scale view</from-outcome>
+            <to-view-id>/view/form/neuroinsultcenter/modifiedrankinscale/view.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>search patient</from-outcome>
+            <to-view-id>/view/cabinet/admission/search-patient.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>das28 calculator</from-outcome>
+            <to-view-id>/view/form/das28-calculator.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>das28 calculator view</from-outcome>
+            <to-view-id>/view/form/das28-calculator-view.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>incoming patients</from-outcome>
+            <to-view-id>/view/cabinet/department/incoming-patients.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>permitted to department</from-outcome>
+            <to-view-id>/view/cabinet/department/permitted-patients.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>patient other department</from-outcome>
+            <to-view-id>/view/cabinet/department/patients-other-departments.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>patient on discharge</from-outcome>
+            <to-view-id>/view/cabinet/department/patients-on-discharge.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>patients for operations</from-outcome>
+            <to-view-id>/view/cabinet/department/patients-for-operations.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>patients on treatment in department</from-outcome>
+            <to-view-id>/view/cabinet/department/department-patients-on-treatment.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>my patients</from-outcome>
+            <to-view-id>/view/cabinet/department/my-patients.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>patients with not filled dialysis card</from-outcome>
+            <to-view-id>/view/cabinet/hemodialysis/patients-with-no-dialysis-to-incoming-month.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>patients in hospital</from-outcome>
+            <to-view-id>/view/cabinet/department/patients-in-hospital.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>archive</from-outcome>
+            <to-view-id>/view/cabinet/department/archive.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>all department patients for hospital</from-outcome>
+            <to-view-id>/view/cabinet/department/all-department-patients-for-hospital.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+
+        <!--NURSE-->
+        <navigation-case>
+            <from-outcome>all patients in department</from-outcome>
+            <to-view-id>/view/cabinet/nurse/department-all-patients.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>empty chamber and bed patients in department</from-outcome>
+            <to-view-id>/view/cabinet/nurse/empty-chamber-bed.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>empty dialysis for today patients</from-outcome>
+            <to-view-id>/view/cabinet/nurse/empty-dialysis-patients.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>empty temp sheets patients in department</from-outcome>
+            <to-view-id>/view/cabinet/nurse/empty-temp-sheets.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>patients with empty disposals reanimation for today</from-outcome>
+            <to-view-id>/view/cabinet/nurse/empty-today-disposals-patients-reanimation.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>patients with observations reanimation for today</from-outcome>
+            <to-view-id>/view/cabinet/nurse/today-observation-patients-reanimation.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>empty daily observations patients</from-outcome>
+            <to-view-id>/view/cabinet/nurse/empty-daily-sheets.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>patients with empty medicaldisposals for today</from-outcome>
+            <to-view-id>/view/cabinet/nurse/empty-medical-disposals.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>patients with dialyzes procedures for today</from-outcome>
+            <to-view-id>/view/cabinet/nurse/dialyzes-procedures.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>empty resuscitation patients for today</from-outcome>
+            <to-view-id>/view/cabinet/nurse/empty-today-disposals-patients-resuscitation.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>today transfusion patients</from-outcome>
+            <to-view-id>/view/cabinet/nurse/today-transfusion-patients-reanimation.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>today hydrobalans patients</from-outcome>
+            <to-view-id>/view/cabinet/nurse/today-hydrobalans-patients-reanimation.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>today additional disposal patients</from-outcome>
+            <to-view-id>/view/cabinet/nurse/today-additional-disposal-patients-reanimation.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>today diet</from-outcome>
+            <to-view-id>/view/cabinet/nurse/today-diet-patients-reanimation.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+
+        <navigation-case>
+            <from-outcome>tempsheet</from-outcome>
+            <to-view-id>/view/form/tempsheet/chart-temp-sheet.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>create tempsheet</from-outcome>
+            <to-view-id>/view/form/tempsheet/create-temp-sheet.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>create daily observations</from-outcome>
+            <to-view-id>/view/form/sheet-daily-observations.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>create form066y</from-outcome>
+            <to-view-id>/view/form/form066y/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>today analyzes</from-outcome>
+            <to-view-id>/view/cabinet/nurse/today-analyzes.xhtml</to-view-id>
+        </navigation-case>
+
+
+        <navigation-case>
+            <from-outcome>primary medical exam</from-outcome>
+            <to-view-id>/view/cabinet/admission/medexam/primary-medical-exam.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>primary medical exam view</from-outcome>
+            <to-view-id>/view/cabinet/admission/medexam/primary-medical-exam-view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>create primary medical exam</from-outcome>
+            <to-view-id>/view/cabinet/admission/medexam/primary-medical-exam.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+
+        <navigation-case>
+            <from-outcome>requested analysis</from-outcome>
+            <to-view-id>/view/cabinet/laboratory/requested-analysis.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>make analysis</from-outcome>
+            <to-view-id>/view/cabinet/laboratory/make-analysis.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>made analysis</from-outcome>
+            <to-view-id>/view/cabinet/laboratory/made-analysis.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>analyzes blank</from-outcome>
+            <to-view-id>/view/cabinet/laboratory/blanks.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>journal analysis</from-outcome>
+            <to-view-id>/view/cabinet/laboratory/journal.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>extra analysis</from-outcome>
+            <to-view-id>/view/cabinet/laboratory/extra-analysis.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>prepared analysis</from-outcome>
+            <to-view-id>/view/cabinet/laboratory/prepared-analysis.xhtml</to-view-id>
+        </navigation-case>
+
+        <!--FORMS begin-->
+        <navigation-case>
+            <from-outcome>create disease clinical history</from-outcome>
+            <to-view-id>/view/form/diseaseclinicalhistory/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>disease clinical history</from-outcome>
+            <to-view-id>/view/form/diseaseclinicalhistory/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>create clinical diagnosis justification</from-outcome>
+            <to-view-id>/view/form/clinicaldiagnosisjustification/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>clinical diagnosis justification</from-outcome>
+            <to-view-id>/view/form/clinicaldiagnosisjustification/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>create stage epicrisis</from-outcome>
+            <to-view-id>/view/form/stageepicrisis/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>stage epicrisis</from-outcome>
+            <to-view-id>/view/form/stageepicrisis/view.xhtml</to-view-id>
+        </navigation-case>
+
+        <navigation-case>
+            <from-outcome>create operation protocol</from-outcome>
+            <to-view-id>/view/form/operation/operationprotocol/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>sheet destination edit</from-outcome>
+            <to-view-id>/view/form/operation/sheetdestination/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>resuscitation</from-outcome>
+            <to-view-id>/view/form/operation/resuscitation/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>resuscitation view</from-outcome>
+            <to-view-id>/view/form/operation/resuscitation/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>moisture balance edit</from-outcome>
+            <to-view-id>/view/form/operation/moisturebalance/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>moisture balance view</from-outcome>
+            <to-view-id>/view/form/operation/moisturebalance/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>operation protocol</from-outcome>
+            <to-view-id>/view/form/operation/operationprotocol/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>infusion-transfusion</from-outcome>
+            <to-view-id>/view/form/operation/infusion-transfusion/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>endoscopy</from-outcome>
+            <to-view-id>/view/form/radiography/endoscopy.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>tomography</from-outcome>
+            <to-view-id>/view/form/radiography/tomography.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>echocardiographic map</from-outcome>
+            <to-view-id>/view/form/radiography/echocardiographic-map.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>us uterus</from-outcome>
+            <to-view-id>/view/form/radiography/us-uterus.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>mri</from-outcome>
+            <to-view-id>/view/form/radiography/mri.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>x-ray</from-outcome>
+            <to-view-id>/view/form/radiography/x-ray.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>radiography search</from-outcome>
+            <to-view-id>/view/form/radiography/search.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>radiography patient info</from-outcome>
+            <to-view-id>/view/form/radiography/patient-info.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>requested radiography</from-outcome>
+            <to-view-id>/view/form/radiography/requested-radiography.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>requested description</from-outcome>
+            <to-view-id>/view/form/radiography/requested-description.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>electrocardiography edit</from-outcome>
+            <to-view-id>/view/form/electrocardiography-edit.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>electrocardiography view</from-outcome>
+            <to-view-id>/view/form/electrocardiography-view.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>observationsheet</from-outcome>
+            <to-view-id>/view/form/operation/observationsheet/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>operation chart edit</from-outcome>
+            <to-view-id>/view/form/operation/chart/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>respiration support edit</from-outcome>
+            <to-view-id>/view/form/operation/respiratorysupport/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>respiration support view</from-outcome>
+            <to-view-id>/view/form/operation/respiratorysupport/view.xhtml</to-view-id>
+        </navigation-case>
+
+        <navigation-case>
+            <from-outcome>create postoperation map</from-outcome>
+            <to-view-id>/view/form/postoperationmap/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>postoperation map</from-outcome>
+            <to-view-id>/view/form/postoperationmap/view.xhtml</to-view-id>
+        </navigation-case>
+
+        <navigation-case>
+            <from-outcome>create surgeon operation map</from-outcome>
+            <to-view-id>/view/form/operation/operationmap/edit-surgeon.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>create anesthesiologist operation map</from-outcome>
+            <to-view-id>/view/form/operation/operationmap/edit-anesthesiologist.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>operation map</from-outcome>
+            <to-view-id>/view/form/operation/operationmap/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>operation</from-outcome>
+            <to-view-id>/view/form/operation/operation.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>create operation</from-outcome>
+            <to-view-id>/view/form/operation/create-operation.xhtml</to-view-id>
+        </navigation-case>
+
+        <navigation-case>
+            <from-outcome>create anesthesiologist consultation</from-outcome>
+            <to-view-id>/view/form/anesthesiologistconsultation/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>anesthesiologist consultation</from-outcome>
+            <to-view-id>/view/form/anesthesiologistconsultation/view.xhtml</to-view-id>
+        </navigation-case>
+
+        <navigation-case>
+            <from-outcome>create pain sheet</from-outcome>
+            <to-view-id>/view/form/painsheet/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>pain sheet</from-outcome>
+            <to-view-id>/view/form/painsheet/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>pretransfusion epicrisis</from-outcome>
+            <to-view-id>/view/form/pretransfusionepicrisis/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>pretransfusion epicrisis view</from-outcome>
+            <to-view-id>/view/form/pretransfusionepicrisis/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>transfusionSheet</from-outcome>
+            <to-view-id>/view/form/transfusionsheet/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>create transfusionSheet</from-outcome>
+            <to-view-id>/view/form/transfusionsheet/edit.xhtml</to-view-id>
+        </navigation-case>
+
+        <navigation-case>
+            <from-outcome>create form003y</from-outcome>
+            <to-view-id>/view/form/form003y/form003y-edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>form003y</from-outcome>
+            <to-view-id>/view/form/form003y/form003y-view.xhtml</to-view-id>
+        </navigation-case>
+
+
+
+        <navigation-case>
+            <from-outcome>create duty journal note</from-outcome>
+            <to-view-id>/view/form/dutyjournal/duty-journal-edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>duty journal print</from-outcome>
+            <to-view-id>/view/form/dutyjournal/duty-journal-print.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>duty journal view</from-outcome>
+            <to-view-id>/view/form/dutyjournal/duty-journal-view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>create doctor journal note</from-outcome>
+            <to-view-id>/view/form/doctorjournal/doctor-journal-edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>doctor journal view</from-outcome>
+            <to-view-id>/view/form/doctorjournal/doctor-journal-view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>create hemodialysis doctor journal note</from-outcome>
+            <to-view-id>/view/form/hemodialysis/hemodialysisdoctorjournal/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>hemodialysis doctor journal note</from-outcome>
+            <to-view-id>/view/form/hemodialysis/hemodialysisdoctorjournal/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>doctor journal print</from-outcome>
+            <to-view-id>/view/form/doctorjournal/doctor-journal-print.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>create dialysis procedures card</from-outcome>
+            <to-view-id>/view/form/hemodialysis/dialysisprocedurescard/fill.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>dialysis procedures card</from-outcome>
+            <to-view-id>/view/form/hemodialysis/dialysisprocedurescard/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>create form027y</from-outcome>
+            <to-view-id>/view/form/form027y/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>form027y</from-outcome>
+            <to-view-id>/view/form/form027y/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>create insult scale</from-outcome>
+            <to-view-id>/view/form/neuroinsultcenter/insultscale/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>insult scale</from-outcome>
+            <to-view-id>/view/form/neuroinsultcenter/insultscale/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>create hemodialysis medexam</from-outcome>
+            <to-view-id>/view/form/hemodialysis/hemodialysismedexam/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>hemodialysis medexam</from-outcome>
+            <to-view-id>/view/form/hemodialysis/hemodialysismedexam/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>create hemodialysis stage epicrisis</from-outcome>
+            <to-view-id>/view/form/hemodialysis/stageepicrisis/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>hemodialysis stage epicrisis</from-outcome>
+            <to-view-id>/view/form/hemodialysis/stageepicrisis/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>create hemodialysis medicaments table</from-outcome>
+            <to-view-id>/view/form/hemodialysis/medicamentstable/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>hemodialysis medicaments table</from-outcome>
+            <to-view-id>/view/form/hemodialysis/medicamentstable/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>create hemodialysis stage epicrisis</from-outcome>
+            <to-view-id>/view/form/hemodialysis/stageepicrisis/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>hemodialysis stage epicrisis</from-outcome>
+            <to-view-id>/view/form/hemodialysis/stageepicrisis/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>translationepicrisis view</from-outcome>
+            <to-view-id>/view/form/translationepicrisis/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>translationepicrisis edit</from-outcome>
+            <to-view-id>/view/form/translationepicrisis/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>radiography</from-outcome>
+            <to-view-id>/view/form/radiography.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>pacs settings</from-outcome>
+            <to-view-id>/view/cabinet/administration/pacs-settings.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>publications</from-outcome>
+            <to-view-id>/view/cabinet/administration/publications.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>diagnostic and treatment protocols</from-outcome>
+            <to-view-id>/documents.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>restore-password-and-login</from-outcome>
+            <to-view-id>/view/cabinet/administration/password-and-login-restore-settings.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>create posthumousEpicrisis</from-outcome>
+            <to-view-id>/view/form/posthumousepicrisis/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>posthumousEpicrisis</from-outcome>
+            <to-view-id>/view/form/posthumousepicrisis/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>protocol</from-outcome>
+            <to-view-id>/view/form/protocol/common/view.xhtml</to-view-id>
+        </navigation-case>
+
+        <navigation-case>
+            <from-outcome>medicalDisposalsSheet</from-outcome>
+            <to-view-id>/view/form/medicaldisposalssheet/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>create medicalDisposalsSheet</from-outcome>
+            <to-view-id>/view/form/medicaldisposalssheet/edit.xhtml</to-view-id>
+        </navigation-case>
+        <!--FORMS end-->
+
+
+        <!--ANALYZES-->
+        <navigation-case>
+            <from-outcome>BACTERIALINFECTION view</from-outcome>
+            <to-view-id>/view/analysis/bacterialinfection/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>BACTERIALINFECTION edit</from-outcome>
+            <to-view-id>/view/analysis/bacterialinfection/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>BIOCHEMICALREHBERG view</from-outcome>
+            <to-view-id>/view/analysis/biochemicalrehberg/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>BIOCHEMICALREHBERG edit</from-outcome>
+            <to-view-id>/view/analysis/biochemicalrehberg/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>BLOODBIOCHEMICAL view</from-outcome>
+            <to-view-id>/view/analysis/bloodbiochemical/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>BLOODBIOCHEMICAL edit</from-outcome>
+            <to-view-id>/view/analysis/bloodbiochemical/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>BLOODCOAGULOLOGIC view</from-outcome>
+            <to-view-id>/view/analysis/bloodcoagulologic/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>BLOODCOAGULOLOGIC edit</from-outcome>
+            <to-view-id>/view/analysis/bloodcoagulologic/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>BLOODEXTENDED view</from-outcome>
+            <to-view-id>/view/analysis/bloodextended/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>BLOODEXTENDED edit</from-outcome>
+            <to-view-id>/view/analysis/bloodextended/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>BLOODLECELLS view</from-outcome>
+            <to-view-id>/view/analysis/bloodlecells/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>BLOODLECELLS edit</from-outcome>
+            <to-view-id>/view/analysis/bloodlecells/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>BLOODPSA view</from-outcome>
+            <to-view-id>/view/analysis/bloodpsa/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>BLOODPSA edit</from-outcome>
+            <to-view-id>/view/analysis/bloodpsa/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>BLOODVIRALHEPATITIS view</from-outcome>
+            <to-view-id>/view/analysis/bloodviralhepatitis/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>BLOODVIRALHEPATITIS edit</from-outcome>
+            <to-view-id>/view/analysis/bloodviralhepatitis/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>CARDIACMARKERS view</from-outcome>
+            <to-view-id>/view/analysis/cardiacmarkers/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>CARDIACMARKERS edit</from-outcome>
+            <to-view-id>/view/analysis/cardiacmarkers/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>CEREBROSPINALFLUID view</from-outcome>
+            <to-view-id>/view/analysis/cerebrospinalfluid/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>CEREBROSPINALFLUID edit</from-outcome>
+            <to-view-id>/view/analysis/cerebrospinalfluid/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>COPROLOGICALSTUDY view</from-outcome>
+            <to-view-id>/view/analysis/coprologicalstudy/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>COPROLOGICALSTUDY edit</from-outcome>
+            <to-view-id>/view/analysis/coprologicalstudy/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>CORTISOL view</from-outcome>
+            <to-view-id>/view/analysis/cortisol/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>CORTISOL edit</from-outcome>
+            <to-view-id>/view/analysis/cortisol/edit.xhtml
+            </to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>DUODENALCONTENT view</from-outcome>
+            <to-view-id>/view/analysis/duodenalcontent/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>DUODENALCONTENT edit</from-outcome>
+            <to-view-id>/view/analysis/duodenalcontent/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>ECHOCARDIOGRAPHY view</from-outcome>
+            <to-view-id>/view/analysis/echocardiography/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>ECHOCARDIOGRAPHY edit</from-outcome>
+            <to-view-id>/view/analysis/echocardiography/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>ENDOSCOPY view</from-outcome>
+            <to-view-id>/view/analysis/endoscopy/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>ENDOSCOPY edit</from-outcome>
+            <to-view-id>/view/analysis/endoscopy/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>FLUIDURINARYRECTUM view</from-outcome>
+            <to-view-id>/view/analysis/fluidurinaryrectum/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>FLUIDURINARYRECTUM edit</from-outcome>
+            <to-view-id>/view/analysis/fluidurinaryrectum/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>FLUOROGRAPHY view</from-outcome>
+            <to-view-id>/view/analysis/fluorography/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>FLUOROGRAPHY edit</from-outcome>
+            <to-view-id>/view/analysis/fluorography/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>FULLBLOOD view</from-outcome>
+            <to-view-id>/view/analysis/fullblood/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>FULLBLOOD edit</from-outcome>
+            <to-view-id>/view/analysis/fullblood/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>IFA view</from-outcome>
+            <to-view-id>/view/analysis/ifa/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>IFA edit</from-outcome>
+            <to-view-id>/view/analysis/ifa/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>IFAASCARIS view</from-outcome>
+            <to-view-id>/view/analysis/ifaascaris/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>IFAASCARIS edit</from-outcome>
+            <to-view-id>/view/analysis/ifaascaris/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>IFACA199 view</from-outcome>
+            <to-view-id>/view/analysis/ifaca199/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>IFACA199 edit</from-outcome>
+            <to-view-id>/view/analysis/ifaca199/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>IFACANDIDA view</from-outcome>
+            <to-view-id>/view/analysis/ifacandida/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>IFACANDIDA edit</from-outcome>
+            <to-view-id>/view/analysis/ifacandida/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>IFAECHINOCOCCUSIGG view</from-outcome>
+            <to-view-id>/view/analysis/ifaechinococcusigg/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>IFAECHINOCOCCUSIGG edit</from-outcome>
+            <to-view-id>/view/analysis/ifaechinococcusigg/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>IFAGIARDIASIS view</from-outcome>
+            <to-view-id>/view/analysis/ifagiardiasis/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>IFAGIARDIASIS edit</from-outcome>
+            <to-view-id>/view/analysis/ifagiardiasis/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>IFAHPYLORY view</from-outcome>
+            <to-view-id>/view/analysis/ifahpylory/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>IFAHPYLORY edit</from-outcome>
+            <to-view-id>/view/analysis/ifahpylory/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>IMMUNOGLOBULINS view</from-outcome>
+            <to-view-id>/view/analysis/immunoglobulins/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>IMMUNOGLOBULINS edit</from-outcome>
+            <to-view-id>/view/analysis/immunoglobulins/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>IPPPCOMPLEX view</from-outcome>
+            <to-view-id>/view/analysis/ipppcomplex/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>IPPPCOMPLEX edit</from-outcome>
+            <to-view-id>/view/analysis/ipppcomplex/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>KIDNEYUSE view</from-outcome>
+            <to-view-id>/view/analysis/kidneyuse/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>KIDNEYUSE edit</from-outcome>
+            <to-view-id>/view/analysis/kidneyuse/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>MALARIA view</from-outcome>
+            <to-view-id>/view/analysis/malaria/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>MALARIA edit</from-outcome>
+            <to-view-id>/view/analysis/malaria/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>MEASUREHCG view</from-outcome>
+            <to-view-id>/view/analysis/measurehcg/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>MEASUREHCG edit</from-outcome>
+            <to-view-id>/view/analysis/measurehcg/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>ONCOMARKERS view</from-outcome>
+            <to-view-id>/view/analysis/oncomarkers/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>ONCOMARKERS edit</from-outcome>
+            <to-view-id>/view/analysis/oncomarkers/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>PCHAINREACTION view</from-outcome>
+            <to-view-id>/view/analysis/pchainreaction/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>PCHAINREACTION edit</from-outcome>
+            <to-view-id>/view/analysis/pchainreaction/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>PLEURALFLUID view</from-outcome>
+            <to-view-id>/view/analysis/pleuralfluid/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>PLEURALFLUID edit</from-outcome>
+            <to-view-id>/view/analysis/pleuralfluid/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>PROLACTIN view</from-outcome>
+            <to-view-id>/view/analysis/prolactin/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>PROLACTIN edit</from-outcome>
+            <to-view-id>/view/analysis/prolactin/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>PROSTATESECRET view</from-outcome>
+            <to-view-id>/view/analysis/prostatesecret/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>PROSTATESECRET edit</from-outcome>
+            <to-view-id>/view/analysis/prostatesecret/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>RF view</from-outcome>
+            <to-view-id>/view/analysis/rf/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>RF edit</from-outcome>
+            <to-view-id>/view/analysis/rf/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>ROENTGEN view</from-outcome>
+            <to-view-id>/view/analysis/roentgen/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>ROENTGEN edit</from-outcome>
+            <to-view-id>/view/analysis/roentgen/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>ROENTGENSTOMACH view</from-outcome>
+            <to-view-id>/view/analysis/roentgenstomach/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>ROENTGENSTOMACH edit</from-outcome>
+            <to-view-id>/view/analysis/roentgenstomach/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>SERUMELECTROLYTES view</from-outcome>
+            <to-view-id>/view/analysis/serumelectrolytes/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>SERUMELECTROLYTES edit</from-outcome>
+            <to-view-id>/view/analysis/serumelectrolytes/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>SPERMOGRAM view</from-outcome>
+            <to-view-id>/view/analysis/spermogram/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>SPERMOGRAM edit</from-outcome>
+            <to-view-id>/view/analysis/spermogram/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>SPUTUM view</from-outcome>
+            <to-view-id>/view/analysis/sputum/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>SPUTUM edit</from-outcome>
+            <to-view-id>/view/analysis/sputum/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>STH view</from-outcome>
+            <to-view-id>/view/analysis/sth/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>STH edit</from-outcome>
+            <to-view-id>/view/analysis/sth/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>STOOL view</from-outcome>
+            <to-view-id>/view/analysis/stool/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>STOOL edit</from-outcome>
+            <to-view-id>/view/analysis/stool/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>TESTOSTERONE view</from-outcome>
+            <to-view-id>/view/analysis/testosterone/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>TESTOSTERONE edit</from-outcome>
+            <to-view-id>/view/analysis/testosterone/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>THYROIDHORMONES view</from-outcome>
+            <to-view-id>/view/analysis/thyroidhormones/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>THYROIDHORMONES edit</from-outcome>
+            <to-view-id>/view/analysis/thyroidhormones/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>TOMOGRAPHYABDOMINALORGANS view</from-outcome>
+            <to-view-id>/view/analysis/tomographyabdominalorgans/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>TOMOGRAPHYABDOMINALORGANS edit</from-outcome>
+            <to-view-id>/view/analysis/tomographyabdominalorgans/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>TOMOGRAPHYBRAIN view</from-outcome>
+            <to-view-id>/view/analysis/tomographybrain/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>TOMOGRAPHYBRAIN edit</from-outcome>
+            <to-view-id>/view/analysis/tomographybrain/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>TOMOGRAPHYLUMBARVERTEBRAE view</from-outcome>
+            <to-view-id>/view/analysis/tomographylumbarvertebrae/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>TOMOGRAPHYLUMBARVERTEBRAE edit</from-outcome>
+            <to-view-id>/view/analysis/tomographylumbarvertebrae/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>TOMOGRAPHYPELVICORGANS view</from-outcome>
+            <to-view-id>/view/analysis/tomographypelvicorgans/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>TOMOGRAPHYPELVICORGANS edit</from-outcome>
+            <to-view-id>/view/analysis/tomographypelvicorgans/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>TOMOGRAPHYTHORAX view</from-outcome>
+            <to-view-id>/view/analysis/tomographythorax/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>TOMOGRAPHYTHORAX edit</from-outcome>
+            <to-view-id>/view/analysis/tomographythorax/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>ULTRASOUND view</from-outcome>
+            <to-view-id>/view/analysis/ultrasound/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>ULTRASOUND edit</from-outcome>
+            <to-view-id>/view/analysis/ultrasound/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>URINALYSIS view</from-outcome>
+            <to-view-id>/view/analysis/urinalysis/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>URINALYSIS edit</from-outcome>
+            <to-view-id>/view/analysis/urinalysis/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>URINEAAMIAZA view</from-outcome>
+            <to-view-id>/view/analysis/urineaamiaza/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>URINEAAMIAZA edit</from-outcome>
+            <to-view-id>/view/analysis/urineaamiaza/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>URINEBILEPIGMENTS view</from-outcome>
+            <to-view-id>/view/analysis/urinebilepigments/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>URINEBILEPIGMENTS edit</from-outcome>
+            <to-view-id>/view/analysis/urinebilepigments/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>URINEZIMNIZKY view</from-outcome>
+            <to-view-id>/view/analysis/urinezimnizky/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>URINEZIMNIZKY edit</from-outcome>
+            <to-view-id>/view/analysis/urinezimnizky/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>LEUKOCYTESESR view</from-outcome>
+            <to-view-id>/view/analysis/leukocytesESR/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>LEUKOCYTESESR edit</from-outcome>
+            <to-view-id>/view/analysis/leukocytesESR/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>OSMOTICRESISTENCIA view</from-outcome>
+            <to-view-id>/view/analysis/osmoticResistencia/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>OSMOTICRESISTENCIA edit</from-outcome>
+            <to-view-id>/view/analysis/osmoticResistencia/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>PLATELETSONLY view</from-outcome>
+            <to-view-id>/view/analysis/plateletsOnly/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>PLATELETSONLY edit</from-outcome>
+            <to-view-id>/view/analysis/plateletsOnly/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>RETICULOCYTES view</from-outcome>
+            <to-view-id>/view/analysis/reticulocytes/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>RETICULOCYTES edit</from-outcome>
+            <to-view-id>/view/analysis/reticulocytes/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>PROTEINDAYURINE view</from-outcome>
+            <to-view-id>/view/analysis/proteindayurine/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>PROTEINDAYURINE edit</from-outcome>
+            <to-view-id>/view/analysis/proteindayurine/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>IFAB12 view</from-outcome>
+            <to-view-id>/view/analysis/ifab12/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>IFAB12 edit</from-outcome>
+            <to-view-id>/view/analysis/ifab12/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>LEUKOCYTES view</from-outcome>
+            <to-view-id>/view/analysis/leukocytes/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>LEUKOCYTES edit</from-outcome>
+            <to-view-id>/view/analysis/leukocytes/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>BLOODREACTION view</from-outcome>
+            <to-view-id>/view/analysis/bloodreaction/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>BLOODREACTION edit</from-outcome>
+            <to-view-id>/view/analysis/bloodreaction/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>BLOOD4VALUES view</from-outcome>
+            <to-view-id>/view/analysis/blood4values/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>BLOOD4VALUES edit</from-outcome>
+            <to-view-id>/view/analysis/blood4values/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>BLOODCOAGULOLOGIC1 view</from-outcome>
+            <to-view-id>/view/analysis/bloodcoagulologic1/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>BLOODCOAGULOLOGIC1 edit</from-outcome>
+            <to-view-id>/view/analysis/bloodcoagulologic1/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>MICROREACTIONBLOOD view</from-outcome>
+            <to-view-id>/view/analysis/microreactionblood/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>MICROREACTIONBLOOD edit</from-outcome>
+            <to-view-id>/view/analysis/microreactionblood/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>URINENECHIPORENKO view</from-outcome>
+            <to-view-id>/view/analysis/urinenechiporenko/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>URINENECHIPORENKO edit</from-outcome>
+            <to-view-id>/view/analysis/urinenechiporenko/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>URINEDIASTASIS view</from-outcome>
+            <to-view-id>/view/analysis/urinediastasis/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>URINEDIASTASIS edit</from-outcome>
+            <to-view-id>/view/analysis/urinediastasis/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>URINEGLUCOSE view</from-outcome>
+            <to-view-id>/view/analysis/urineglucose/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>URINEGLUCOSE edit</from-outcome>
+            <to-view-id>/view/analysis/urineglucose/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>SPUTUMMT view</from-outcome>
+            <to-view-id>/view/analysis/sputummt/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>SPUTUMMT edit</from-outcome>
+            <to-view-id>/view/analysis/sputummt/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>STOOLBLOOD view</from-outcome>
+            <to-view-id>/view/analysis/stoolblood/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>STOOLBLOOD edit</from-outcome>
+            <to-view-id>/view/analysis/stoolblood/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>REACTIVERHEUMATOID view</from-outcome>
+            <to-view-id>/view/analysis/reactiveRheumatoid/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>REACTIVERHEUMATOID edit</from-outcome>
+            <to-view-id>/view/analysis/reactiveRheumatoid/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>BLOODSEROLOGICAL view</from-outcome>
+            <to-view-id>/view/analysis/bloodSerological/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>BLOODSEROLOGICAL edit</from-outcome>
+            <to-view-id>/view/analysis/bloodSerological/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>IFATOXOPLASMOSIS view</from-outcome>
+            <to-view-id>/view/analysis/ifatoxoplasmosis/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>IFATOXOPLASMOSIS edit</from-outcome>
+            <to-view-id>/view/analysis/ifatoxoplasmosis/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>BLOODLYECOFORMULA view</from-outcome>
+            <to-view-id>/view/analysis/bloodleycoformula/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>BLOODLYECOFORMULA edit</from-outcome>
+            <to-view-id>/view/analysis/bloodleycoformula/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>GLUCOSETOLERANCE view</from-outcome>
+            <to-view-id>/view/analysis/glucosetolerance/view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>GLUCOSETOLERANCE edit</from-outcome>
+            <to-view-id>/view/analysis/glucosetolerance/edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>report</from-outcome>
+            <to-view-id>/view/bi/report.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+</faces-config>

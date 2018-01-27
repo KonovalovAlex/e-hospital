@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:sec="http://www.springframework.org/security/tags"
+      xmlns:p="http://primefaces.org/ui">
+<ui:composition>
+    <h:form>
+        <p:poll interval="5" listener="#{poolDepartmentMenuCountsService.checkData}"
+                update="patientsCount"/>
+        <h:panelGroup id="patientsCount">
+            <ul class="nav" id="side-menu" style=" white-space: nowrap;">
+
+                <li class="sidebar-search">
+                    <div class="input-group custom-search-form">
+                        <input type="text" class="form-control" placeholder=" #{i18n['cabinet.left_menu.search']}"/>
+                                <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                    </div>
+                </li>
+
+                <h5 style="text-align: center; color: #40a4e5"><b>Пациенты:</b></h5>
+
+                <sec:authorize access="hasAnyRole('CHIEF', 'DOCTOR')">
+                    <li>
+                        <h:link id="incomingMenuId" outcome="incoming patients" class="active"><i
+                                class="glyphicon glyphicon-chevron-right"/> #{i18n["cabinet.left_menu.incoming_patients_to_department"]}
+                            <h:panelGroup rendered="#{countsInDepartmentsViewScopeController.incomingPatientsCountForDepartment > 0}">
+                                <span class="badge">#{countsInDepartmentsViewScopeController.updateAndGetIncomingPatientsCountForDepartment()}</span>
+                            </h:panelGroup>
+                        </h:link>
+                        <p:tooltip for="incomingMenuId" trackMouse="true"  value="Пациенты, направленные из регистратуры или другого отделения." />
+                    </li>
+                </sec:authorize>
+                <li>
+                    <h:link id="permittedMenuId" outcome="permitted to department" class="active">
+                        <i class="glyphicon glyphicon-ok"/> #{i18n["cabinet.left_menu.permitted_to_department"]}
+                        <h:panelGroup rendered="#{countsInDepartmentsViewScopeController.arrivedPatientsCountForDepartment > 0}">
+                            <span class="badge">#{countsInDepartmentsViewScopeController.updateAndGetArrivedPatientsCountForDepartment()}</span>
+                        </h:panelGroup>
+                    </h:link>
+                    <p:tooltip for="permittedMenuId" trackMouse="true"  value="Пациенты принятые в отделении, но еще не имеющие лечащего врача." />
+                </li>
+                <li>
+                    <h:link id="onTreatmentMenuId" outcome="patients on treatment in department" class="active">
+                        <i class="glyphicon glyphicon-plus" /> #{i18n["cabinet.left_menu.patients_on_treatment_in_department"]}
+                    </h:link>
+                </li>
+                <p:tooltip for="onTreatmentMenuId" trackMouse="true"  value="Все пациенты, находящиеся на лечении в отделении." />
+
+                <li>
+                    <h:link id="myPatientsMenuId" outcome="my patients" class="active">
+                        <i class="glyphicon glyphicon-star" /> #{i18n["cabinet.left_menu.my_patients"]}</h:link>
+                </li>
+                <p:tooltip for="myPatientsMenuId" trackMouse="true"  value="Пациенты, лечащим врачом которых являетесь вы. Пациенты из других отделении, к которым вы(сотрудник) получили доступ." />
+
+                <h:panelGroup
+                        rendered="#{accessController.currentEmployee.department.departmentEnum.toString().equals('HEMODIALYSIS')}">
+                    <li>
+                        <h:link outcome="patients with not filled dialysis card" title="Сюда попадают пациенты, у которых отсутствует диализная карта на текущий месяц, или на следующий - если осталось 5 дней до конца месяца" class="active">
+                            <i class="glyphicon glyphicon-user" /> C неподготовленными <br />
+                            диализными картами
+                            <h:panelGroup rendered="#{patientsWithNoDialysisToIncomingMonthController.getCountForEmptyDialysisCardToIncomingMonth() > 0}">
+                                <span class="badge">#{patientsWithNoDialysisToIncomingMonthController.getCountForEmptyDialysisCardToIncomingMonth()}</span>
+                            </h:panelGroup>
+                        </h:link>
+                    </li>
+                </h:panelGroup>
+                <li>
+                    <h:link id="otherDepartmentMenuId" outcome="patient other department" class="active">
+                        <i class="glyphicon glyphicon-send" /> #{i18n["cabinet.left_menu.other_patients"]}
+                        <h:panelGroup rendered="#{countsInDepartmentsViewScopeController.accessedForDepartmentPatientsCountForDepartment > 0}">
+                            <span class="badge">#{countsInDepartmentsViewScopeController.updateAndGetAccessedForDepartmentPatientsCountForDepartment()}</span>
+                        </h:panelGroup>
+                    </h:link>
+                    <p:tooltip for="otherDepartmentMenuId" trackMouse="true"  value="Пациенты из других отделении, доступ к которым открыт для ВСЕГО вашего отделения." />
+                </li>
+                <li>
+                    <h:link id="operationsMenuId" outcome="patients for operations" class="active">
+                        <i class="glyphicon glyphicon-warning-sign" />&#160;Пациенты на операции
+                        <h:panelGroup rendered="#{countsInDepartmentsViewScopeController.operationsCountForEmployee > 0}">
+                            <span class="badge">#{countsInDepartmentsViewScopeController.updateAndGetOperationsCountForEmployee()}</span>
+                        </h:panelGroup>
+                    </h:link>
+                    <p:tooltip for="operationsMenuId" trackMouse="true"  value="Пациенты, в чьих операциях вы участвуете." />
+                </li>
+                <sec:authorize access="hasRole('CHIEF')">
+                    <li>
+                        <h:link outcome="patient on discharge" class="active">
+                            <i class="glyphicon glyphicon-user" />&#160;Пациенты ны выписку
+                        </h:link>
+                    </li>
+                    <li>
+                        <h:link outcome="rating employee" class="active">
+                            <i class="glyphicon glyphicon-signal" />&#160;Рейтинг врачей
+                        </h:link>
+                    </li>
+                </sec:authorize>
+                <sec:authorize access="hasAnyRole('DOCTOR','CHIEF')">
+                    <li>
+                        <h:link id="hospitalMenuId" outcome="patients in hospital" class="active">
+                            <i class="glyphicon glyphicon-list" />&#160;В больнице
+                        </h:link>
+                    </li>
+                    <p:tooltip for="hospitalMenuId" trackMouse="true"  value="Отсюда можно получить доступ к любому пациенту в приемном покое или в других отделениях." />
+                </sec:authorize>
+                <sec:authorize access="hasAnyRole('DOCTOR','CHIEF')">
+                    <li>
+                        <h:link id="archiveMenuId" outcome="archive" class="active">
+                            <i class="glyphicon glyphicon-book" />&#160;Архив
+                        </h:link>
+                        <p:tooltip for="archiveMenuId" trackMouse="true"  value="Архив медкарт." />
+                    </li>
+                    <li>
+                        <h:link outcome="reports" class="active">
+                            <i class="glyphicon glyphicon-th-list"></i>
+                            Отчеты
+                        </h:link>
+                    </li>
+                </sec:authorize>
+            </ul>
+        </h:panelGroup>
+
+    </h:form>
+</ui:composition>
+</html>
