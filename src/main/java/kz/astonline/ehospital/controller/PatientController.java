@@ -16,17 +16,25 @@ public class PatientController {
     @Autowired
     private PatientService patientService;
     private Patient patient = new Patient();
-    private List list = new ArrayList();
+    private List <Patient> list = new ArrayList();
 
     public List<Patient> findPatient() {
         list.clear();
         list.add(patientService.findPatientFullName(patient.getName(), patient.getSurName()));
-        if (list != null) return list;
-        return null;
+        return list;
     }
 
-    public void registrPatient(){
+    public void saveOrUpdatePatient() {
+        patientService.saveOrUpdate(this.patient);
+    }
 
+    public void deletePatient() {
+        patientService.delete(patient.getId());
+    }
+
+    public void registrPatient() {
+        patientService.saveOrUpdate(this.patient);
+        this.patient = new Patient();
     }
 
     public PatientController() {

@@ -18,7 +18,7 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public Patient saveOrUpdate(Patient entity) {
-        return null;
+        return patientRepository.save(entity);
     }
 
     @Override

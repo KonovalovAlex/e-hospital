@@ -3,8 +3,9 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
     <link rel="stylesheet" type="text/css" href="/resources/bootstrap/css/bootstrap.css"/>
 </h:head>
@@ -16,21 +17,23 @@
 <h:body>
     <div class="container">
         <div class="row">
-            <h:form class="form-horizontal">
+            <h:form class="form-horizontal" id="regForm">
                 <fieldset>
                     <legend>Registration Patient</legend>
 
                     <div class="form-group">
                         <h:outputLabel class="col-md-4 control-label" for="Name">name</h:outputLabel>
                         <div class="col-md-5">
-                            <h:inputText value="#{patientController.patient.name}" id="Name" name="Name" type="text" placeholder="username"
+                            <h:inputText value="#{patientController.patient.name}" id="Name" name="Name" type="text"
+                                         placeholder="username"
                                          class="form-control input-md"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <h:outputLabel class="col-md-4 control-label" for="surName">surName</h:outputLabel>
                         <div class="col-md-5">
-                            <h:inputText value="#{patientController.patient.surName}" id="surName" name="surName" type="text" placeholder="surName"
+                            <h:inputText value="#{patientController.patient.surName}" id="surName" name="surName"
+                                         type="text" placeholder="surName"
                                          class="form-control input-md"/>
                         </div>
                     </div>
@@ -38,22 +41,47 @@
                     <div class="form-group">
                         <h:outputLabel class="col-md-4 control-label" for="address">address</h:outputLabel>
                         <div class="col-md-5">
-                            <h:inputText value="#{patientController.patient.address}" id="address" name="address" type="text" placeholder="address"
+                            <h:inputText value="#{patientController.patient.address}" id="address" name="address"
+                                         type="text" placeholder="address"
                                          class="form-control input-md"/>
                         </div>
+                    </div>
+                    <p:commandButton action="#{patientController.registrPatient}" value="зарегестрировать"
+                                     update="regForm"/>
+                    <div>
+                        <p:tab>
+                            <p:commandButton action="#{patientController.saveOrUpdatePatient}" value="редактировать"/>
+                        </p:tab>
                     </div>
                 </fieldset>
             </h:form>
         </div>
     </div>
-    <p:accordionPanel multiple="true" >
-        <p:tab title="one">
-            <h:form>
-                <h:inputText value="#{patientController.patient.name}"/>
-                <h:inputText value="#{patientController.patient.surName}"/>
-                <p:commandButton action="#{patientController.findPatient}" value="найти"/>
+            <h:form id="findForm" >
+                <h:inputText title="Имя: " value="#{patientController.patient.name}"/>
+                <h:inputText title="Фамилия:" value="#{patientController.patient.surName}"/>
+                <p:commandButton action="#{patientController.findPatient}" value="найти" update="findForm"/>
             </h:form>
-        </p:tab>
-    </p:accordionPanel>
+            <ui:repeat var="patient" value="#{patientController.list}">
+            <tr>
+                <td>#{patient.name}</td>
+            </tr>
+                    <p:column headerText="name">
+                        <h:outputText value="#{patient.name}"/>
+                    </p:column>
+                    <p:column headerText="surName">
+                        <h:outputText value="#{patient.surName}"/>
+                    </p:column>
+                    <p:column headerText="address">
+                        <h:outputText value="#{patient.address}"/>
+                    </p:column>
+                    <h:column>
+                        <h:form>
+                        <h:commandLink id="remove" value="delete" action="#{patientController.deletePatient}"
+                                       onclick="return confirm('Are you sure?')">
+                            <f:ajax render="todoForm:todoTable"/>
+                        </h:commandLink></h:form>
+                    </h:column>
+            </ui:repeat>
 </h:body>
 </html>

@@ -13,7 +13,6 @@
         <class>kz.astonline.ehospital.model.Department</class>       
         <class>kz.astonline.ehospital.model.Alert</class>
         <class>kz.astonline.ehospital.model.Card</class>
-        <class>kz.astonline.ehospital.model.Patient</class>
         <class>kz.astonline.ehospital.model.Form</class>
         <class>kz.astonline.ehospital.model.TypeForm</class>
         <class>kz.astonline.ehospital.model.Patient</class>
