@@ -36,19 +36,12 @@ public class PatientController {
 
     @Transactional
     public void registrPatient() {
-//        createNewCardForpatient();
         patientService.saveOrUpdate(this.patient);
-        patientService.findPatientByFullName(patient.getName(),patient.getSurName());
+//        patientService.findPatientByFullName(patient.getName(),patient.getSurName());
         this.patient = new Patient();
     }
 
-    private void createNewCardForpatient(){
-        Card card = new Card();
-        card.setRecord("");
-        List<Card> cardList = new ArrayList<>();
-        cardList.add(card);
-        patient.setCard(cardList);
-    }
+
 
     public PatientController() {
     }
