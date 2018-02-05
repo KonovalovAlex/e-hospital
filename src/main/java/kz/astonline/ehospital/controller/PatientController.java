@@ -21,12 +21,13 @@ public class PatientController {
     private List <Patient> patients = new ArrayList<>();
 
     public List<Patient> findPatient() {
-        patients.clear();
+
         patients.add(patientService.findPatientByFullName(patient.getName(), patient.getSurName()));
         return patients;
     }
 
     public void saveOrUpdatePatient(Patient patient) {
+
         patientService.saveOrUpdate(this.patient);
     }
 
@@ -36,11 +37,16 @@ public class PatientController {
 
     @Transactional
     public void registrPatient() {
+        patients.clear();
+        Card card = new Card();
+        card.setRecord("");
+        List<Card> cardArrayList = new ArrayList<>();
+        cardArrayList.add(card);
+        patient.setCard(cardArrayList);
         patientService.saveOrUpdate(this.patient);
 //        patientService.findPatientByFullName(patient.getName(),patient.getSurName());
         this.patient = new Patient();
     }
-
 
 
     public PatientController() {
