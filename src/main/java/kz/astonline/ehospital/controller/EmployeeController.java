@@ -51,21 +51,11 @@ public class EmployeeController implements Serializable {
     }
 
     public void registr() {
-        setRoleForPatient();
         employeeService.saveOrUpdate(employee);
     }
 
-    private void setRoleForPatient() {
-        Role role = roleService.findByRoleName("patient");
-        if (role != null) {
-            List<Role> roles = new ArrayList<>();
-            roles.add(role);
-            employee.setRoles(roles);
-            employee.setEnabled(true);
-        }
-    }
 
-    public List<Employee> searchClient() {
+    public List<Employee> searchPatient() {
         System.out.println(employee.getIin());
         list.clear();
         list.add(employeeService.findByIIN(employee.getIin()));

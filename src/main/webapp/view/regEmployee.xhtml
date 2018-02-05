@@ -156,24 +156,24 @@
                 <f:validateLength minimum="12" maximum="12"/>
             </h:inputText>
             <p:commandButton value="search" class="btn btn-primary center" style="margin:auto;"
-                             action="#{employeeController.searchClient}"/>
+                             action="#{employeeController.searchPatient}"/>
         </h:form>
-        <table>
-            <tr>
-            </tr>
-            <ui:repeat value="#{employeeController.getList}" var="patient">
-                <tr>
-                    <td>#{patient.firstName}</td>
-                    <td>#{patient.lastName}</td>
-                    <td>#{patient.patronymic}</td>
-                    <td><h:form>
-                        <h:commandButton value="showOrEditForm" action="#{employeeController.showOrEditForm}"/>
-                    </h:form></td>
-                    <h:inputText binding="#{input1}"/>
-                    <h:commandButton value="Test" action="#{myBean.execute(input1.value)}"/>
-                </tr>
-            </ui:repeat>
-        </table>
+        <!--<table>-->
+            <!--<tr>-->
+            <!--</tr>-->
+            <!--<ui:repeat value="#{employeeController.getList}" var="patient">-->
+                <!--<tr>-->
+                    <!--<td>#{patient.firstName}</td>-->
+                    <!--<td>#{patient.lastName}</td>-->
+                    <!--<td>#{patient.patronymic}</td>-->
+                    <!--<td><h:form>-->
+                        <!--<h:commandButton value="showOrEditForm" action="#{employeeController.showOrEditForm}"/>-->
+                    <!--</h:form></td>-->
+                    <!--<h:inputText binding="#{input1}"/>-->
+                    <!--<h:commandButton value="Test" action="#{myBean.execute(input1.value)}"/>-->
+                <!--</tr>-->
+            <!--</ui:repeat>-->
+        <!--</table>-->
     </div>
 </h:body>
 

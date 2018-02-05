@@ -18,7 +18,7 @@ public class Patient extends BaseEntity {
     @Column(name = "SURNAME")
     private String surName;
 
-    @OneToMany
+    @OneToMany(mappedBy = "patient")
     private List<Card> card;
 
     private String address;

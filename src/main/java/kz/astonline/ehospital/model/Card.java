@@ -15,23 +15,22 @@ import java.util.List;
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Card extends BaseEntity {
 
-    @ManyToOne @JoinColumn (name = "client_id",referencedColumnName = "id")
+    @ManyToOne @JoinColumn (name = "patient_id",referencedColumnName = "id")
     private Patient patient;
 
     @Column
     private String record;
 
-    @OneToMany
-    private List<Form> listForm;
+//    @OneToMany
+//    private List<Form> listForm;
 
-
-    public List<Form> getListForm() {
-        return listForm;
-    }
-
-    public void setListForm(List<Form> listForm) {
-        this.listForm = listForm;
-    }
+//    public List<Form> getListForm() {
+//        return listForm;
+//    }
+//
+//    public void setListForm(List<Form> listForm) {
+//        this.listForm = listForm;
+//    }
 
     public Patient getPatient() {
         return patient;

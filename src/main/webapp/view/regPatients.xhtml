@@ -5,7 +5,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 <h:head>
     <link rel="stylesheet" type="text/css" href="/resources/bootstrap/css/bootstrap.css"/>
 </h:head>
@@ -48,40 +48,31 @@
                     </div>
                     <p:commandButton action="#{patientController.registrPatient}" value="зарегестрировать"
                                      update="regForm"/>
-                    <div>
-                        <p:tab>
-                            <p:commandButton action="#{patientController.saveOrUpdatePatient}" value="редактировать"/>
-                        </p:tab>
-                    </div>
                 </fieldset>
             </h:form>
         </div>
     </div>
-            <h:form id="findForm" >
-                <h:inputText title="Имя: " value="#{patientController.patient.name}"/>
-                <h:inputText title="Фамилия:" value="#{patientController.patient.surName}"/>
-                <p:commandButton action="#{patientController.findPatient}" value="найти" update="findForm"/>
-            </h:form>
-            <ui:repeat var="patient" value="#{patientController.list}">
-            <tr>
-                <td>#{patient.name}</td>
-            </tr>
-                    <p:column headerText="name">
-                        <h:outputText value="#{patient.name}"/>
-                    </p:column>
-                    <p:column headerText="surName">
-                        <h:outputText value="#{patient.surName}"/>
-                    </p:column>
-                    <p:column headerText="address">
-                        <h:outputText value="#{patient.address}"/>
-                    </p:column>
-                    <h:column>
-                        <h:form>
-                        <h:commandLink id="remove" value="delete" action="#{patientController.deletePatient}"
-                                       onclick="return confirm('Are you sure?')">
-                            <f:ajax render="todoForm:todoTable"/>
-                        </h:commandLink></h:form>
-                    </h:column>
-            </ui:repeat>
+    <h:form id="findForm">
+        <h:inputText title="Имя: " value="#{patientController.patient.name}"/>
+        <h:inputText title="Фамилия: " value="#{patientController.patient.surName}"/>
+        <p:commandButton action="#{patientController.findPatient}" value="найти" update="@form"/>
+        <p:dataTable id="patientTable" var="patient" value="#{patientController.patients}">
+            <p:column headerText="name">
+                <h:outputText value="#{patient.name}"/>
+            </p:column>
+            <p:column headerText="surName">
+                <h:outputText value="#{patient.surName}"/>
+            </p:column>
+            <p:column headerText="address">
+                <h:outputText value="#{patient.address}"/>
+            </p:column>
+            <p:column>
+            <h:commandLink value="Edit" action="#{patientController.saveOrUpdatePatient(patient)}">
+                <f:ajax render="findForm:patientTable" />
+            </h:commandLink>
+            </p:column>
+        </p:dataTable>
+    </h:form>
+
 </h:body>
 </html>

@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 /**
  * Created by Alex on 12.01.2018.
  */
-@Entity
+//@Entity
 public class TypeForm extends BaseEntity {
     private String name;
 

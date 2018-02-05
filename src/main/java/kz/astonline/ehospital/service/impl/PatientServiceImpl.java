@@ -42,8 +42,7 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public Patient findPatientFullName(String name, String surName) {
+    public Patient findPatientByFullName(String name, String surName) {
         return patientRepository.findByFullName(name, surName);
-
     }
 }
