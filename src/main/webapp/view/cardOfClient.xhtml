@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
+<f:view>
+    <h:body>
+        <h:form>
+        <h:inputText placeholder="Keyboard" title="Имя: " value="#{cardController.patient.name}"/>
+        <h:inputText placeholder="Keyboard" title="Фамилия: " value="#{cardController.patient.surName}"/>
+        <p:commandButton icon="fa fa-search"  styleClass="white-button" action="#{cardController.findPatient}" value="найти" update="@form"/>
+        </h:form>
+        <!--<h:form>-->
+        <!--<h2><h:outputText title="diagnosis" value=""> </h:outputText></h2>-->
+
+        <!--<h:panelGrid columns="5" style="margin-bottom:10px" cellpadding="5" rendered="true">-->
+        <!--диагноз<p:inputText value="#{cardController.card.diagnosis}" id="dia"  />-->
+        <!--<p:tooltip id="diagnosis" for="dia" showEvent="focus" hideEvent="blur" />-->
+
+        <!--таблетки<p:inputText value="#{cardController.card.pills}" id="pls"  />-->
+        <!--<p:tooltip id="pills" for="pls" showEvent="focus" hideEvent="blur" />-->
+
+        <!--введите количество дней для приёма<p:inputText value="#{cardController.card.quantityDays}" id="quantityDays" />-->
+        <!--<p:tooltip id="quantityDayss" for="quantityDays" showEvent="focus" hideEvent="blur" />-->
+
+        <!--введите количество раз в день<p:inputText value="#{cardController.card.quantityTimes}"  id="quantityTimes" />-->
+        <!--<p:tooltip id="quantityTime" for="quantityTimes" showEvent="quantityTimes" hideEvent="blur" />-->
+        <!--<p:spacer/>-->
+
+        <!--</h:panelGrid>-->
+        <!--<h3>For records</h3>-->
+        <!--<p:inputTextarea value="#{cardController.card.forRecord}" rows="5" cols="30" counter="display" maxlength="500" counterTemplate="{0} characters remaining." autoResize="false" />-->
+        <!--<h:outputText id="display" />-->
+        <!--<h:commandButton label="editCard" action="#{cardController.editCard}"/>-->
+        <!--</h:form>-->
+
+
+        <h:form>
+            <h:dataTable value="#{cardController.patientList}" var="patient"
+                         styleClass="order-table"
+                         headerClass="order-table-header"
+                         rowClasses="order-table-odd-row,order-table-even-row">
+
+                <h:column>
+
+                    <f:facet name="header">diagnosis</f:facet>
+
+                    <h:inputText value="#{cardController.getMedicineCard(patient).diagnosis}" size="20" rendered="#{cardController.card.editable}"/>
+исправить
+                    <h:outputText value="#{cardController.getMedicineCard(patient).diagnosis}" rendered="#{not cardController.card.editable}"/>
+
+                </h:column>
+
+                <!--<h:column>-->
+
+                    <!--<f:facet name="header">Product Name</f:facet>-->
+
+                    <!--<h:inputText value="#{patient.pills}" size="20" rendered="#{cardController.card.editable}"/>-->
+
+                    <!--<h:outputText value="#{cardController.patientList.get(0).getCard().get(0).getPills}" rendered="#{not cardController.card.editable}"/>-->
+
+                <!--</h:column>-->
+
+                <!--<h:column>-->
+
+                    <!--<f:facet name="header">Price</f:facet>-->
+
+                    <!--<h:inputText value="#{patient.quantityDays}" size="20" rendered="#{cardController.card.editable}"/>-->
+
+                    <!--<h:outputText value="#{cardController.patientList.get(0).getCard().get(0).getQuantityDays}" rendered="#{not cardController.card.editable}"/>-->
+
+                <!--</h:column>-->
+
+                <!--<h:column>-->
+
+                    <!--<f:facet name="header">Quantity</f:facet>-->
+
+                    <!--<h:inputText value="#{patient.quantityTimes}" size="20" rendered="#{cardController.card.editable}"/>-->
+
+                    <!--<h:outputText value="#{cardController.patientList.get(0).getCard().get(0).getQuantityTimes}" rendered="#{not cardController.card.editable}"/>-->
+
+                <!--</h:column>-->
+
+                <!--<h:column>-->
+
+                    <!--<f:facet name="header">Action</f:facet>-->
+
+                    <h:commandLink value="Edit" action="#{cardController.editCard}"
+                                   rendered="#{not cardController.card.editable}"/>
+
+                <!--</h:column>-->
+
+            </h:dataTable>
+
+            <h:commandButton value="Save Changes" action="#{cardController.saveChangesInCard}"/>
+
+        </h:form>
+    </h:body>
+</f:view>
+</html>

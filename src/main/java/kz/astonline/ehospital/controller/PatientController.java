@@ -50,12 +50,8 @@ public class PatientController implements Serializable {
 
     @Transactional
     public void registrPatient() {
-        Card card = new Card();
-        Analysis analysis = new Analysis();
-        card.setPatient(patient);
-        analysis.setCard(card);
+        analysisService.initAnalysis(patient);
         this.patient = new Patient();
-        analysisService.saveOrUpdate(analysis);
     }
 
     public PatientController() {
