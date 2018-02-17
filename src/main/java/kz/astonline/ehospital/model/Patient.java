@@ -9,21 +9,21 @@ import java.util.List;
 @Table(name = "PATIENTS")
 public class Patient extends BaseEntity {
     @Column(name = "NAME")
-    private String name= "";
+    private String name;
 
     @Column(name = "SURNAME")
-    private String surName= "";
+    private String surName;
 
     @OneToMany(mappedBy = "patient",cascade = CascadeType.ALL ,fetch = FetchType.EAGER)
     private List<Card> card;
 
     @Column
-    private String address= "";
+    private String address;
 
     @ManyToOne
     private Department department;
     @Column
-    private String therapist= "";
+    private String therapist;
     @Column
     private boolean inClinic = true;
 

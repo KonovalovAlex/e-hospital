@@ -15,11 +15,11 @@ public class Card extends BaseEntity {
     private Patient patient;
 
     @Column (columnDefinition = "TEXT")
-    private String record = "";
+    private String record;
     @Column
-    private String diagnosis= "";
+    private String diagnosis;
     @Column
-    private String pills= "";
+    private String pills;
     @Column
     private int quantityDays;
     @Column
