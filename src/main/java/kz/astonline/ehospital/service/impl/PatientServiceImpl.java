@@ -17,6 +17,11 @@ public class PatientServiceImpl implements PatientService {
     private PatientRepository patientRepository;
 
     @Override
+    public List<Patient> findByFullNameAndOpeningCard(String name, String surName,Boolean isActiv) {
+        return patientRepository.findByFullNameAndOpeningCard(name, surName,isActiv);
+    }
+
+    @Override
     public Patient saveOrUpdate(Patient entity) {
         return patientRepository.save(entity);
     }
@@ -42,7 +47,7 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public Patient findPatientByFullName(String name, String surName) {
-        return patientRepository.findByFullName(name, surName);
+    public List<Patient> findPatientByFullName(String name, String surName) {
+        return patientRepository.findByFullName(name,surName);
     }
 }

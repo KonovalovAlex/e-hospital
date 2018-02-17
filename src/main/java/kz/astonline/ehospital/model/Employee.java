@@ -64,6 +64,7 @@ public class Employee extends BaseEntity {
 
     @Column(name = "ENABLED")
     private boolean enabled;
+
     @Column(name = "SPECIALIZATION")
 //    @Enumerated(EnumType.STRING)
     private SpecializationEnum specializationEnum;

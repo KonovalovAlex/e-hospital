@@ -14,7 +14,6 @@
 <h:body>
     <h:link value="go to registration" outcome="temporaryPage"/>
     <div class="container auth">
-        <div class="clearfix"></div>
         <div id="big-form" class="well auth-box">
             <p:accordionPanel>
                 <p:tab title="Registration">
@@ -149,31 +148,6 @@
                 </p:tab>
             </p:accordionPanel>
         </div>
-    </div>
-    <div>
-        <h:form>
-            <h:inputText value="#{employeeController.employee.iin}" title="searchClient" required="true">
-                <f:validateLength minimum="12" maximum="12"/>
-            </h:inputText>
-            <p:commandButton value="search" class="btn btn-primary center" style="margin:auto;"
-                             action="#{employeeController.searchPatient}"/>
-        </h:form>
-        <!--<table>-->
-            <!--<tr>-->
-            <!--</tr>-->
-            <!--<ui:repeat value="#{employeeController.getList}" var="patient">-->
-                <!--<tr>-->
-                    <!--<td>#{patient.firstName}</td>-->
-                    <!--<td>#{patient.lastName}</td>-->
-                    <!--<td>#{patient.patronymic}</td>-->
-                    <!--<td><h:form>-->
-                        <!--<h:commandButton value="showOrEditForm" action="#{employeeController.showOrEditForm}"/>-->
-                    <!--</h:form></td>-->
-                    <!--<h:inputText binding="#{input1}"/>-->
-                    <!--<h:commandButton value="Test" action="#{myBean.execute(input1.value)}"/>-->
-                <!--</tr>-->
-            <!--</ui:repeat>-->
-        <!--</table>-->
     </div>
 </h:body>
 

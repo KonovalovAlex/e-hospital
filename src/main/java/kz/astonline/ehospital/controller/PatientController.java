@@ -1,34 +1,47 @@
 package kz.astonline.ehospital.controller;
 
+import kz.astonline.ehospital.model.Analysis;
 import kz.astonline.ehospital.model.Card;
 import kz.astonline.ehospital.model.Patient;
+import kz.astonline.ehospital.service.AnalysisService;
+import kz.astonline.ehospital.service.CardService;
 import kz.astonline.ehospital.service.PatientService;
 import kz.astonline.ehospital.spring.scope.SpringViewScoped;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 @SpringViewScoped
-public class PatientController {
+public class PatientController implements Serializable {
 
     @Autowired
     private PatientService patientService;
     private Patient patient = new Patient();
-    private List <Patient> patients = new ArrayList<>();
+    private List<Patient> patients = new ArrayList<>();
+
+    @Autowired
+    private CardService cardService;
+    @Autowired
+    private AnalysisService analysisService;
+
+    public List<Patient> findPatientWithOpeningCard(){
+        return patientService.findByFullNameAndOpeningCard(patient.getName(),patient.getSurName(),true);
+    }
+
 
     public List<Patient> findPatient() {
-
-        patients.add(patientService.findPatientByFullName(patient.getName(), patient.getSurName()));
+        patients.clear();
+        patients.addAll(patientService.findPatientByFullName(patient.getName(), patient.getSurName()));
         return patients;
     }
 
     public void saveOrUpdatePatient(Patient patient) {
-
-        patientService.saveOrUpdate(this.patient);
+        patientService.saveOrUpdate(patient);
     }
 
     public void deletePatient() {
@@ -37,17 +50,13 @@ public class PatientController {
 
     @Transactional
     public void registrPatient() {
-        patients.clear();
         Card card = new Card();
-        card.setRecord("");
-        List<Card> cardArrayList = new ArrayList<>();
-        cardArrayList.add(card);
-        patient.setCard(cardArrayList);
-        patientService.saveOrUpdate(this.patient);
-//        patientService.findPatientByFullName(patient.getName(),patient.getSurName());
+        Analysis analysis = new Analysis();
+        card.setPatient(patient);
+        analysis.setCard(card);
         this.patient = new Patient();
+        analysisService.saveOrUpdate(analysis);
     }
-
 
     public PatientController() {
     }
@@ -74,5 +83,21 @@ public class PatientController {
 
     public void setPatients(List<Patient> patients) {
         this.patients = patients;
+    }
+
+    public CardService getCardService() {
+        return cardService;
+    }
+
+    public void setCardService(CardService cardService) {
+        this.cardService = cardService;
+    }
+
+    public AnalysisService getAnalysisService() {
+        return analysisService;
+    }
+
+    public void setAnalysisService(AnalysisService analysisService) {
+        this.analysisService = analysisService;
     }
 }

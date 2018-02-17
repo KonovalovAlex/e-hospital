@@ -1,27 +1,56 @@
 package kz.astonline.ehospital.model;
 
 import kz.astonline.ehospital.model.base.BaseEntity;
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.DynamicInsert;
-import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "PATIENT")
+@Table(name = "PATIENTS")
 public class Patient extends BaseEntity {
     @Column(name = "NAME")
-    private String name;
+    private String name= "";
 
     @Column(name = "SURNAME")
-    private String surName;
+    private String surName= "";
 
-    @OneToMany(mappedBy = "patient")
+    @OneToMany(mappedBy = "patient",cascade = CascadeType.ALL ,fetch = FetchType.EAGER)
     private List<Card> card;
 
-    private String address;
+    @Column
+    private String address= "";
+
+    @ManyToOne
+    private Department department;
+    @Column
+    private String therapist= "";
+    @Column
+    private boolean inClinic = true;
+
+    public String getTherapist() {
+        return therapist;
+    }
+
+    public void setTherapist(String therapist) {
+        this.therapist = therapist;
+    }
+
+    public boolean isInClinic() {
+        return inClinic;
+    }
+
+    public void setInClinic(boolean beInClinic) {
+        this.inClinic = beInClinic;
+    }
+
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
 
     public String getAddress() {
         return address;

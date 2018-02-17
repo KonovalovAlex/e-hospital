@@ -24,7 +24,7 @@
                     <div class="form-group">
                         <h:outputLabel class="col-md-4 control-label" for="Name">name</h:outputLabel>
                         <div class="col-md-5">
-                            <h:inputText value="#{patientController.patient.name}" id="Name" name="Name" type="text"
+                            <h:inputText value="#{patientController.patient.name}" id="Name" type="text"
                                          placeholder="username"
                                          class="form-control input-md"/>
                         </div>
@@ -32,7 +32,7 @@
                     <div class="form-group">
                         <h:outputLabel class="col-md-4 control-label" for="surName">surName</h:outputLabel>
                         <div class="col-md-5">
-                            <h:inputText value="#{patientController.patient.surName}" id="surName" name="surName"
+                            <h:inputText value="#{patientController.patient.surName}" id="surName"
                                          type="text" placeholder="surName"
                                          class="form-control input-md"/>
                         </div>
@@ -41,8 +41,16 @@
                     <div class="form-group">
                         <h:outputLabel class="col-md-4 control-label" for="address">address</h:outputLabel>
                         <div class="col-md-5">
-                            <h:inputText value="#{patientController.patient.address}" id="address" name="address"
+                            <h:inputText value="#{patientController.patient.address}" id="address"
                                          type="text" placeholder="address"
+                                         class="form-control input-md"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h:outputLabel class="col-md-4 control-label" for="therapist">therapist</h:outputLabel>
+                        <div class="col-md-5">
+                            <h:inputText value="#{patientController.patient.therapist}" id="therapist"
+                                         type="text" placeholder="therapist"
                                          class="form-control input-md"/>
                         </div>
                     </div>
@@ -52,27 +60,44 @@
             </h:form>
         </div>
     </div>
+
+    <div>
+        <h:form id="findTherapist">
+            <h:inputText placeholder="Keyboard" value=""/>
+
+            <p:dataTable id="therapistTable" var="therapist" value="#{patientController.patients}">
+            <p:column headerText="name">
+                <h:outputText value=""/>
+            </p:column>
+            </p:dataTable>
+        </h:form>
+    </div>
+
     <h:form id="findForm">
-        <h:inputText title="Имя: " value="#{patientController.patient.name}"/>
-        <h:inputText title="Фамилия: " value="#{patientController.patient.surName}"/>
-        <p:commandButton action="#{patientController.findPatient}" value="найти" update="@form"/>
+        <div class="ui-g-12 ui-md-4">
+            <div class="ui-inputgroup">
+                <h:inputText placeholder="Keyboard" title="Имя: " value="#{patientController.patient.name}"/>
+                <h:inputText placeholder="Keyboard" title="Фамилия: " value="#{patientController.patient.surName}"/>
+                <p:commandButton icon="fa fa-search" styleClass="white-button" action="#{patientController.findPatient}"
+                                 value="найти" update="@form"/>
+            </div>
+        </div>
         <p:dataTable id="patientTable" var="patient" value="#{patientController.patients}">
             <p:column headerText="name">
-                <h:outputText value="#{patient.name}"/>
+                <h:inputText value="#{patient.name}"/>
             </p:column>
             <p:column headerText="surName">
-                <h:outputText value="#{patient.surName}"/>
+                <h:inputText value="#{patient.surName}"/>
             </p:column>
             <p:column headerText="address">
-                <h:outputText value="#{patient.address}"/>
+                <h:inputText value="#{patient.address}"/>
             </p:column>
             <p:column>
-            <h:commandLink value="Edit" action="#{patientController.saveOrUpdatePatient(patient)}">
-                <f:ajax render="findForm:patientTable" />
-            </h:commandLink>
+                <h:commandLink value="Edit" action="#{patientController.saveOrUpdatePatient(patient)}">
+                    <f:ajax render="findForm:patientTable"/>
+                </h:commandLink>
             </p:column>
         </p:dataTable>
     </h:form>
-
 </h:body>
 </html>

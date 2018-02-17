@@ -36,9 +36,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     private RoleService roleService;
 
 
-    private List listWithRoleClient = new ArrayList();
-
-
     @Override
     public Employee saveOrUpdate(Employee entity) {
         return employeeRepository.save(entity);

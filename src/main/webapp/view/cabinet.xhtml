@@ -6,17 +6,23 @@
 </head>
 <h:body>
     <h:link outcome="regPatients" value="regPatients"/>
-    <div class="form-group">
-        <div class="col-sm-7">
-        </div>
-        <div class="col-sm-5 submitWrap">
-            <h:commandButton id="btnLoginId" value="#{i18n['registration.enter']}"
-                             action="#{authorizationController.logout()}"
-                             styleClass="btn btn-primary btn-lg">
-                <f:ajax render="authorizationForm" execute="authorizationForm"/>
-            </h:commandButton>
-        </div>
-    </div>
-    <h:commandButton value="logout" action="#{authorizationController.logout}"/>
+    <h:link outcome="cardOfClient" value="cardOfClient"/>
+    <h:form>
+        asdasd<h:inputText value="#{cardController.card.record}"/>
+        <h:commandButton action="#{patientController.findPatientWithOpeningCard}"/>
+        <h:commandButton action="#{patientController.findPatient}"/>
+    </h:form>
+    <!--<div class="form-group">-->
+        <!--<div class="col-sm-7">-->
+        <!--</div>-->
+        <!--<div class="col-sm-5 submitWrap">-->
+            <!--<h:commandButton id="btnLoginId" value="#{i18n['registration.enter']}"-->
+                             <!--action="#{authorizationController.logout()}"-->
+                             <!--styleClass="btn btn-primary btn-lg">-->
+                <!--<f:ajax render="authorizationForm" execute="authorizationForm"/>-->
+            <!--</h:commandButton>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<h:commandButton value="logout" action="#{authorizationController.logout}"/>-->
 </h:body>
 </html>

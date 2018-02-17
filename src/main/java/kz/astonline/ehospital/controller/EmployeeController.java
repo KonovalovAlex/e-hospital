@@ -4,7 +4,6 @@ import kz.astonline.ehospital.enumiration.employee.SpecializationEnum;
 import kz.astonline.ehospital.model.Card;
 import kz.astonline.ehospital.model.Patient;
 import kz.astonline.ehospital.model.Employee;
-import kz.astonline.ehospital.model.Role;
 import kz.astonline.ehospital.service.CardService;
 import kz.astonline.ehospital.service.EmployeeService;
 import kz.astonline.ehospital.service.PatientService;
@@ -50,16 +49,12 @@ public class EmployeeController implements Serializable {
 
     }
 
-    public void registr() {
-        employeeService.saveOrUpdate(employee);
+    public List<Employee> findFreeTherapist(){
+        return employeeService.findBySpecialization(SpecializationEnum.THERAPIST);
     }
 
-
-    public List<Employee> searchPatient() {
-        System.out.println(employee.getIin());
-        list.clear();
-        list.add(employeeService.findByIIN(employee.getIin()));
-        return list;
+    public void registr() {
+        employeeService.saveOrUpdate(employee);
     }
 
     public String showOrEditForm() {

@@ -48,6 +48,11 @@
             <redirect/>
         </navigation-case>
         <navigation-case>
+            <from-outcome>registration</from-outcome>
+            <to-view-id>/view/cardOfClient.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
             <from-outcome>patientRegistration</from-outcome>
             <to-view-id>/view/regPatients.xhtml</to-view-id>
             <redirect/>

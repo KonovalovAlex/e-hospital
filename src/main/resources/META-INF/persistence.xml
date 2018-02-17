@@ -16,6 +16,7 @@
         <class>kz.astonline.ehospital.model.Form</class>
         <class>kz.astonline.ehospital.model.TypeForm</class>
         <class>kz.astonline.ehospital.model.Patient</class>
+        <class>kz.astonline.ehospital.model.Analysis</class>
 
 
         <!--Converter class register begin-->
