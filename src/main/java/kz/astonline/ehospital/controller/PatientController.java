@@ -1,7 +1,5 @@
 package kz.astonline.ehospital.controller;
 
-import kz.astonline.ehospital.model.Analysis;
-import kz.astonline.ehospital.model.Card;
 import kz.astonline.ehospital.model.Patient;
 import kz.astonline.ehospital.service.AnalysisService;
 import kz.astonline.ehospital.service.CardService;
@@ -50,7 +48,7 @@ public class PatientController implements Serializable {
 
     @Transactional
     public void registrPatient() {
-        analysisService.initAnalysis(patient);
+        cardService.initCard(patient);
         this.patient = new Patient();
     }
 

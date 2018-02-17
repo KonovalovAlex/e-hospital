@@ -22,14 +22,7 @@ public class AnalysisServiceImpl implements AnalysisService {
         return analysisRepository.save(entity);
     }
 
-    @Override
-    public Analysis initAnalysis(Patient patient) {
-        Card card = new Card();
-        Analysis analysis = new Analysis();
-        card.setPatient(patient);
-        analysis.setCard(card);
-        return saveOrUpdate(analysis);
-    }
+
 
     @Override
     public Analysis findById(Long id) {

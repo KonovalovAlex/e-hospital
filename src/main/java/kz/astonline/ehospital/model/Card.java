@@ -25,9 +25,9 @@ public class Card extends BaseEntity {
     @Column
     private int quantityTimes;
     @Column
-    private Boolean examinedByTherapist = false;
+    private boolean examinedByTherapist;
     @Column
-    private Boolean isActive = true;
+    private boolean isActive;
 
     @OneToMany(mappedBy = "card",cascade = CascadeType.ALL ,fetch = FetchType.EAGER)
     private List<Analysis> analyzes;
@@ -35,21 +35,6 @@ public class Card extends BaseEntity {
     @Transient
     private boolean editable;
 
-    public Boolean getExaminedByTherapist() {
-        return examinedByTherapist;
-    }
-
-    public void setExaminedByTherapist(Boolean examinedByTherapist) {
-        this.examinedByTherapist = examinedByTherapist;
-    }
-
-    public Boolean getActive() {
-        return isActive;
-    }
-
-    public void setActive(Boolean active) {
-        isActive = active;
-    }
 
     public List<Analysis> getAnalyzes() {
         return analyzes;
@@ -62,6 +47,7 @@ public class Card extends BaseEntity {
     public boolean isEditable() {
         return editable;
     }
+
     public void setEditable(boolean editable) {
         this.editable = editable;
     }
@@ -135,7 +121,15 @@ public class Card extends BaseEntity {
         return examinedByTherapist;
     }
 
-    public void setExaminedByTherapist(boolean firstObserv) {
-        this.examinedByTherapist = firstObserv;
+    public void setExaminedByTherapist(boolean examinedByTherapist) {
+        this.examinedByTherapist = examinedByTherapist;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
     }
 }

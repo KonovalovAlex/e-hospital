@@ -5,13 +5,11 @@
     <title>welcome</title>
 </head>
 <h:body>
+    <h2>Добро пожаловать</h2>
     <h:link outcome="regPatients" value="regPatients"/>
     <h:link outcome="cardOfClient" value="cardOfClient"/>
-    <h:form>
-        asdasd<h:inputText value="#{cardController.card.record}"/>
-        <h:commandButton action="#{patientController.findPatientWithOpeningCard}"/>
-        <h:commandButton action="#{patientController.findPatient}"/>
-    </h:form>
+    <h:link outcome="regEmployee" value="regEmployee"/>
+
     <!--<div class="form-group">-->
         <!--<div class="col-sm-7">-->
         <!--</div>-->
@@ -23,6 +21,5 @@
             <!--</h:commandButton>-->
         <!--</div>-->
     <!--</div>-->
-    <!--<h:commandButton value="logout" action="#{authorizationController.logout}"/>-->
 </h:body>
 </html>

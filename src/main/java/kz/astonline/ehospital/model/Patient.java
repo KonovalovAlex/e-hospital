@@ -19,45 +19,16 @@ public class Patient extends BaseEntity {
 
     @Column
     private String address;
-
+    @Column
+    private String place;
     @ManyToOne
     private Department department;
     @Column
     private String therapist;
     @Column
-    private boolean inClinic = true;
+    private boolean inClinic;
 
-    public String getTherapist() {
-        return therapist;
-    }
-
-    public void setTherapist(String therapist) {
-        this.therapist = therapist;
-    }
-
-    public boolean isInClinic() {
-        return inClinic;
-    }
-
-    public void setInClinic(boolean beInClinic) {
-        this.inClinic = beInClinic;
-    }
-
-
-    public Department getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(Department department) {
-        this.department = department;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
+    public Patient() {
     }
 
     public String getName() {
@@ -84,7 +55,44 @@ public class Patient extends BaseEntity {
         this.card = card;
     }
 
-    public Patient() {
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPlace() {
+        return place;
+    }
+
+    public void setPlace(String place) {
+        this.place = place;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
+    public String getTherapist() {
+        return therapist;
+    }
+
+    public void setTherapist(String therapist) {
+        this.therapist = therapist;
+    }
+
+    public boolean isInClinic() {
+        return inClinic;
+    }
+
+    public void setInClinic(boolean inClinic) {
+        this.inClinic = inClinic;
     }
 }
 

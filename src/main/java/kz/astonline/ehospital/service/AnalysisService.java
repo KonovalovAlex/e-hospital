@@ -6,5 +6,4 @@ import kz.astonline.ehospital.service.base.BaseService;
 
 public interface AnalysisService extends BaseService <Analysis,Long> {
 
-    Analysis initAnalysis(Patient patient);
 }

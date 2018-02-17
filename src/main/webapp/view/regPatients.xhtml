@@ -11,7 +11,7 @@
 </h:head>
 <f:view>
 
-    <h:link value="go to registration" outcome="cabinet"/>
+    <h:link value="go to cabinet" outcome="cabinet"/>
 
 </f:view>
 <h:body>
@@ -61,18 +61,17 @@
         </div>
     </div>
 
-    <div>
-        <h:form id="findTherapist">
-            <h:inputText placeholder="Keyboard" value=""/>
-
-            <p:dataTable id="therapistTable" var="therapist" value="#{patientController.patients}">
-            <p:column headerText="name">
-                <h:outputText value=""/>
-            </p:column>
-            </p:dataTable>
-        </h:form>
-    </div>
-
+    <!--<div>-->
+        <!--<h:form id="findTherapist">-->
+            <!--<h:inputText placeholder="Keyboard" value=""/>-->
+            <!--<p:dataTable id="therapistTable" var="therapist" value="#{patientController.patients}">-->
+            <!--<p:column headerText="name">-->
+                <!--<h:outputText value=""/>-->
+            <!--</p:column>-->
+            <!--</p:dataTable>-->
+        <!--</h:form>-->
+    <!--</div>-->
+<h2>Поиск пациента</h2>
     <h:form id="findForm">
         <div class="ui-g-12 ui-md-4">
             <div class="ui-inputgroup">
@@ -91,6 +90,9 @@
             </p:column>
             <p:column headerText="address">
                 <h:inputText value="#{patient.address}"/>
+            </p:column>
+            <p:column headerText="место нахождения">
+                <h:inputText value="#{patient.place}"/>
             </p:column>
             <p:column>
                 <h:commandLink value="Edit" action="#{patientController.saveOrUpdatePatient(patient)}">
