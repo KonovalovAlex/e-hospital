@@ -15,55 +15,55 @@
                 <h:form>
                     <div class="form-group">
                         <p:outputLabel value="Логин:&#160;"/>
-                        <h:outputText value="#{employeeProfileController.employee.login}"/>
+                        <h:outputText value="#{employeeProfileController.employeeId.login}"/>
                     </div>
                     <div class="form-group">
                         <p:outputLabel value="Фамилия:&#160;"/><br/>
-                        <p:inputText style="width:40%" value="#{employeeProfileController.employee.lastName}"/>
+                        <p:inputText style="width:40%" value="#{employeeProfileController.employeeId.lastName}"/>
                     </div>
                     <div class="form-group">
                         <p:outputLabel value="Имя:&#160;"/><br/>
-                        <p:inputText style="width:40%" value="#{employeeProfileController.employee.firstName}"/>
+                        <p:inputText style="width:40%" value="#{employeeProfileController.employeeId.firstName}"/>
                     </div>
                     <div class="form-group">
                         <p:outputLabel value="Отчество:&#160;"/><br/>
-                        <p:inputText style="width:40%" value="#{employeeProfileController.employee.patronymic}"/>
+                        <p:inputText style="width:40%" value="#{employeeProfileController.employeeId.patronymic}"/>
                     </div>
                     <div class="form-group">
                         <p:outputLabel value="Дата рождения:&#160;"/><br/>
                         <p:calendar mask="true" style="width:40%" pattern="dd.MM.yyyy" converter="#{localDateConverter}" locale="ru"
-                                    value="#{employeeProfileController.employee.birthday}"/>
+                                    value="#{employeeProfileController.employeeId.birthday}"/>
                     </div>
                     <div class="form-group">
                         <p:outputLabel value="Пол:&#160;"/><br/>
-                        <p:selectOneMenu id="sex" value="#{employeeProfileController.employee.sex}">
+                        <p:selectOneMenu id="sex" value="#{employeeProfileController.employeeId.sex}">
                             <f:selectItems value="#{employeeProfileController.genderValues}"/>
                         </p:selectOneMenu>
                     </div>
                     <div class="form-group">
                         <p:outputLabel value="E-mail:&#160;"/><br/>
-                        <p:inputText style="width:40%" value="#{employeeProfileController.employee.email}"/>
+                        <p:inputText style="width:40%" value="#{employeeProfileController.employeeId.email}"/>
                     </div>
                     <div class="form-group">
                         <p:outputLabel value="Адрес:&#160;"/><br/>
-                        <p:inputText style="width:40%" value="#{employeeProfileController.employee.address}"/>
+                        <p:inputText style="width:40%" value="#{employeeProfileController.employeeId.address}"/>
                     </div>
                     <div class="form-group">
                         <p:outputLabel value="Телефон:&#160;"/><br/>
-                        <p:inputText style="width:40%" value="#{employeeProfileController.employee.telephone}"/>
+                        <p:inputText style="width:40%" value="#{employeeProfileController.employeeId.telephone}"/>
                     </div>
                     <hr align="left" style="color: red ; border: 1px solid #cfd3e6;"/>
                     <div class="form-group">
                         <p:outputLabel value="Отделение:&#160;"/>
-                        <h:outputText value="#{employeeProfileController.employee.department.name}"/>
+                        <h:outputText value="#{employeeProfileController.employeeId.storeIdDepartment.name}"/>
                     </div>
                     <div class="form-group">
                         <p:outputLabel value="Должность:&#160;"/>
-                        <h:outputText value="#{i18n[employeeProfileController.employee.roles.get(0).role]}"/>
+                        <h:outputText value="#{i18n[employeeProfileController.employeeId.roles.get(0).role]}"/>
                     </div>
                     <div class="form-group">
                         <p:outputLabel value="Специализация:&#160;"/>
-                        <h:outputText value="#{i18n[employeeProfileController.employee.specializationEnum]}"/>
+                        <h:outputText value="#{i18n[employeeProfileController.employeeId.specializationEnum]}"/>
                     </div>
                     <hr align="left" style="color: red ; border: 1px solid #cfd3e6;"/>
                     <p:commandButton action="#{employeeProfileController.save()}" value="Сохранить"/>

@@ -16,15 +16,15 @@ public class Patient extends BaseEntity {
 
     @OneToMany(mappedBy = "patient",cascade = CascadeType.ALL ,fetch = FetchType.EAGER)
     private List<Card> card;
-
     @Column
     private String address;
     @Column
     private String place;
     @ManyToOne
     private Department department;
-    @Column
-    private String therapist;
+
+    @ManyToOne (cascade = CascadeType.ALL,fetch = FetchType.EAGER) @JoinColumn (name = "employee_id",referencedColumnName = "id")
+    private Employee employee;
     @Column
     private boolean inClinic;
 
@@ -79,12 +79,12 @@ public class Patient extends BaseEntity {
         this.department = department;
     }
 
-    public String getTherapist() {
-        return therapist;
+    public Employee getTherapist() {
+        return employee;
     }
 
-    public void setTherapist(String therapist) {
-        this.therapist = therapist;
+    public void setTherapist(Employee employee) {
+        this.employee = employee;
     }
 
     public boolean isInClinic() {

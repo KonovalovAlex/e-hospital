@@ -6,23 +6,76 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table (name = "ANALYZES")
+@Table(name = "ANALYZES")
 public class Analysis extends BaseEntity implements Serializable {
 
     @Column
     private String record;
+    @Column
+    private String treatment;
     @Column
     private int numberOfBlood;
     @Column
     private String rhesusFactor;
     @Column
     private String author;
+    @Column
+    private boolean result;
+    @Column
+    private String pills;
+    @Column
+    private int quantityDays;
+    @Column
+    private int quantityTimes;
 
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER) @JoinColumn (name = "cards_id",referencedColumnName = "id")
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "cards_id", referencedColumnName = "id")
     private Card card;
 
 
+    public String getTreatment() {
+        return treatment;
+    }
+
+    public void setTreatment(String treatment) {
+        this.treatment = treatment;
+    }
+
+    public boolean isResult() {
+        return result;
+    }
+
+    public void setResult(boolean result) {
+        this.result = result;
+    }
+
+    public String getPills() {
+        return pills;
+    }
+
+    public void setPills(String pills) {
+        this.pills = pills;
+    }
+
+    public int getQuantityDays() {
+        return quantityDays;
+    }
+
+    public void setQuantityDays(int quantityDays) {
+        this.quantityDays = quantityDays;
+    }
+
+    public int getQuantityTimes() {
+        return quantityTimes;
+    }
+
+    public void setQuantityTimes(int quantityTimes) {
+        this.quantityTimes = quantityTimes;
+    }
+
     public Analysis() {
+
+
     }
 
     public String getAuthor() {

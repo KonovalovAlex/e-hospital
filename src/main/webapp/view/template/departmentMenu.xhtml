@@ -37,7 +37,7 @@
                     </li>
                 </sec:authorize>
                 <li>
-                    <h:link id="permittedMenuId" outcome="permitted to department" class="active">
+                    <h:link id="permittedMenuId" outcome="permitted to storeIdDepartment" class="active">
                         <i class="glyphicon glyphicon-ok"/> #{i18n["cabinet.left_menu.permitted_to_department"]}
                         <h:panelGroup rendered="#{countsInDepartmentsViewScopeController.arrivedPatientsCountForDepartment > 0}">
                             <span class="badge">#{countsInDepartmentsViewScopeController.updateAndGetArrivedPatientsCountForDepartment()}</span>
@@ -46,7 +46,7 @@
                     <p:tooltip for="permittedMenuId" trackMouse="true"  value="Пациенты принятые в отделении, но еще не имеющие лечащего врача." />
                 </li>
                 <li>
-                    <h:link id="onTreatmentMenuId" outcome="patients on treatment in department" class="active">
+                    <h:link id="onTreatmentMenuId" outcome="patients on treatment in storeIdDepartment" class="active">
                         <i class="glyphicon glyphicon-plus" /> #{i18n["cabinet.left_menu.patients_on_treatment_in_department"]}
                     </h:link>
                 </li>
@@ -59,7 +59,7 @@
                 <p:tooltip for="myPatientsMenuId" trackMouse="true"  value="Пациенты, лечащим врачом которых являетесь вы. Пациенты из других отделении, к которым вы(сотрудник) получили доступ." />
 
                 <h:panelGroup
-                        rendered="#{accessController.currentEmployee.department.departmentEnum.toString().equals('HEMODIALYSIS')}">
+                        rendered="#{accessController.currentEmployee.storeIdDepartment.departmentEnum.toString().equals('HEMODIALYSIS')}">
                     <li>
                         <h:link outcome="patients with not filled dialysis card" title="Сюда попадают пациенты, у которых отсутствует диализная карта на текущий месяц, или на следующий - если осталось 5 дней до конца месяца" class="active">
                             <i class="glyphicon glyphicon-user" /> C неподготовленными <br />
@@ -71,7 +71,7 @@
                     </li>
                 </h:panelGroup>
                 <li>
-                    <h:link id="otherDepartmentMenuId" outcome="patient other department" class="active">
+                    <h:link id="otherDepartmentMenuId" outcome="patient other storeIdDepartment" class="active">
                         <i class="glyphicon glyphicon-send" /> #{i18n["cabinet.left_menu.other_patients"]}
                         <h:panelGroup rendered="#{countsInDepartmentsViewScopeController.accessedForDepartmentPatientsCountForDepartment > 0}">
                             <span class="badge">#{countsInDepartmentsViewScopeController.updateAndGetAccessedForDepartmentPatientsCountForDepartment()}</span>
@@ -95,7 +95,7 @@
                         </h:link>
                     </li>
                     <li>
-                        <h:link outcome="rating employee" class="active">
+                        <h:link outcome="rating employeeId" class="active">
                             <i class="glyphicon glyphicon-signal" />&#160;Рейтинг врачей
                         </h:link>
                     </li>

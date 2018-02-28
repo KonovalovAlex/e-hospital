@@ -32,7 +32,7 @@
                         </h:link>
                     </li>
                     <li>
-                        <h:link  id="onTreatmentMenuId" outcome="all patients in department" class="active"
+                        <h:link  id="onTreatmentMenuId" outcome="all patients in storeIdDepartment" class="active"
                                  title="Все пациенты, находящиеся на лечении в отделении.">
                             <i class="glyphicon glyphicon-user"/>
                             #{i18n["cabinet.left_menu.all_patients_in_department"]}
@@ -42,7 +42,7 @@
                         </h:link>
                     </li>
                     <li>
-                        <h:link outcome="empty chamber and bed patients in department" class="active">
+                        <h:link outcome="empty chamber and bed patients in storeIdDepartment" class="active">
                             <i class="glyphicon glyphicon-user"/>
                             #{i18n["cabinet.left_menu.empty_chamber_and_bed"]}
                         </h:link>
@@ -52,7 +52,7 @@
                                 title="Пациенты из других отделении, к которым вы(сотрудник) получили доступ.">
                             <i class="glyphicon glyphicon-send" />
                             #{i18n["cabinet.left_menu.other_patients"]}
-                            <h:panelGroup rendered="#{poolDepartmentMenuCountsService.getAccessedForDepartmentPatientsCountForDepartment(accessController.currentEmployee.department) > 0}"/>
+                            <h:panelGroup rendered="#{poolDepartmentMenuCountsService.getAccessedForDepartmentPatientsCountForDepartment(accessController.currentEmployee.storeIdDepartment) > 0}"/>
                         </h:link>
                     </li>
                     <li>
@@ -62,7 +62,7 @@
                         </h:link>
                     </li>
                     <li>
-                        <h:panelGroup rendered="#{accessController.currentEmployee.department.departmentEnum == 'SURGERY_1'}">
+                        <h:panelGroup rendered="#{accessController.currentEmployee.storeIdDepartment.departmentEnum == 'SURGERY_1'}">
                             <h:link title="Сюда попадают все запрошенные наркотические вещества со всех отделений" outcome="drugs" class="active">
                                 <i class="glyphicon glyphicon-list"/>
                                 &#160;Наркотические средства
@@ -79,7 +79,7 @@
                     <h5 style="text-align: center; color: #40a4e5">
                         <b>Пациенты с невыполненными на сегодня:</b>
                     </h5>
-                    <h:panelGroup rendered="#{accessController.currentEmployee.department.departmentEnum.toString().equals('HEMODIALYSIS')}">
+                    <h:panelGroup rendered="#{accessController.currentEmployee.storeIdDepartment.departmentEnum.toString().equals('HEMODIALYSIS')}">
                         <li>
                             <h:link id="dialysisMenuId" outcome="empty dialysis for today patients" class="active"
                                     title="Сюда попадают пациенты, если у них есть диализные процедуры на сегодня, но еще не выполнены.">
@@ -93,7 +93,7 @@
                         </li>
                     </h:panelGroup>
                     <li>
-                        <h:link id="tempMenuId" outcome="empty temp sheets patients in department" class="active"
+                        <h:link id="tempMenuId" outcome="empty temp sheets patients in storeIdDepartment" class="active"
                                 title="Сюда попадают пациенты c незаполненными температурынми листами на сегодня.">
                             <i class="glyphicon glyphicon-pencil"/>
                             #{i18n["cabinet.left_menu.empty_for_today_temp_sheets"]}

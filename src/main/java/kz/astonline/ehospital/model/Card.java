@@ -19,12 +19,6 @@ public class Card extends BaseEntity {
     @Column
     private String diagnosis;
     @Column
-    private String pills;
-    @Column
-    private int quantityDays;
-    @Column
-    private int quantityTimes;
-    @Column
     private boolean examinedByTherapist;
     @Column
     private boolean isActive;
@@ -52,32 +46,6 @@ public class Card extends BaseEntity {
         this.editable = editable;
     }
 
-
-    public int getQuantityDays() {
-        return quantityDays;
-    }
-
-    public void setQuantityDays(int quantityDays) {
-        this.quantityDays = quantityDays;
-    }
-
-    public String getPills() {
-
-        return pills;
-    }
-
-    public void setPills(String pills) {
-        this.pills = pills;
-    }
-
-
-    public int getQuantityTimes() {
-        return quantityTimes;
-    }
-
-    public void setQuantityTimes(int quantityTimes) {
-        this.quantityTimes = quantityTimes;
-    }
 
     public String getDiagnosis() {
         return diagnosis;

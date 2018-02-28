@@ -44,10 +44,6 @@ public class AuthorizationController implements Serializable {
         }
     }
 
-    public String logout() {
-        SecurityContextHolder.clearContext();
-        return "login";
-    }
 
     public String getLogin() {
         return login;

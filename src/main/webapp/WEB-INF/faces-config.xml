@@ -54,7 +54,7 @@
         </navigation-case>
         <navigation-case>
             <from-outcome>patientRegistration</from-outcome>
-            <to-view-id>/view/regPatients.xhtml</to-view-id>
+            <to-view-id>/view/regPatients.nurse.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
         <navigation-case>
@@ -63,7 +63,7 @@
             <redirect/>
         </navigation-case>
         <navigation-case>
-            <from-outcome>rating employee</from-outcome>
+            <from-outcome>rating employeeId</from-outcome>
             <to-view-id>/view/cabinet/rating-employyes.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
@@ -104,13 +104,13 @@
             <redirect/>
         </navigation-case>
         <navigation-case>
-            <from-outcome>register employee</from-outcome>
-            <to-view-id>/view/cabinet/administration/register-employee.xhtml</to-view-id>
+            <from-outcome>register employeeId</from-outcome>
+            <to-view-id>/view/cabinet/administration/register-employeeId.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
         <navigation-case>
-            <from-outcome>edit employee</from-outcome>
-            <to-view-id>/view/cabinet/administration/edit-employee.xhtml</to-view-id>
+            <from-outcome>edit employeeId</from-outcome>
+            <to-view-id>/view/cabinet/administration/edit-employeeId.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
         <navigation-case>
@@ -159,8 +159,8 @@
             <redirect/>
         </navigation-case>
         <navigation-case>
-            <from-outcome>transfer to department</from-outcome>
-            <to-view-id>/view/cabinet/transfer-to-department.xhtml</to-view-id>
+            <from-outcome>transfer to storeIdDepartment</from-outcome>
+            <to-view-id>/view/cabinet/transfer-to-storeIdDepartment.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
         <navigation-case>
@@ -265,37 +265,37 @@
         </navigation-case>
         <navigation-case>
             <from-outcome>incoming patients</from-outcome>
-            <to-view-id>/view/cabinet/department/incoming-patients.xhtml</to-view-id>
+            <to-view-id>/view/cabinet/storeIdDepartment/incoming-patients.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
         <navigation-case>
-            <from-outcome>permitted to department</from-outcome>
-            <to-view-id>/view/cabinet/department/permitted-patients.xhtml</to-view-id>
+            <from-outcome>permitted to storeIdDepartment</from-outcome>
+            <to-view-id>/view/cabinet/storeIdDepartment/permitted-patients.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
         <navigation-case>
-            <from-outcome>patient other department</from-outcome>
-            <to-view-id>/view/cabinet/department/patients-other-departments.xhtml</to-view-id>
+            <from-outcome>patient other storeIdDepartment</from-outcome>
+            <to-view-id>/view/cabinet/storeIdDepartment/patients-other-departments.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
         <navigation-case>
             <from-outcome>patient on discharge</from-outcome>
-            <to-view-id>/view/cabinet/department/patients-on-discharge.xhtml</to-view-id>
+            <to-view-id>/view/cabinet/storeIdDepartment/patients-on-discharge.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
         <navigation-case>
             <from-outcome>patients for operations</from-outcome>
-            <to-view-id>/view/cabinet/department/patients-for-operations.xhtml</to-view-id>
+            <to-view-id>/view/cabinet/storeIdDepartment/patients-for-operations.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
         <navigation-case>
-            <from-outcome>patients on treatment in department</from-outcome>
-            <to-view-id>/view/cabinet/department/department-patients-on-treatment.xhtml</to-view-id>
+            <from-outcome>patients on treatment in storeIdDepartment</from-outcome>
+            <to-view-id>/view/cabinet/storeIdDepartment/storeIdDepartment-patients-on-treatment.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
         <navigation-case>
             <from-outcome>my patients</from-outcome>
-            <to-view-id>/view/cabinet/department/my-patients.xhtml</to-view-id>
+            <to-view-id>/view/cabinet/storeIdDepartment/my-patients.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
         <navigation-case>
@@ -305,28 +305,28 @@
         </navigation-case>
         <navigation-case>
             <from-outcome>patients in hospital</from-outcome>
-            <to-view-id>/view/cabinet/department/patients-in-hospital.xhtml</to-view-id>
+            <to-view-id>/view/cabinet/storeIdDepartment/patients-in-hospital.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
         <navigation-case>
             <from-outcome>archive</from-outcome>
-            <to-view-id>/view/cabinet/department/archive.xhtml</to-view-id>
+            <to-view-id>/view/cabinet/storeIdDepartment/archive.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
         <navigation-case>
-            <from-outcome>all department patients for hospital</from-outcome>
-            <to-view-id>/view/cabinet/department/all-department-patients-for-hospital.xhtml</to-view-id>
+            <from-outcome>all storeIdDepartment patients for hospital</from-outcome>
+            <to-view-id>/view/cabinet/storeIdDepartment/all-storeIdDepartment-patients-for-hospital.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
 
         <!--NURSE-->
         <navigation-case>
-            <from-outcome>all patients in department</from-outcome>
-            <to-view-id>/view/cabinet/nurse/department-all-patients.xhtml</to-view-id>
+            <from-outcome>all patients in storeIdDepartment</from-outcome>
+            <to-view-id>/view/cabinet/nurse/storeIdDepartment-all-patients.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
         <navigation-case>
-            <from-outcome>empty chamber and bed patients in department</from-outcome>
+            <from-outcome>empty chamber and bed patients in storeIdDepartment</from-outcome>
             <to-view-id>/view/cabinet/nurse/empty-chamber-bed.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
@@ -336,7 +336,7 @@
             <redirect/>
         </navigation-case>
         <navigation-case>
-            <from-outcome>empty temp sheets patients in department</from-outcome>
+            <from-outcome>empty temp sheets patients in storeIdDepartment</from-outcome>
             <to-view-id>/view/cabinet/nurse/empty-temp-sheets.xhtml</to-view-id>
             <redirect/>
         </navigation-case>

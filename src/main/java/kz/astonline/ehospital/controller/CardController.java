@@ -15,9 +15,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.function.UnaryOperator;
 
-/**
- * Created by Alex on 10.01.2018.
- */
+
 @Controller
 @SpringViewScoped
 public class CardController implements Serializable {
@@ -37,6 +35,7 @@ public class CardController implements Serializable {
     public void saveChangesInCard() {
         patient = patientList.get(0);
         patientService.saveOrUpdate(this.patient);
+        patientList.clear();
         this.card = new Card();
         this.patient = new Patient();
     }

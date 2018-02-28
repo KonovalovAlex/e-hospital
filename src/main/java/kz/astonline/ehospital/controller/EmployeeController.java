@@ -2,6 +2,7 @@ package kz.astonline.ehospital.controller;
 
 import kz.astonline.ehospital.enumiration.employee.SpecializationEnum;
 import kz.astonline.ehospital.model.Card;
+import kz.astonline.ehospital.model.Department;
 import kz.astonline.ehospital.model.Patient;
 import kz.astonline.ehospital.model.Employee;
 import kz.astonline.ehospital.service.CardService;
@@ -12,7 +13,6 @@ import kz.astonline.ehospital.spring.scope.SpringViewScoped;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import javax.annotation.PostConstruct;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -26,6 +26,8 @@ public class EmployeeController implements Serializable {
     private Employee employee = new Employee();
     private Card card = new Card();
     private List<Employee> list = new ArrayList<>();
+    private Department department = new Department();
+    private String storeIdDepartment;
 
     @Autowired
     private EmployeeService employeeService;
@@ -41,29 +43,24 @@ public class EmployeeController implements Serializable {
 
     private List<SpecializationEnum> items = Arrays.asList(SpecializationEnum.class.getEnumConstants());
 
-    @PostConstruct
-    public void init() {
-        employee.setRegisterDate(LocalDate.now());
-        System.out.println(employee.getRegisterDate());
-//        System.out.println(employee.set);
-
-    }
-
-    public List<Employee> findFreeTherapist(){
-        return employeeService.findBySpecialization(SpecializationEnum.THERAPIST);
-    }
 
     public void registr() {
+        department.setId(Long.parseLong(storeIdDepartment));
+        employee.setEnabled(true);
+        employee.setDepartment(department);
+        employee.setRegisterDate(LocalDate.now());
         employeeService.saveOrUpdate(employee);
     }
 
-    public String showOrEditForm() {
-        employeeService.findById(employee.getId());
-        return"";
-
+    public String getStoreIdDepartment() {
+        return storeIdDepartment;
     }
 
-    public List<Patient> getAllPatients(){
+    public void setStoreIdDepartment(String storeIdDepartment) {
+        this.storeIdDepartment = storeIdDepartment;
+    }
+
+    public List<Patient> getAllPatients() {
         return patientService.findAll();
     }
 
@@ -122,9 +119,6 @@ public class EmployeeController implements Serializable {
         return items;
     }
 
-    public void setItems(List<SpecializationEnum> items) {
-        this.items = items;
-    }
 
     public PatientService getPatientService() {
         return patientService;

@@ -42,11 +42,11 @@
 
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
-                    <h:link id="departmentNameTitleId" title="Название вашего отделения" rendered="#{accessController.currentEmployee.department != null}">
+                    <h:link id="departmentNameTitleId" title="Название вашего отделения" rendered="#{accessController.currentEmployee.storeIdDepartment != null}">
                         <i class="fa fa-hospital-o fa-fw"></i>
-                        #{accessController.currentEmployee.department.name}
+                        #{accessController.currentEmployee.storeIdDepartment.name}
                     </h:link>
-                    <h:link rendered="#{accessController.currentEmployee.department == null}">
+                    <h:link rendered="#{accessController.currentEmployee.storeIdDepartment == null}">
                         <i class="fa fa-hospital-o fa-fw"></i>
                         <h:outputText value="Администратор"/>
                     </h:link>

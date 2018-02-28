@@ -32,14 +32,14 @@
                         </h:link>
                     </li>
                     <li>
-                        <h:link title="Все пациенты, находящиеся на лечении в отделении." outcome="all patients in department" class="active">
+                        <h:link title="Все пациенты, находящиеся на лечении в отделении." outcome="all patients in storeIdDepartment" class="active">
                             <i class="glyphicon glyphicon-user"/>
                             #{i18n["cabinet.left_menu.all_patients_in_department"]}
 
                         </h:link>
                     </li>
                     <li>
-                        <h:link outcome="empty chamber and bed patients in department" class="active">
+                        <h:link outcome="empty chamber and bed patients in storeIdDepartment" class="active">
                             <i class="glyphicon glyphicon-user"/>
                             #{i18n["cabinet.left_menu.empty_chamber_and_bed"]}
                         </h:link>
@@ -48,7 +48,7 @@
                         <h:link title="Пациенты из других отделении, к которым вы(сотрудник) получили доступ." outcome="my patients" class="active">
                             <i class="glyphicon glyphicon-send"/>
                             #{i18n["cabinet.left_menu.other_patients"]}
-                            <h:panelGroup rendered="#{poolDepartmentMenuCountsService.getAccessedForDepartmentPatientsCountForDepartment(accessController.currentEmployee.department) > 0}"/>
+                            <h:panelGroup rendered="#{poolDepartmentMenuCountsService.getAccessedForDepartmentPatientsCountForDepartment(accessController.currentEmployee.storeIdDepartment) > 0}"/>
                         </h:link>
                     </li>
                     <li>

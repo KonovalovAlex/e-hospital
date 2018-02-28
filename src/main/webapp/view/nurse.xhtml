@@ -15,6 +15,7 @@
 
 </f:view>
 <h:body>
+
     <div class="container">
         <div class="row">
             <h:form class="form-horizontal" id="regForm">
@@ -47,14 +48,23 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <h:outputLabel class="col-md-4 control-label" for="therapist">therapist</h:outputLabel>
-                        <div class="col-md-5">
-                            <h:inputText value="#{patientController.patient.therapist}" id="therapist"
-                                         type="text" placeholder="therapist"
-                                         class="form-control input-md"/>
-                        </div>
+                        <f:metadata>
+                            <f:event type="preRenderView" listener="#{patientController.findFreeTherapist}"/>
+                        </f:metadata>
+                        <h:selectOneMenu value="#{patientController.employeeId}">
+                            <f:selectItems value="#{patientController.employees}"  var="c"
+                                           itemLabel="#{c.firstName}" itemValue="#{c.id}" />
+                        </h:selectOneMenu>
+
+                        <!--<h:outputLabel class="col-md-4 control-label" for="therapist">therapist</h:outputLabel>-->
+                        <!--<div class="col-md-5">-->
+                            <!--<h:inputText value="#{patientController.patient.therapist}" id="therapist"-->
+                                         <!--type="text" placeholder="therapist"-->
+                                         <!--class="form-control input-md"/>-->
+                        <!--</div>-->
                     </div>
-                    <p:commandButton action="#{patientController.registrPatient}" value="зарегестрировать"
+                    <h:commandButton class="btn btn-primary center" action="#{patientController.registrPatient}"
+                                     value="зарегестрировать"
                                      update="regForm"/>
                 </fieldset>
             </h:form>
@@ -62,16 +72,16 @@
     </div>
 
     <!--<div>-->
-        <!--<h:form id="findTherapist">-->
-            <!--<h:inputText placeholder="Keyboard" value=""/>-->
-            <!--<p:dataTable id="therapistTable" var="therapist" value="#{patientController.patients}">-->
-            <!--<p:column headerText="name">-->
-                <!--<h:outputText value=""/>-->
-            <!--</p:column>-->
-            <!--</p:dataTable>-->
-        <!--</h:form>-->
+    <!--<h:form id="findTherapist">-->
+    <!--<h:inputText placeholder="Keyboard" value=""/>-->
+    <!--<p:dataTable id="therapistTable" var="therapist" value="#{patientController.patients}">-->
+    <!--<p:column headerText="name">-->
+    <!--<h:outputText value=""/>-->
+    <!--</p:column>-->
+    <!--</p:dataTable>-->
+    <!--</h:form>-->
     <!--</div>-->
-<h2>Поиск пациента</h2>
+    <h2>Поиск пациента</h2>
     <h:form id="findForm">
         <div class="ui-g-12 ui-md-4">
             <div class="ui-inputgroup">

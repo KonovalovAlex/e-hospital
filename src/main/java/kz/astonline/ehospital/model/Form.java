@@ -12,9 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.util.List;
 
-/**
- * Created by Alex on 12.01.2018.
- */
+
 //@Entity
 //@Table(name = "Form")
 public class Form extends BaseEntity {

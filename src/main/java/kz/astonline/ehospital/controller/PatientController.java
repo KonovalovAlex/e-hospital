@@ -1,8 +1,11 @@
 package kz.astonline.ehospital.controller;
 
+import kz.astonline.ehospital.enumiration.employee.SpecializationEnum;
+import kz.astonline.ehospital.model.Employee;
 import kz.astonline.ehospital.model.Patient;
 import kz.astonline.ehospital.service.AnalysisService;
 import kz.astonline.ehospital.service.CardService;
+import kz.astonline.ehospital.service.EmployeeService;
 import kz.astonline.ehospital.service.PatientService;
 import kz.astonline.ehospital.spring.scope.SpringViewScoped;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 @Controller
@@ -19,16 +23,19 @@ public class PatientController implements Serializable {
 
     @Autowired
     private PatientService patientService;
+    @Autowired
+    private EmployeeService employeeService;
     private Patient patient = new Patient();
     private List<Patient> patients = new ArrayList<>();
-
     @Autowired
     private CardService cardService;
     @Autowired
     private AnalysisService analysisService;
+    private List<Employee> employees = new LinkedList<>();
+    private long employeeId;
 
-    public List<Patient> findPatientWithOpeningCard(){
-        return patientService.findByFullNameAndOpeningCard(patient.getName(),patient.getSurName(),true);
+    public List<Patient> findPatientWithOpeningCard() {
+        return patientService.findByFullNameAndOpeningCard(patient.getName(), patient.getSurName(), true);
     }
 
 
@@ -48,11 +55,38 @@ public class PatientController implements Serializable {
 
     @Transactional
     public void registrPatient() {
+        for (Employee employee : employees) {
+            if (employee.getId() == employeeId) {
+                patient.setTherapist(employee);
+                break;
+            }
+        }
         cardService.initCard(patient);
         this.patient = new Patient();
     }
 
+    public List<Employee> findFreeTherapist() {
+        employees = new LinkedList<>(employeeService.findBySpecialization(SpecializationEnum.THERAPIST));
+        return employees;
+    }
+
     public PatientController() {
+    }
+
+    public EmployeeService getEmployeeService() {
+        return employeeService;
+    }
+
+    public void setEmployeeService(EmployeeService employeeService) {
+        this.employeeService = employeeService;
+    }
+
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
     }
 
     public PatientService getPatientService() {
@@ -93,5 +127,14 @@ public class PatientController implements Serializable {
 
     public void setAnalysisService(AnalysisService analysisService) {
         this.analysisService = analysisService;
+    }
+
+
+    public long getEmployeeId() {
+        return employeeId;
+    }
+
+    public void setEmployeeId(long employeeId) {
+        this.employeeId = employeeId;
     }
 }

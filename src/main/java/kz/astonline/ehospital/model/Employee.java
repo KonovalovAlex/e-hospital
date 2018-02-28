@@ -8,6 +8,7 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.*;
 
 import javax.persistence.*;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
@@ -20,7 +21,6 @@ import java.util.List;
 @Table(name = "EMPLOYEE")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Employee extends BaseEntity {
-
 
     @Column(name = "register_date")
     private LocalDate registerDate;
@@ -73,6 +73,16 @@ public class Employee extends BaseEntity {
     @Column(length = 5000)
     private String signature;
 
+    @OneToMany(mappedBy = "employee",cascade = CascadeType.ALL ,fetch = FetchType.EAGER)
+    private List<Patient> patient;
+
+    public List<Patient> getPatient() {
+        return patient;
+    }
+
+    public void setPatient(List<Patient> patient) {
+        this.patient = patient;
+    }
 
     public Employee() {
     }
