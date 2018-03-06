@@ -52,6 +52,7 @@ public interface EmployeeRepository extends JpaRepository<Employee,Long> {
 
 
 
+
     @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
     @Query("select e from Employee e where e.department = :department")
     List<Employee> getByDepartment(@Param("department") Department department);

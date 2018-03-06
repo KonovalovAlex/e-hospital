@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.LinkedList;
 import java.util.List;
 
 @Service
@@ -17,8 +18,8 @@ public class PatientServiceImpl implements PatientService {
     private PatientRepository patientRepository;
 
     @Override
-    public List<Patient> findByFullNameAndOpeningCard(String name, String surName,Boolean isActiv) {
-        return patientRepository.findByFullNameAndOpeningCard(name, surName,isActiv);
+    public List<Patient> findByFullNameAndOpeningCard(String name, String surName, Boolean isActiv) {
+        return patientRepository.findByFullNameAndOpeningCard(name, surName, isActiv);
     }
 
     @Override
@@ -48,6 +49,22 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public List<Patient> findPatientByFullName(String name, String surName) {
-        return patientRepository.findByFullName(name,surName);
+        return patientRepository.findByFullName(name, surName);
+    }
+
+    public List<Patient> notExaminedTherapist(long idEmp) {
+        List<Patient> patients = new LinkedList<>();
+
+        for (Patient patient : findAllBelongToEmp(idEmp)) {
+            if (patient.isExamination()) {
+                patients.add(patient);
+            }
+        }
+        return patients;
+    }
+
+    @Override
+    public List<Patient> findAllBelongToEmp(long idEmp) {
+        return patientRepository.findAllBelongToEmpl(idEmp);
     }
 }

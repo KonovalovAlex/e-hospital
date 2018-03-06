@@ -3,12 +3,48 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-<f:view>
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
     <link rel="stylesheet" type="text/css" href="/resources/bootstrap/css/bootstrap.css"/>
-</f:view>
+</h:head>
+<f:metadata>
+    <f:event type="preRenderView" listener="#{patientController.obtainNotExamined}"/>
+</f:metadata>
 <h:body>
+    <h:form>
+        <p:panel header="patients">
+            <p:dataTable var="patients" value="#{patientController.patients}">
+                <f:facet name="header">
+                    waiting patients
+                </f:facet>
+                <p:column style="width:16px">
+                    <p:rowToggler/>
+                </p:column>
+                <p:column headerText="name">
+                    <h:outputText value="#{patients.name}"/>
+                </p:column>
+                <p:column headerText="surName">
+                    <h:outputText value="#{patients.surName}"/>
+                </p:column>
+                <p:column headerText="place">
+                    <h:outputText value="#{patients.place}"/>
+                </p:column>
 
+                <p:rowExpansion>
+                    <p:panelGrid columns="2" columnClasses="label,value" style="width:300px">
+                        <f:facet name="header">
+                            patient
+                        </f:facet>
+
+                        <p:commandButton action="#{employeeController.acceptPatient(patients.id)}" value="принять пациента"/>
+                        <p:commandButton action="#{employeeController.acceptPatient}" value="принять пациента"/>
+
+                    </p:panelGrid>
+                </p:rowExpansion>
+            </p:dataTable>
+        </p:panel>
+    </h:form>
 </h:body>
 </html>

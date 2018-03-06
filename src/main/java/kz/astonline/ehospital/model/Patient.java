@@ -23,12 +23,23 @@ public class Patient extends BaseEntity {
     @ManyToOne
     private Department department;
 
-    @ManyToOne (cascade = CascadeType.ALL,fetch = FetchType.EAGER) @JoinColumn (name = "employee_id",referencedColumnName = "id")
+    @ManyToOne (cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinColumn(name = "employee_id",referencedColumnName = "id")
     private Employee employee;
     @Column
-    private boolean inClinic;
+    private Boolean inClinic;
+    @Column
+    private Boolean examination;
 
     public Patient() {
+    }
+
+    public boolean isExamination() {
+        return examination;
+    }
+
+    public void setExamination(boolean examined) {
+        this.examination = examined;
     }
 
     public String getName() {
@@ -79,11 +90,11 @@ public class Patient extends BaseEntity {
         this.department = department;
     }
 
-    public Employee getTherapist() {
+    public Employee getEmployee() {
         return employee;
     }
 
-    public void setTherapist(Employee employee) {
+    public void setEmployee(Employee employee) {
         this.employee = employee;
     }
 

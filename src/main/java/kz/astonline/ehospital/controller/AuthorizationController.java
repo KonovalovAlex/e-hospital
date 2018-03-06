@@ -2,7 +2,6 @@ package kz.astonline.ehospital.controller;
 
 
 
-import kz.astonline.ehospital.service.EmployeeService;
 import kz.astonline.ehospital.spring.scope.SpringViewScoped;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -14,7 +13,6 @@ import org.springframework.stereotype.Controller;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpSession;
 import java.io.Serializable;
 
 @Controller
@@ -23,9 +21,6 @@ public class AuthorizationController implements Serializable {
 
     @Autowired
     private AuthenticationManager authenticationManager;
-    @Autowired
-    private EmployeeService employeeService;
-
     private String login;
     private String password;
 

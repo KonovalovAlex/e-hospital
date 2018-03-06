@@ -41,6 +41,11 @@
             <to-view-id>/login.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>therapistObserve</from-outcome>
+            <to-view-id>/view/therapistObserve.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
 
         <navigation-case>
             <from-outcome>registration</from-outcome>
@@ -53,10 +58,16 @@
             <redirect/>
         </navigation-case>
         <navigation-case>
-            <from-outcome>patientRegistration</from-outcome>
-            <to-view-id>/view/regPatients.nurse.xhtml</to-view-id>
+            <from-outcome>registration</from-outcome>
+            <to-view-id>/view/nurse.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>registration</from-outcome>
+            <to-view-id>/view/analisis.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+
         <navigation-case>
             <from-outcome>refusers</from-outcome>
             <to-view-id>/view/cabinet/admission/refusers.xhtml</to-view-id>

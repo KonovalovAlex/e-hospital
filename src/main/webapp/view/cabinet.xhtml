@@ -4,18 +4,17 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core"
 >
-<head>
-    <meta charset="UTF-8"/>
-    <title>welcome</title>
-</head>
+<h:head>
+    <link rel="stylesheet" type="text/css" href="/resources/bootstrap/css/bootstrap.css"/>
+</h:head>
 <h:body>
-    <h2>Добро пожаловать</h2>
-    <h:link outcome="nurse" value="nurse"/>
-    <h:link outcome="cardOfClient" value="cardOfClient"/>
-    <h:link outcome="regEmployee" value="regEmployee"/>
-    <h:link outcome="admin" value="admin"/>
+    <h2>Добро пожаловать</h2><h:form>
+    <p:commandButton value="asdasd" action="#{patientController.obtainAllPatientsBelongToEmpl}"/></h:form>
+    <h:link outcome="nurse" value="nurse"/><br/>
+    <h:link outcome="cardOfClient" value="cardOfClient"/> <br/>
+    <h:link outcome="regEmployee" value="regEmployee"/> <br/>
+    <h:link outcome="admin" value="admin"/> <br/>
+    <h:link outcome="therapistObserve.xhtml" value="therapistObserve.xhtml"/> <br/>
     <h:outputLink value="${request.contextPath}/j_spring_security_logout">logout</h:outputLink>
-
-    <h:commandButton value="asdd" action="#{cardController.saveChangesInCard}"/>
 </h:body>
 </html>

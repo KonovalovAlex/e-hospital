@@ -1,6 +1,7 @@
 package kz.astonline.ehospital.controller;
 
 import kz.astonline.ehospital.enumiration.employee.SpecializationEnum;
+import kz.astonline.ehospital.model.Card;
 import kz.astonline.ehospital.model.Employee;
 import kz.astonline.ehospital.model.Patient;
 import kz.astonline.ehospital.service.AnalysisService;
@@ -12,7 +13,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -35,13 +40,27 @@ public class PatientController implements Serializable {
     private long employeeId;
 
     public List<Patient> findPatientWithOpeningCard() {
-        return patientService.findByFullNameAndOpeningCard(patient.getName(), patient.getSurName(), true);
+        patients.clear();
+        patients.addAll(patientService.findByFullNameAndOpeningCard(patient.getName(), patient.getSurName(), true));
+        return patients;
     }
 
 
     public List<Patient> findPatient() {
         patients.clear();
         patients.addAll(patientService.findPatientByFullName(patient.getName(), patient.getSurName()));
+        return patients;
+    }
+
+    public List<Patient> obtainAllPatientsBelongToEmpl() {
+        patients.clear();
+        patients.addAll(patientService.findAllBelongToEmp(employeeService.getUserId()));
+        return patients;
+    }
+
+    public List<Patient> obtainNotExamined() {
+        patients.clear();
+        patients.addAll(patientService.notExaminedTherapist(employeeService.getUserId()));
         return patients;
     }
 
@@ -53,15 +72,22 @@ public class PatientController implements Serializable {
         patientService.delete(patient.getId());
     }
 
+
     @Transactional
     public void registrPatient() {
+        cardService.initCard(patient);
         for (Employee employee : employees) {
             if (employee.getId() == employeeId) {
-                patient.setTherapist(employee);
+                patient.setInClinic(true);
+                patient.setPlace("зарегестрирован в "+ LocalDateTime.now().toString()+ " и находится на очереди к терапевту -" +
+                        " "+employee.getFirstName()+ " " + employee.getLastName());
+
+                patient.setExamination(false);
+                patient.setEmployee(employee);
                 break;
             }
         }
-        cardService.initCard(patient);
+        patientService.saveOrUpdate(patient);
         this.patient = new Patient();
     }
 

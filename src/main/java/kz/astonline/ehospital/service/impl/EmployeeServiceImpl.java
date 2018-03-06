@@ -15,10 +15,12 @@ import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,6 +37,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Autowired
     private RoleService roleService;
 
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
     public Employee saveOrUpdate(Employee entity) {
@@ -124,4 +128,20 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employeeRepository.getByDepartmentOnlyDoctors(department);
     }
 
+    public Long getUserId(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String employeeName = authentication.getName();
+        long id = employeeRepository.findByLogin(employeeName).getId();
+        return id;
+    }
+
+    @Override
+    public void registrateEmpl(Employee employee, Department department, String storeIdDepartment ) {
+        department.setId(Long.parseLong(storeIdDepartment));
+        employee.setEnabled(true);
+        employee.setDepartment(department);
+        employee.setRegisterDate(LocalDate.now());
+        employee.setPassword(bCryptPasswordEncoder.encode(employee.getPassword()));
+        saveOrUpdate(employee);
+    }
 }

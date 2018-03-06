@@ -10,6 +10,6 @@ public interface PatientService extends BaseService<Patient,Long> {
     List<Patient> findPatientByFullName(String name, String surName);
     List<Patient> findByFullNameAndOpeningCard(String name, String surName, Boolean isActive);
     Patient saveOrUpdate(Patient patient);
-
-
+    List<Patient> findAllBelongToEmp(long idEmp);
+    List<Patient> notExaminedTherapist(long idEmp);
 }

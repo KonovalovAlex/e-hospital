@@ -18,8 +18,7 @@ public class Card extends BaseEntity {
     private String record;
     @Column
     private String diagnosis;
-    @Column
-    private boolean examinedByTherapist;
+
     @Column
     private boolean isActive;
 
@@ -85,13 +84,6 @@ public class Card extends BaseEntity {
         this.record = record;
     }
 
-    public boolean isExaminedByTherapist() {
-        return examinedByTherapist;
-    }
-
-    public void setExaminedByTherapist(boolean examinedByTherapist) {
-        this.examinedByTherapist = examinedByTherapist;
-    }
 
     public boolean isActive() {
         return isActive;

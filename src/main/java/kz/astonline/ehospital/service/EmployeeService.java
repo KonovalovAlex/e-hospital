@@ -27,12 +27,10 @@ public interface EmployeeService extends BaseService<Employee,Long> {
     List<Employee> findByRole(String role);
 
     List<Employee> findByRoleForDepartment(String role, Department department);
-
-
-
+    void registrateEmpl(Employee employee, Department department, String idDepartment);
     List<Employee> getByDepartment(Department department);
     List<Employee> getByDepartmentOnlyDoctors(Department department);
-
+    Long getUserId();
 
 
 }

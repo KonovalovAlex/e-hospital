@@ -13,10 +13,14 @@ import kz.astonline.ehospital.spring.scope.SpringViewScoped;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import java.io.IOException;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 @Controller
@@ -24,17 +28,18 @@ import java.util.List;
 public class EmployeeController implements Serializable {
 
     private Employee employee = new Employee();
+    private List<Card> cards = new LinkedList<>();
     private Card card = new Card();
+    private Patient patient = new Patient();
     private List<Employee> list = new ArrayList<>();
     private Department department = new Department();
     private String storeIdDepartment;
-
+    @Autowired
+    private PatientController patientController;
     @Autowired
     private EmployeeService employeeService;
-
     @Autowired
     private CardService cardService;
-
     @Autowired
     private RoleService roleService;
 
@@ -45,11 +50,62 @@ public class EmployeeController implements Serializable {
 
 
     public void registr() {
-        department.setId(Long.parseLong(storeIdDepartment));
-        employee.setEnabled(true);
-        employee.setDepartment(department);
-        employee.setRegisterDate(LocalDate.now());
-        employeeService.saveOrUpdate(employee);
+        employeeService.registrateEmpl(employee, department, storeIdDepartment);
+    }
+
+    public void acceptPatient(long id) {
+        cards.clear();
+        List<Patient> patients = new LinkedList<>(patientController.getPatients());
+        for (Patient patient : patients) {
+            if (patient.getId() == id) {
+                this.patient = patient;
+                break;
+            }
+        }
+        cards.addAll(cardService.getCardsByIdPatinet(id));
+        try {
+            FacesContext.getCurrentInstance().getExternalContext().
+                    redirect("cardOfClient.xhtml?id=\" + " + patient.getId());
+        } catch (IOException e) {
+            String errorMessage = "some.problem";
+            FacesContext.getCurrentInstance().addMessage("some.problem", new FacesMessage(errorMessage, errorMessage));
+        }
+    }
+
+    public List<Card> getCards() {
+        return cards;
+    }
+
+    public void setCards(List<Card> cards) {
+        this.cards = cards;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
+    public void setItems(List<SpecializationEnum> items) {
+        this.items = items;
+    }
+
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
+
+    public kz.astonline.ehospital.controller.PatientController getPatientController() {
+        return patientController;
+    }
+
+    public void setPatientController(kz.astonline.ehospital.controller.PatientController patientController) {
+        patientController = patientController;
     }
 
     public String getStoreIdDepartment() {
