@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+            <p:menuButton value="admin">
+                <p:menuitem value="View Users" onclick="PF('userlistDialog').show()" icon="ui-icon-disk"/>
+                <p:menuitem value="add employee" onclick="PF('additemDialog').show()" icon="ui-icon-circle-plus"/>
+            </p:menuButton>
+
+            <p:separator />
+            <p:menuButton value="menu">
+                <p:menuitem value="null" icon="ui-icon-disk" />
+                <p:menuitem value="Order" icon="ui-icon-close" />
+                <p:menuitem value="History" icon="ui-icon-extlink" />
+            </p:menuButton>
+            <p:separator />
+            <h:outputText value=" Role: #{adminController.name}" icon="ui-icon-person" />
+</html>
+

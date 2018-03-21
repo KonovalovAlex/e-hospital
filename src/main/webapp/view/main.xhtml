@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <link rel="stylesheet" type="text/css" href="/resources/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="/resources/css/alex/newMain.css"/>
+</h:head>
+<h:body>
+
+    <div class="header-wrapper">
+        <div>
+            Поликлиника города <br>Караганды</br>
+        </div>
+        <div class="block-1">
+            Справочная <br> 365-698</br>
+        </div>
+        <div>
+            Горячая линия <br>1265-478</br>
+        </div>
+    </div>
+
+    <div class="nav">
+
+        <h:form styleClass="form">
+            <p:growl id="messages"/>
+
+            <p:menubar styleClass="menubar">
+                <!--<div class="wrapper">-->
+                <p:submenu label="главная">
+                </p:submenu>
+
+                <p:submenu label="новости">
+                </p:submenu>
+
+                <p:submenu label="поликлиника" update="messages">
+                    <p:menuitem value="о поликлинике" url="#" update="messages"/>
+                    <p:menuitem value="блог руководителя" url="#" update="messages"/>
+                    <p:menuitem value="сертификаты" url="#" update="messages"/>
+                    <p:menuitem value="фотогалерея" url="#" update="messages"/>
+                </p:submenu>
+
+                <p:submenu label="отделения">
+                    <p:menuitem value="регистратура" update="messages"/>
+                    <p:menuitem value="отделение платных услуг" update="messages"/>
+                    <p:menuitem value="консультативное" update="messages"/>
+                    <p:menuitem value="хирургическое" update="messages"/>
+                    <p:menuitem value="диагностическое" update="messages"/>
+                    <p:menuitem value="центр семейного здоровья" update="messages"/>
+                </p:submenu>
+
+                <p:submenu label="информация">
+                    <p:menuitem value="права и обязановти пациентов" update="messages"/>
+                    <p:menuitem value="редкие заболевания" update="messages"/>
+                    <p:menuitem value="мы за здоровый образ жизни" update="messages"/>
+                    <p:menuitem value="территориальные границы" update="messages"/>
+                    <p:menuitem value="нормативно праввовые акты" update="messages"/>
+                    <p:menuitem value="бланк информирования согласия" update="messages"/>
+                </p:submenu>
+
+                <p:submenu label="график работы">
+                    <p:menuitem value="центр здоровья №1" update="messages"/>
+                    <p:menuitem value="центр здоровья №2" update="messages"/>
+                    <p:menuitem value="центр здоровья №3" update="messages"/>
+                    <p:menuitem value="консультативное отделение" update="messages"/>
+                    <p:menuitem value="диагностическое отделение" update="messages"/>
+                </p:submenu>
+                <p:submenu label="служба поддержки пациентов">
+                    <p:menuitem value="контакты"/>
+                </p:submenu>
+                <!--</div>-->
+
+            </p:menubar>
+        </h:form>
+    </div>
+
+
+    <div class="banner">
+        <div class="text-banner-block">Задайте<br/>
+            нам вопрос
+        </div>
+        <div class="text-banner-block2">
+            у вас есть вопросы?<br/>
+            Спросите у нас
+        </div>
+        <div class="blocks-on-main">
+            <div class="width"><span class="width-block-span">Запишись на приём</span>
+                <div class="blocks-on-main-text">
+                    Теперь вы можете записаться на приём к врачу по интернету. Для этого введите свои ИИН, выберите услугу, отделение и нужную поликлинику.
+                </div>
+                <div class="btn-block"><p:button class="btn-1" value="button"/></div>
+            </div>
+            <div class="width2"><span class="width-block-span">Вызов врача</span>
+                <div class="blocks-on-main-text">
+                    Если Вы не можете явиться на приём в нашу поликлинику по состоянию здоровья, вызовите врача на дом, заполнив простую контактную форму.
+                </div>
+                <div class="btn-block"><p:button class="btn-1" value="button"/></div>
+            </div>
+            <div class="width3"><span class="width-block-span">Блог руководителя</span>
+                <div class="blocks-on-main-text">
+                    Если Вы не можете явиться на приём в нашу поликлинику по состоянию здоровья, вызовите врача на дом, заполнив простую контактную форму.
+                </div>
+                <div class="btn-block"><p:button class="btn-1" value="button"/></div>
+            </div>
+            <div class="width4"><span class="width-block-span">Заказ рецепта</span>
+                <div class="blocks-on-main-text">
+                    Теперь Вы можете, не ожидая приема врача, воспользоваться нашей услугой «Заказ рецепта» и самостоятельно получить в нашей аптеке.<br/>
+                </div>
+                <div class="btn-block"><p:button class="btn-1" value="button"/></div>
+            </div>
+        </div>
+    </div>
+</h:body>
+</html>

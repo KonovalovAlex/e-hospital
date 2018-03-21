@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:form id="additemForm">
+    <p:growl id="messages" showDetail="false"/>
+    <p:dialog header="registrate new employee" widgetVar="additemDialog" height="300px" resizable="false">
+        <h:panelGrid columns="2" width="300">
+
+            <p:outputLabel for="firstname" value="firstname: "/>
+            <p:inputText id="firstname" validatorMessage="поле firstname обязательно для заполнение min=2 max=20"
+                         value="#{adminController.employee.firstName}" type="text">
+                <f:validateLength minimum="2" maximum="20" for="firstname"/></p:inputText>
+
+            <p:outputLabel for="lastName" value="lastName: "/>
+            <p:inputText validatorMessage="поле lastName обязательно для заполнение min=2 max=20"
+                         value="#{adminController.employee.lastName}" id="lastName"
+                         type="text">
+                <f:validateLength minimum="2" maximum="20"/></p:inputText>
+
+
+            <p:outputLabel for="address" value="address:"/>
+            <p:inputText validatorMessage="address поле обязательно для заполнение min=2 max=20"
+                    value="#{adminController.employee.address}" id="address"
+                    type="text">
+                <f:validateLength minimum="2" maximum="30"/></p:inputText>
+
+
+            <p:outputLabel for="patronymic" value="patronymic:"/>
+            <p:inputText value="#{adminController.employee.patronymic}"
+                         id="patronymic"
+                         type="text">
+                <f:validateRequired for="patronymic"/></p:inputText>
+
+
+            <p:outputLabel for="date" value="Birthday:"/>
+            <p:calendar converter="#{localDateConverter}" id="date"
+                        value="#{adminController.employee.birthday}"
+                        pattern="dd-MM-yyyy" mask="true"/>
+
+            <p:outputLabel for="login" value="Login:"/>
+            <p:inputText value="#{adminController.employee.login}" id="login"
+                         validatorMessage="поле login password обязательно для заполнение min=2 max=20"
+                         name="login"
+                         type="text"
+                         min="1">
+                <f:validateRequired for="login"/></p:inputText>
+
+
+
+            <p:outputLabel for="password" value="password:"/>
+            <h:inputSecret
+                    validatorMessage="поле password обязательно для заполнение min=2 max=20"
+                    value="#{adminController.employee.password}" id="password"
+                    type="text" min="1">
+                <f:validateLength minimum="2" maximum="20"/><f:validateRequired
+                    for="password"/></h:inputSecret>
+
+
+            <p:outputLabel for="phone" value="Phone Number:"/>
+            <p:inputText validatorMessage="поле Phone обязательно для заполнения"
+                         value="#{adminController.employee.telephone}"
+                         type="text"
+                         id="phone"/>
+
+            <p:outputLabel for="email" value="email:"/>
+            <p:inputText styleClass="control-label" id="email" required="true"
+                         label="email"
+                         validatorMessage="поле email обязательно для заполнение min=2 max=20"
+                         value="#{adminController.employee.email}">
+                <!--<f:validateRegex-->
+                <!--pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />-->
+            </p:inputText>
+
+            <p:outputLabel for="iin" value="iin:"/>
+            <p:inputText value="#{adminController.employee.iin}" type="text" id="iin">
+                <f:validateRequired for="iin"/></p:inputText>
+
+            <p:outputLabel for="keyToObtainDrugs" value="keyToObtainDrugs:"/>
+            <p:inputText value="#{adminController.employee.keyToObtainDrugs}"
+                         type="text"
+                         id="keyToObtainDrugs"><f:validateRequired
+                    for="keyToObtainDrugs"/></p:inputText>
+
+            <h:selectOneMenu value="#{adminController.employee.specializationEnum}"
+                             style="margin:auto;"
+                             styleClass="control-label">
+                <f:selectItems value="#{adminController.items}"/>
+            </h:selectOneMenu><br/>
+            <p:selectOneMenu id="console"
+                             value="#{adminController.storeIdDepartment}"
+                             style="width:200px">
+                <f:selectItem itemLabel="Отделение 1" itemValue="1"/>
+                <f:selectItem itemLabel="Отделение 2" itemValue="2"/>
+                <f:selectItem itemLabel="Отделение 3" itemValue="3"/>
+            </p:selectOneMenu><br/>
+
+            <p:commandButton id="confirm" value="registrate!" action="#{adminController.registr()}"
+                             oncomplete="PF('additemDialog').hide()" update=":additemForm:messages"
+                             icon="ui-icon-check"/>
+            <p:commandButton id="cancel" value="Cancel" onclick="PF('additemDialog').hide()"
+                             icon="ui-icon-cancel"/>
+
+        </h:panelGrid>
+    </p:dialog>
+</h:form>
+</html>
+

@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/view/nurse/index.js"/>
+
+<h:form id="userlistForm">
+
+    <p:growl id="messages" showDetail="false"/>
+    <p:dialog header="Registered Users" widgetVar="userlistDialog" height="500px" resizable="false">
+
+        <p:dataTable id="registeredUsers" var="user" value="#{adminController.employeeList}"
+                     rowKey="{{{user.userName}">
+            <f:facet name="header">
+                Select to edit user's properties ...
+            </f:facet>
+
+            <p:ajax event="rowSelect" listener="#{adminController.onRowSelect}" update=":userlistForm:messages"/>
+            <p:ajax event="rowUnselect" listener="#{adminController.onRowUnselect}"/>
+            <p:column style="text-align: center" headerText="login">
+                <h:outputText value="#{user.login}"/>
+            </p:column>
+
+            <p:column style="text-align: center" headerText="firstName">
+                <h:outputText value="#{user.firstName}"/>
+            </p:column>
+
+            <p:column style="text-align: center" headerText="lastName">
+                <h:outputText value="#{user.lastName}"/>
+            </p:column>
+
+            <p:column style="text-align: center" headerText="email">
+                <h:outputText value="#{user.email}"/>
+            </p:column>
+
+            <p:column style="text-align: center" headerText="address">
+                <h:outputText value="#{user.address}"/>
+            </p:column>
+            <p:column style="text-align: center" headerText="department">
+                <h:outputText value="#{user.department}"/>
+            </p:column>
+
+            <p:column style="text-align: center">
+                <p:commandButton  data="#{user.id}" id="edit" onclick="PF('userinfoDialog').show()"
+                                 value="edit" icon="ui-icon-pencil"/>
+            </p:column>
+        </p:dataTable>
+    </p:dialog>
+
+    <p:dialog header="Edit user's Info" widgetVar="userinfoDialog" height="400px" resizable="false">
+        <p:panelGrid columns="2" columnClasses="label,value">
+
+            <p:outputLabel for="onlineStatus" value="#{user.id}123"/>
+            <p:selectOneMenu id="onlineStatus" value="#" style="width: 125px">
+                <f:selectItem itemLabel="#" itemValue="#"/>
+                <f:selectItem itemLabel="#" itemValue="#"/>
+                <f:selectItem itemLabel="#" itemValue="#"/>
+            </p:selectOneMenu>
+
+            <p:outputLabel for="permitStatus" value="#"/>
+            <p:selectOneMenu id="permitStatus" value="#" style="width: 125px">
+                <f:selectItem itemLabel="#" itemValue=" "/>
+                <f:selectItem itemLabel="#" itemValue="#"/>
+                <f:selectItem itemLabel="#" itemValue="##"/>
+            </p:selectOneMenu>
+
+            <p:outputLabel for="userStatus" value="#"/>
+            <p:selectOneMenu id="userStatus" value="#" style="width: 120px">
+                <f:selectItem itemLabel="#" itemValue=" "/>
+                <f:selectItem itemLabel="#" itemValue="#"/>
+                <f:selectItem itemLabel="#" itemValue="#"/>
+            </p:selectOneMenu>
+
+            <p:commandButton id="confirm" value="#" action="#{adminController.editEmployee}"
+                             update=":userlistForm:messages,:userlistForm:registeredUsers"
+                             oncomplete="PF('userinfoDialog').hide()" icon="ui-icon-check"/>
+            <p:commandButton id="cancel" value="{{{bundle.Cancel}" onclick="PF('userinfoDialog').hide()"
+                             icon="ui-icon-cancel"/>
+
+        </p:panelGrid>
+    </p:dialog>
+</h:form>
+</html>
+

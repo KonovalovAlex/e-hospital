@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+<ui:insert name="start_page">
+    <ui:composition template="my_template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="admin"/>
+        </ui:define>
+
+        <ui:define name="navigation-bar">
+            <h:form id="navigation-form">
+                <p:growl id="navMessage"/>
+                <p:toolbar>
+                    <p:toolbarGroup align="left">
+                        <p:link  outcome="cabinet" type="button"  value="Home" icon="ui-icon-home"/>
+                        <p:separator/>
+                        <ui:include src="user_role_page.xhtml"/>
+                        <p:separator/>
+                    </p:toolbarGroup>
+
+                    <p:toolbarGroup id="nav-toolbar" align="right">
+                        <p:commandButton id="registerButton" value="some Function"
+                                         onclick="PF('someButtonDialog').show()"/>
+                        <p:separator/>
+                    </p:toolbarGroup>
+                </p:toolbar>
+
+            </h:form>
+        </ui:define>
+
+        <ui:define name="body">
+        <ui:insert>
+        <ui:include src="registration_page.xhtml"/>
+        <!-- Keep the cart Page in case the user is logged in-->
+        <ui:include src="user_basket_page.xhtml"/>
+        <!-- showing the registered users as reference -->
+        <ui:include src="user_list_page.xhtml"/>
+        <!-- Showing the add item option as reference for the admin-->
+        <ui:include src="addEmp.xhtml"/>
+        </ui:insert>
+        </ui:define>
+    </ui:composition>
+</ui:insert>
+</html>
+

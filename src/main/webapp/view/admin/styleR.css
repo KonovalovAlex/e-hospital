@@ -1,0 +1,11 @@
+
+
+#layout{
+    min-width: 400px; 
+    min-height: 200px;
+    background-color: blueviolet;
+}
+#layout-north-layout{
+    min-width: 400px; 
+    min-height: 100px;  
+}

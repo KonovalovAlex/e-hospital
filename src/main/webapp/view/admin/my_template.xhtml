@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title><ui:insert name="title">alex</ui:insert></title>
+        <link type="text/css" rel="stylesheet" href="styleR.css" />
+    </h:head>
+    <h:body>
+        <p:layout fullPage="true">
+            <p:layoutUnit id="layout-north" position="north">
+
+                    <p:panelGrid columns="1" style="width:100%">
+                        <f:facet name="header">
+                            <h:graphicImage value="Admin-designstyle-kiddo-m.png" width="80" height="60" style="margin-left:1%;float: left"/>
+                            <h:outputText value="Админка" style="float: right"/>
+                        </f:facet>
+                        <ui:insert name="navigation-bar"/>
+                    </p:panelGrid>
+            </p:layoutUnit>
+
+            <p:layoutUnit id="layout-center" position="center" size="400" minSize="300" maxSize="500" resizable="true">
+                <ui:insert name="body"></ui:insert>
+            </p:layoutUnit>
+        </p:layout>
+    </h:body>
+</html>
+

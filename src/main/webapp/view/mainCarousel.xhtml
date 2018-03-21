@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
+<f:view>
+
+</f:view>
+<h:head>
+
+</h:head>
+<h:body>
+    <p:carousel value="books" var="book"
+                headerText="Latest Books">
+        <h:panelGrid columns="1" style="width:100%" cellpadding="5">
+            <p:graphicImage value="autria_doctors_min.jpg" width="180px" height="220px;"/>
+        </h:panelGrid>
+    </p:carousel>
+    <p:carousel id="tabsCarousel" numVisible="1" itemStyle="height:220px;width:600px;" effect="easeInStrong"
+                headerText="Latest Books"/>
+
+    <p:tab title="PrimeFaces Beginners Guide">
+        <h:panelGrid columns="2" cellpadding="10">
+            <p:graphicImage value="/resources/images/books/PFBG_Raw.jpg"/>
+            <h:outputText
+                    value="Description about PrimeFaces Beginners Guide." />
+        </h:panelGrid>
+    </p:tab>
+
+    <p:tab title="PrimeFaces Cookbook">
+        <h:panelGrid columns="2" cellpadding="10">
+            <p:graphicImage value="/resouces/css/alex/png/autria_doctors_min.jpg"/>
+            <h:outputText
+                    value=" Description about PrimeFaces Cookbook." />
+        </h:panelGrid>
+    </p:tab>
+
+    <p:tab title="JSF 2.0 Cookbook"/>
+    <h:panelGrid columns="2" cellpadding="10"/>
+    <p:graphicImage value="/resouces/css/alex/png/220-influenza_0.jpg"/>
+
+</h:body>
+</html>

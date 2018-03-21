@@ -1,0 +1,124 @@
+.nav{
+    margin-top:20px;
+}
+.form{
+    width: 996px;
+    margin: auto;
+}
+.menubar{
+    height: 58px;
+    display: flex;
+    align-items: center;
+    font-size: 17px;
+}
+.header-wrapper{
+    display: flex;
+    width: 996px;
+    margin: auto;
+    margin-top: 40px;
+    font-size: 20px;
+}
+.block-1{
+    margin-left: auto;
+    margin-right: 20px;
+}
+.banner{
+    position: relative;
+    background: url(./png/220-influenza_0.jpg) no-repeat;
+    height: 508px;
+    background-size: cover;
+}
+.text-banner-block{
+    position: absolute;
+    bottom: 20px;
+    right: 12px;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    font: 38pt sans-serif;
+    top: 80px;
+}
+.text-banner-block2{
+    position: absolute;
+    left: 992px;
+    top: 215px;
+    font: 18pt sans-serif;
+    color: white;
+}
+.ul.ui-menu-child {
+    white-space: nowrap;
+    width: auto !important;
+}
+.blocks-on-main{
+    display: flex;
+    position: absolute;
+    top: 460px;
+    left: 150px;
+    font: 29pt sans-serif;
+    justify-content: center;
+    align-items: center;
+    width: 990px;
+    height: 248px;
+}
+
+.width{
+    height: 100%;
+    width: 25%;
+    background-color: rgb(94, 194, 234);
+    font: 29pt sans-serif;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.width2{
+    height: 100%;
+    width: 25%;
+    background-color: rgb(54, 166, 223);
+    font: 29pt sans-serif;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.width3{
+    height: 100%;
+    width: 25%;
+    background-color: rgb(4, 127, 209);
+    font: 29pt sans-serif;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.width4{
+    height: 100%;
+    width: 25%;
+    background-color: rgb(2, 116, 196);
+    font: 29pt sans-serif;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.width-block-span{
+    font-size: 16pt;
+    display: block;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    color:white;
+}
+.blocks-on-main-text{
+    font-size: 15px;
+    width: 210px;
+    color:white;
+}
+.btn-block{
+    font-size: 17px;
+    width: 152px;
+    color: silver;
+    background: none;
+}
+.btn-1{
+    font-size: 17px;
+    width: 152px;
+    color: white;
+    background: none;
+    top: 17px;
+}

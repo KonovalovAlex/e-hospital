@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+<f:metadata>
+    <f:event type="preRenderView" listener="#{cabinetDoctorController.obtainNotExamined}"/>
+</f:metadata>
+<body>
+
+<ui:composition template="doctorTemplate.xhtml">
+    <ui:define name="content">
+        <p:growl id="msgs" showDetail="true" />
+        <h:form>
+            <p:commandButton id="btnUserCreate"
+                             oncomplete="dialogUserCreate.show()" icon="icon-new" title="Crear" value="Crear"/>
+        </h:form>
+        <h:form id="formDataTable">
+            <p:dataTable id="cars" var="user" value="#{cabinetDoctorController.patients}"
+                         paginator="true" rows="10"  paginatorPosition="bottom"
+                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink}
+                          {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" >
+                <f:facet name="header">
+                    Пациенты
+                </f:facet>
+                <p:column headerText="Id" style="width:24%">
+                    <h:outputText value="#{user.id}" />
+                </p:column>
+
+                <p:column headerText="Имя пациента" style="width:24%" filterBy="#{user.name}"
+                          footerText="contains"
+                          filterMatchMode="contains">
+                    <h:outputText value="#{user.name}" />
+                </p:column>
+
+                <p:column headerText="фамилия пациента" style="width:24%">
+                    <h:outputText value="#{user.surName}" />
+                </p:column>
+
+                <p:column headerText="где находится" style="width:24%">
+                    <h:outputText value="#{user.place}" />
+                </p:column>
+
+                <p:column style="width:4%">
+                    <p:commandButton id="btnDelete" update=":formUpdate" oncomplete="PF('dialogUserUpdate').show();" icon="ui-icon-edit"
+                                     title="направление">
+                        <f:setPropertyActionListener converter="#{userConverter}" value="#{user}" target="#{cabinetDoctorController.patient}" />
+                    </p:commandButton>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+
+        <h:form id="formUpdate">
+            <p:dialog header="Modificar User" widgetVar="dialogUserUpdate" resizable="false" id="dlgUserUpdate"
+                      showEffect="fade" hideEffect="explode" modal="true">
+                <h:panelGrid id="display" columns="2" cellpadding="4" style="margin:0 auto;">
+                    <h:outputText value="userID: " />
+                    <p:inputText value="#{cabinetDoctorController.patient.id}"/>
+                    <h:outputText value="Имя пациента: " />
+                    <p:inputText value="#{cabinetDoctorController.patient.name}"/>
+                    <h:outputText value="someData:" />
+
+                    <p:selectOneMenu value="#">
+                        <f:selectItem itemLabel="- Отделение 1-" itemValue = "1" />
+                        <f:selectItem itemLabel="- Отделение 2-" itemValue = "2" />
+                        <f:selectItem itemLabel="- Отделение 3-" itemValue = "3" />
+                    </p:selectOneMenu>
+
+                    <h:outputText value="№ кабинета" />
+                    <p:inputText value="#{cabinetDoctorController.analysis.numberOfCabinet}" size="40">
+                        <f:convertNumber integerOnly="true"/>
+                    </p:inputText>
+
+                    <h:outputText value="заметки: " />
+                    <p:inputText value="#{cabinetDoctorController.analysis.record}" size="40"/>
+
+                    <f:facet name="footer">
+                        <p:separator/>
+                        <p:commandButton id="btnUpdateAceptar" update=":formDataTable, :msgs"
+                                         oncomplete="PF('dialogUserUpdate').hide();"
+                                         action="#{cabinetDoctorController.createRout}"
+                                         icon="icon-save" title="принять" value="принять"/>
+                        <p:commandButton id="btnUpdateCancelar"  oncomplete="PF('dialogUserUpdate').hide();"
+                                         icon="icon-cancel" title="отмена" value="отмена"/>
+                    </f:facet>
+                </h:panelGrid>
+            </p:dialog>
+        </h:form>
+
+    </ui:define>
+</ui:composition>
+</body>
+</html>
