@@ -37,19 +37,25 @@
     <navigation-rule>
         <from-view-id>/*</from-view-id>
         <navigation-case>
-            <from-outcome>login</from-outcome>
-            <to-view-id>/login.xhtml</to-view-id>
+            <from-outcome>cabinet</from-outcome>
+            <to-view-id>/view/cabinet.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+
+
+        <navigation-case>
+            <from-outcome>therapistObserve</from-outcome>
+            <to-view-id>/view/cardOfClient.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
         <navigation-case>
             <from-outcome>therapistObserve</from-outcome>
-            <to-view-id>/view/therapistObserve.xhtml</to-view-id>
+            <to-view-id>/view/template.doctorTemplate.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
-
         <navigation-case>
-            <from-outcome>registration</from-outcome>
-            <to-view-id>/view/cabinet.xhtml</to-view-id>
+            <from-outcome>admin</from-outcome>
+            <to-view-id>/view/registration.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
         <navigation-case>
@@ -59,7 +65,7 @@
         </navigation-case>
         <navigation-case>
             <from-outcome>registration</from-outcome>
-            <to-view-id>/view/nurse.xhtml</to-view-id>
+            <to-view-id>/view/nurse.cabinetNurse.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
         <navigation-case>

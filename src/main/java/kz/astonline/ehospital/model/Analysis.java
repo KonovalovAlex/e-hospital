@@ -27,11 +27,20 @@ public class Analysis extends BaseEntity implements Serializable {
     private int quantityDays;
     @Column
     private int quantityTimes;
+    @Column
+    private int numberOfCabinet;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "cards_id", referencedColumnName = "id")
     private Card card;
 
+    public int getNumberOfCabinet() {
+        return numberOfCabinet;
+    }
+
+    public void setNumberOfCabinet(int numberOfCabinet) {
+        this.numberOfCabinet = numberOfCabinet;
+    }
 
     public String getTreatment() {
         return treatment;

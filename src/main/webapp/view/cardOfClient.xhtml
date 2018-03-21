@@ -9,40 +9,57 @@
     <link rel="stylesheet" type="text/css" href="/resources/bootstrap/css/bootstrap.css"/>
 </h:head>
 <f:metadata>
-    <f:viewParam name="name" value="#{patientController.patient.name}" />
+    <f:viewParam name="name" value="#{cardOfClientController.patient.name}"/>
 </f:metadata>
 <f:view>
     <h:body>
-        <p:panelGrid columns="2">
-            <!--<h:form>-->
-            <!--<h:inputText placeholder="Keyboard" title="Имя: " value="#{cardController.patient.name}"/>-->
-            <!--<h:inputText placeholder="Keyboard" title="Фамилия: " value="#{cardController.patient.surName}"/>-->
-            <!--<p:commandButton icon="fa fa-search" styleClass="white-button" action="#{cardController.findPatient}"-->
-            <!--value="показать остальные карты" update="@form"/>-->
-            <!--</h:form>-->
-            <f:facet name="пациент">
-                <h:outputText value="123" title="пациент #{patientController.patient.name} #{patientController.patient.surName}"/>
-            </f:facet>
-            <h:form>
-                <p:dataTable value="#{employeeController.cards}" var="patient"
-                             styleClass="order-table"
-                             headerClass="order-table-header"
-                             rowClasses="order-table-odd-row,order-table-even-row">
-                    <p:column>
-                        <p:outputLabel value="#{employeeController.patient.name}"/>
-                    </p:column>
-                    <p:column>
-                        <p:outputLabel value="#{employeeController.patient.surName}"/>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">Action</f:facet>
-                        <h:commandLink value="Edit" action="#{cardController.editCard}"
-                                       rendered="#{not cardController.card.editable}"/>
-                    </p:column>
-                </p:dataTable>
-                <h:commandButton value="Save Changes" action="#{cardController.saveChangesInCard}"/>
-            </h:form>
-        </p:panelGrid>
+        <h:form>
+
+            <p:fieldset legend="МЕДИЦИНСКАЯ КАРТА АМБУЛАТОРНОГО БОЛЬНОГО №#{cardOfClientController.card.id}"
+                        toggleable="true" toggleSpeed="500">
+                <p:panelGrid columns="2" style="margin-top:20px">
+                    <h:outputText value="1:Страховая медицинская организация"/>
+                    <h:outputLabel value="null"/>
+
+                    <h:outputText value="2: Номер страхового полиса"/>
+                    <h:outputLabel value="null"/>
+
+                    <h:outputText value="3: Код льготы"/>
+                    <h:outputLabel value="null"/>
+
+                    <h:outputText value="4: Фамилия"/>
+                    <h:outputLabel value="#{cardOfClientController.patient.surName}"/>
+
+                    <h:outputText value="5: Имя"/>
+                    <h:outputLabel value="#{cardOfClientController.patient.name}"/>
+
+                    <h:outputText value="6: Адрес"/>
+                    <h:outputLabel value="#{cardOfClientController.patient.address}"/>
+                </p:panelGrid>
+                <h3>для записей</h3>
+                <p:inputTextarea value="#{cardOfClientController.card.record}" rows="5" cols="30" counter="display"
+                                 maxlength="230"
+                                 counterTemplate="{0} characters remaining." autoResize="false"/>
+                <h:outputText id="display"/>
+
+                <p:growl id="message" showDetail="true"/>
+                <br/>
+                <p:commandButton value="закрыть карту" actionListener="#{cardOfClientController.closeCard}"
+                                 update="message">
+                    <p:confirm header="Confirmation" message="вы уверены?" icon="ui-icon-alert"/>
+                </p:commandButton>
+                <p:commandButton action="#{cardOfClientController.saveChanges}"
+                                 value="сохранить измениние в карте" type="button"/>
+            </p:fieldset>
+            <p:confirmDialog closeOnEscape="true" global="true" showEffect="fade" hideEffect="fade">
+                <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
+            </p:confirmDialog>
+
+            <p:dialog header="Effects" widgetVar="dlg3" showEffect="explode" hideEffect="bounce" height="100">
+                <h:outputText value="измениния были сохранены."/>
+            </p:dialog>
+        </h:form>
     </h:body>
 </f:view>
 </html>

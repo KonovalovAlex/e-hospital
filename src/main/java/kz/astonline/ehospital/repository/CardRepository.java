@@ -14,6 +14,6 @@ import java.util.List;
  */
 public interface CardRepository extends JpaRepository <Card,Long> {
     @QueryHints({@QueryHint(name = "org.hibernate.cacheable", value = "true")})
-    @Query("SELECT c from Card c where c.patient.id=:id")
-    List<Card> findCardsByIdPatient(@Param("id") long id);
+    @Query("SELECT c from Card c where c.patient.id=:id and c.isActive=:isActive")
+    List<Card> findCardByIdPatient(@Param("id") long id, @Param("isActive") Boolean isActive);
 }

@@ -20,97 +20,91 @@
         <div class="row">
             <h:form class="form-horizontal" id="regForm">
                 <fieldset>
-                    <legend>Registration Patient</legend>
+                    <legend>Регистрация пациента</legend>
 
                     <div class="form-group">
-                        <h:outputLabel class="col-md-4 control-label" for="Name">name</h:outputLabel>
+                        <h:outputLabel class="col-md-4 control-label" for="Name">имя:</h:outputLabel>
                         <div class="col-md-5">
-                            <p:inputText value="#{patientController.patient.name}" id="Name" type="text"
+                            <p:inputText value="#{nurseController.patient.name}" id="Name" type="text"
                                          placeholder="username"
                                          class="form-control input-md"/>
                         </div>
                     </div>
                     <div class="form-group">
-                        <h:outputLabel class="col-md-4 control-label" for="surName">surName</h:outputLabel>
+                        <h:outputLabel class="col-md-4 control-label" for="surName">фамилия:</h:outputLabel>
                         <div class="col-md-5">
-                            <p:inputText value="#{patientController.patient.surName}" id="surName"
+                            <p:inputText value="#{nurseController.patient.surName}" id="surName"
                                          type="text" placeholder="surName"
                                          class="form-control input-md"/>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <h:outputLabel class="col-md-4 control-label" for="address">address</h:outputLabel>
+                        <h:outputLabel lenght="" class="col-md-4 control-label" for="address">адрес:</h:outputLabel>
                         <div class="col-md-5">
-                            <p:inputText value="#{patientController.patient.address}" id="address"
+                            <p:inputText value="#{nurseController.patient.address}" id="address"
                                          type="text" placeholder="address"
                                          class="form-control input-md"/>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <h:outputLabel class="col-md-4 control-label" for="address">address</h:outputLabel>
-                        <div class="col-md-5">
 
-                            <h:outputLabel for="date" value="Birthday" styleClass="control-label"/>
+                    <div class="form-group">
+                        <h:outputLabel class="col-md-4 control-label" for="date">записать к врачу на:</h:outputLabel>
+                        <div class="col-md-5">
                             <p:calendar converter="#{localDateConverter}" id="date"
-                                        value="#{patientController.patient.place}"
-                                        pattern="dd-MM-yyyy" mask="true"/>
+                                         value="#{nurseController.patient.place}"
+                                         placeholder="calendar" pattern="dd-MM-yyyy" mask="true"/>
                         </div>
                     </div>
 
+
                     <div class="form-group">
                         <f:metadata>
-                            <f:event type="preRenderView" listener="#{patientController.findFreeTherapist}"/>
+                            <f:event type="preRenderView" listener="#{nurseController.findFreeTherapist}"/>
                         </f:metadata>
-                        <p:selectOneMenu value="#{patientController.employeeId}">
-                            <f:selectItems value="#{patientController.employees}" var="c"
+                        <p:selectOneMenu value="#{nurseController.employeeId}">
+                            <f:selectItems value="#{nurseController.employees}" var="c"
                                            itemLabel="#{c.firstName}" itemValue="#{c.id}"/>
                         </p:selectOneMenu>
 
                     </div>
-                    <p:commandButton class="btn btn-primary center" action="#{patientController.registrPatient}"
+                    <p:commandButton class="btn btn-primary center" action="#{nurseController.registrPatient}"
                                      value="зарегестрировать"
                                      update="regForm"/>
                 </fieldset>
             </h:form>
         </div>
     </div>
-
-    <!--<div>-->
-    <!--<h:form id="findTherapist">-->
-    <!--<p:inputText placeholder="Keyboard" value=""/>-->
-    <!--<p:dataTable id="therapistTable" var="therapist" value="#{patientController.patients}">-->
-    <!--<p:column headerText="name">-->
-    <!--<h:outputText value=""/>-->
-    <!--</p:column>-->
-    <!--</p:dataTable>-->
-    <!--</h:form>-->
-    <!--</div>-->
     <h2>Поиск пациента</h2>
     <h:form id="findForm">
         <div class="ui-g-12 ui-md-4">
             <div class="ui-inputgroup">
-                <p:inputText placeholder="Keyboard" title="Имя: " value="#{patientController.patient.name}"/>
-                <p:inputText placeholder="Keyboard" title="Фамилия: " value="#{patientController.patient.surName}"/>
-                <p:commandButton icon="fa fa-search" styleClass="white-button" action="#{patientController.findPatient}"
+                <p:inputText placeholder="Имя:"  value="#{nurseController.patient.name}"/>
+                <p:inputText placeholder="Фамилия:" value="#{nurseController.patient.surName}"/>
+                <p:commandButton icon="fa fa-search" styleClass="white-button" action="#{nurseController.findPatient}"
                                  value="найти" update="@form"/>
             </div>
         </div>
-        <p:dataTable styleClass="alert-info" id="patientTable" var="patient" value="#{patientController.patients}">
-            <p:column styleClass="affix" headerText="name">
+        <p:dataTable styleClass="alert-info" id="patientTable" var="patient" value="#{nurseController.patients}">
+            <p:column  headerText="имя">
                 <p:inputText value="#{patient.name}"/>
             </p:column>
-            <p:column headerText="surName">
+            <p:column headerText="фамилия">
                 <p:inputText value="#{patient.surName}"/>
             </p:column>
-            <p:column headerText="address">
+            <p:column headerText="адрес">
                 <p:inputText value="#{patient.address}"/>
             </p:column>
             <p:column headerText="место нахождения">
                 <p:inputText value="#{patient.place}"/>
             </p:column>
             <p:column>
-                <h:commandLink value="Edit" action="#{patientController.saveOrUpdatePatient(patient)}">
+                <h:commandLink value="редактировать" action="#{nurseController.saveOrUpdatePatient(patient)}">
+                    <f:ajax render="findForm:patientTable"/>
+                </h:commandLink>
+            </p:column>
+            <p:column>
+                <h:commandLink value="создать новую карту" action="#{nurseController.createNewCard(patient)}">
                     <f:ajax render="findForm:patientTable"/>
                 </h:commandLink>
             </p:column>

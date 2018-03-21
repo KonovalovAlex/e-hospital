@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface CardService extends BaseService<Card,Long> {
     void initCard(Patient patient);
-    List<Card> getCardsByIdPatinet(long id);
+    List<Card> getCardsByIdPatient(long id,boolean isActive);
 }

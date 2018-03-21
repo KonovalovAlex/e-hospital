@@ -25,10 +25,8 @@ public class Employee extends BaseEntity {
     @Column(name = "register_date")
     private LocalDate registerDate;
     @Column(name = "LASTNAME")
-    @Size(min = 2, max = 20)
     private String lastName = "";
     @Column(name = "FIRSTNAME")
-    @Size(min = 2, max = 20)
     private String firstName = "";
     @Column(name = "PATRONYMIC")
     private String patronymic = "";
@@ -36,7 +34,6 @@ public class Employee extends BaseEntity {
     private LocalDate birthday;
     @Column(name = "ADDRESS")
     private String address;
-
     @Column(name = "iin")
     private String iin;
     @Column(name = "LOGIN")

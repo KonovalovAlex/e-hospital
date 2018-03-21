@@ -13,15 +13,12 @@ public class Card extends BaseEntity {
 
     @ManyToOne (cascade = CascadeType.ALL,fetch = FetchType.EAGER) @JoinColumn (name = "patients_id",referencedColumnName = "id")
     private Patient patient;
-
     @Column (columnDefinition = "TEXT")
     private String record;
     @Column
     private String diagnosis;
-
     @Column
     private boolean isActive;
-
     @OneToMany(mappedBy = "card",cascade = CascadeType.ALL ,fetch = FetchType.EAGER)
     private List<Analysis> analyzes;
 

@@ -38,6 +38,11 @@ public class AuthorizationController implements Serializable {
             return null;
         }
     }
+    
+    public String manualLogout() {
+        SecurityContextHolder.getContext().setAuthentication(null);
+        return "manualLogout.xhtml";
+    }
 
 
     public String getLogin() {

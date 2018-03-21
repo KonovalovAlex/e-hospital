@@ -29,7 +29,7 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public Patient findById(Long id) {
-        return null;
+        return patientRepository.findOne(id);
     }
 
     @Override
@@ -56,7 +56,7 @@ public class PatientServiceImpl implements PatientService {
         List<Patient> patients = new LinkedList<>();
 
         for (Patient patient : findAllBelongToEmp(idEmp)) {
-            if (patient.isExamination()) {
+            if (!patient.isExamination()) {
                 patients.add(patient);
             }
         }

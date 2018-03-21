@@ -21,7 +21,7 @@ public interface PatientRepository extends JpaRepository<Patient, Long> {
     List<Patient> findByFullNameAndOpeningCard(@Param("name") String name, @Param("surName") String surName, @Param("isActive") Boolean isActive);
 
 //    @QueryHints({@QueryHint(name = "org.hibernate.cacheable", value = "true")})
-//    @Query("SELECT p from Patient p inner join  p.card c where p.name=:name and p.surName=:surName and c.examinedByTherapist=:examinedByTherapist")
+//    @Query("SELECT p from Patient p inner join  p.card c where p.name=:name and p.surName=:surName and p.inClinic=:examinedByTherapist")
 //    List<Patient> notExaminedByTherapist(@Param("name") String name, @Param("surName") String surName, @Param("isActive") Boolean examinedByTherapist);
 
 

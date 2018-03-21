@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -28,8 +27,8 @@ public class CardServiceImpl implements CardService {
     }
 
     @Override
-    public List<Card> getCardsByIdPatinet(long id) {
-        return cardRepository.findCardsByIdPatient(id);
+    public List<Card> getCardsByIdPatient(long id, boolean isActive) {
+        return cardRepository.findCardByIdPatient(id,isActive);
     }
 
     @Override
