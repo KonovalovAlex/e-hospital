@@ -40,7 +40,7 @@
 }
 .text-banner-block2{
     position: absolute;
-    left: 992px;
+    left: 970px;
     top: 215px;
     font: 18pt sans-serif;
     color: white;
@@ -48,6 +48,12 @@
 .ul.ui-menu-child {
     white-space: nowrap;
     width: auto !important;
+}
+.ui-widget-content{
+    width: auto !important;
+}
+.font-size-main-menu{
+    font-size: 16px;
 }
 .blocks-on-main{
     display: flex;
@@ -121,4 +127,37 @@
     color: white;
     background: none;
     top: 17px;
+}
+.btn-1:hover{
+    background: white;
+    color: black;
+}
+.wpd-wrapper{
+    top: 739px;
+    right: 121px;
+    position: absolute;
+    height: 83px;
+    width: 990px;
+    background-color: rgb(94, 194, 234);
+    display: flex;
+}
+.wpd-written{
+    margin-top: 7px;
+    font-size: 22px;
+    color: white;
+}
+.wpd-written2{
+    font-size: 15px;
+    color: white;
+}
+.wpd-image{
+    height: 83px;
+    width: 83px;
+}
+.mission-img{
+    width: 80px;
+    height: 80px;
+}
+.text-wrapper{
+    margin-left: 20px;
 }

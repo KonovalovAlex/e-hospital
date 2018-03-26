@@ -40,7 +40,7 @@
                     </div>
 
                     <div class="form-group">
-                        <h:outputLabel lenght="" class="col-md-4 control-label" for="address">адрес:</h:outputLabel>
+                        <h:outputLabel class="col-md-4 control-label" for="address">адрес:</h:outputLabel>
                         <div class="col-md-5">
                             <p:inputText value="#{nurseController.patient.address}" id="address"
                                          type="text" placeholder="address"
@@ -49,14 +49,13 @@
                     </div>
 
                     <div class="form-group">
-                        <h:outputLabel class="col-md-4 control-label" for="date">записать к врачу на:</h:outputLabel>
+                        <h:outputLabel class="col-md-4 control-label" for="Name">записать к врачу на:</h:outputLabel>
                         <div class="col-md-5">
-                            <p:calendar converter="#{localDateConverter}" id="date"
+                            <p:inputText converter="#{localDateConverter}" id="date"
                                          value="#{nurseController.patient.place}"
-                                         placeholder="calendar" pattern="dd-MM-yyyy" mask="true"/>
+                                         placeholder="calendar" class="form-control input-md" pattern="dd-MM-yyyy" mask="true"/>
                         </div>
                     </div>
-
 
                     <div class="form-group">
                         <f:metadata>
@@ -87,7 +86,7 @@
         </div>
         <p:dataTable styleClass="alert-info" id="patientTable" var="patient" value="#{nurseController.patients}">
             <p:column  headerText="имя">
-                <p:inputText value="#{patient.name}"/>
+                <p:inputText placeholder="#{patient.name}" value="#{nurseController.patient.name}"/>
             </p:column>
             <p:column headerText="фамилия">
                 <p:inputText value="#{patient.surName}"/>

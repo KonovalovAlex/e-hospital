@@ -53,13 +53,13 @@
         </h:form>
 
         <h:form id="formUpdate">
-            <p:dialog header="Modificar User" widgetVar="dialogUserUpdate" resizable="false" id="dlgUserUpdate"
+            <p:dialog header="Направление" widgetVar="dialogUserUpdate" resizable="false" id="dlgUserUpdate"
                       showEffect="fade" hideEffect="explode" modal="true">
                 <h:panelGrid id="display" columns="2" cellpadding="4" style="margin:0 auto;">
                     <h:outputText value="userID: " />
-                    <p:inputText value="#{cabinetDoctorController.patient.id}"/>
+                    <h:outputText value="#{cabinetDoctorController.patient.id}"/>
                     <h:outputText value="Имя пациента: " />
-                    <p:inputText value="#{cabinetDoctorController.patient.name}"/>
+                    <h:outputText value="#{cabinetDoctorController.patient.name}"/>
                     <h:outputText value="someData:" />
 
                     <p:selectOneMenu value="#">

@@ -5,9 +5,7 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core">
-<f:view>
 
-</f:view>
 <h:head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link href="/resources/css/alex/default.css" rel="stylesheet" type="text/css"/>
@@ -24,7 +22,8 @@
             <h:form>
                 <p:menubar>
                     <p:submenu label="пользователь" icon="ui-icon-document">
-                        <p:menuitem value="показать пациентов" url="http://localhost:8080/view/doctorTemplate.xhtml"/>
+                        <p:menuitem value="показать пациентов"
+                                    url="http://localhost:8080/view/cabinetDoctor.xhtml"/>
                         <p:separator/>
                         <p:menuitem value="Quit" url="${request.contextPath}/j_spring_security_logout"/>
                     </p:submenu>
@@ -65,12 +64,5 @@
             <ui:insert name="bottom"> &copy; 2018</ui:insert>
         </div>
     </div>
-    <script type="text/javascript">
-        function handleLoginRequest(xhr, status, args) {
-            if (args.loggetOut) {
-                location.href = args.ruta;
-            }
-        }
-    </script>
 </h:body>
 </html>

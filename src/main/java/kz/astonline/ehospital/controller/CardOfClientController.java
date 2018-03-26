@@ -58,18 +58,6 @@ public class CardOfClientController {
         card.setEditable(true);
     }
 
-    //    public void acceptPatient(long id) {
-//        cards.clear();
-//        List<Patient> patients = new LinkedList<>(patientController.getPatients());
-//        for (Patient patient : patients) {
-//            if (patient.getId() == id) {
-//                this.patient = patient;
-//                break;
-//            }
-//        }
-//        cards.addAll(cardService.getCardsByIdPatient(id));
-//
-//    }
     public Card getMedicineCard(Patient patient) {
 //        if(patient.getCard().isEmpty())
         return patient.getCard().get(0);

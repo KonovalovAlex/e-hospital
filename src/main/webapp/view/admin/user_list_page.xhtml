@@ -17,7 +17,6 @@
             <f:facet name="header">
                 Select to edit user's properties ...
             </f:facet>
-
             <p:ajax event="rowSelect" listener="#{adminController.onRowSelect}" update=":userlistForm:messages"/>
             <p:ajax event="rowUnselect" listener="#{adminController.onRowUnselect}"/>
             <p:column style="text-align: center" headerText="login">

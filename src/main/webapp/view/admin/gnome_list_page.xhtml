@@ -8,16 +8,13 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <h:form id="productForm">
-        <!-- Growl component -->
         <p:growl id="messages" showDetail="false"/>
-
         <p:panel id="gnome-Panel" visible="false" header="Products" toggleable="true" closable="true" toggleSpeed="500" closeSpeed="300" widgetVar="gnomePanel" style="margin-top: 10px">
 
             <p:dataTable id="availableGnomes" var="gnomes" value="#{adminController.employeeList}"
                          paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
                          paginator="true" rows="5" style="margin-bottom: 10px">
                 <f:facet name="header">
-                    Available Gnomes
                 </f:facet>
                 <p:ajax event="rowSelect" listener="#{adminController.onRowSelect}" update=":productForm:messages"/>
                 <p:ajax event="rowUnselect" listener="#{adminController.onRowUnselect}" update=":productForm:messages"/>
@@ -48,46 +45,6 @@
 
             </p:dataTable>
 
-            <p:dialog header="Gnome Info" widgetVar="gnomeDialog"  height="200px" resizable="false">
-                <p:outputPanel id="gnomeDetail" style="text-align:center">
-                    <p:panelGrid  columns="1"  columnClasses="label,value">
-                        <f:facet name="header">
-                            This could be replaced by a Gnome picture
-                        </f:facet>
-                        <h:outputLabel value="Amount to Buy "/>
-                        <p:inputText id="amount" value="#{userBean.amountToCart}" />
-                        <p:slider for="amount" />
-
-                        <p:commandButton id="add" value="#{bundle.AddToCart}" action="#{userBean.addToCart()}" oncomplete="PF('gnomeDialog').hide()" update=":productForm:availableGnomes,:productForm:messages,:basketForm:basketList"/>
-                    </p:panelGrid>
-                    <p:panelGrid  columns="1" columnClasses="label,value">
-                        <h:outputLabel value="Select a product from the list"/>
-                        <p:commandButton value="#{bundle.OK}" onclick="PF('gnomeDialog').hide()" icon="ui-icon-check"/>
-                    </p:panelGrid>
-                </p:outputPanel>
-            </p:dialog>
-
-            <!-- This dialog pop up when a admin want to add or remove amount of a item -->
-
-
-            <p:dialog id="updateItemAmount" header="Update Existing Item Amount" widgetVar="updateitemDialog" height="100px" resizable="false">
-                <p:panelGrid columns="2" columnClasses="label,value">
-                    <h:outputLabel value="#{bundle.Amount}" />
-                    <h:inputText value="#{adminBean.amountToAdd}"/>
-                    <p:commandButton id="confirmEdit" value="#{bundle.OK}" action="#{adminBean.updateExistingProduct()}" oncomplete="PF('updateitemDialog').hide()" update=":productForm:availableGnomes,:productForm:messages" icon="ui-icon-check"/>
-                    <p:commandButton id="cancelEdit" value="#{bundle.Cancel}" onclick="PF('updateitemDialog').hide()" icon="ui-icon-cancel"/> 
-                </p:panelGrid>
-            </p:dialog>
-
-            <!-- This will pop up when the admin want to delete an existing item-->
-            <p:dialog id="deleteItem" header="Delete Existing Item Amount" widgetVar="deleteitemDialog" height="100px" resizable="false">
-                <p:panelGrid columns="2" columnClasses="label,value">
-                    <p:commandButton id="confirmDelete" value="#{bundle.OK}" action="#{adminBean.deleteExistingProduct()}" oncomplete="PF('deleteitemDialog').hide()" update=":productForm:availableGnomes,:productForm:messages,:basketForm:basketList" icon="ui-icon-check"/>
-                    <p:commandButton id="cancelDelete" value="#{bundle.Cancel}" onclick="PF('deleteitemDialog').hide()" icon="ui-icon-cancel"/> 
-                </p:panelGrid>
-            </p:dialog>
-
-            <!-- Keep the cart Page to pass the reference to the delete option for update -->
             <ui:include src="user_basket_page.xhtml"/>
         </p:panel>
     </h:form>
