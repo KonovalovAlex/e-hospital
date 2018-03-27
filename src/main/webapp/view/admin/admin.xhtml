@@ -20,7 +20,7 @@
                     <p:toolbarGroup align="left">
                         <p:link  outcome="cabinet" type="button"  value="Home" icon="ui-icon-home"/>
                         <p:separator/>
-                        <ui:include src="user_role_page.xhtml"/>
+                        <ui:include src="userRolePage.xhtml"/>
                         <p:separator/>
                     </p:toolbarGroup>
 
@@ -36,12 +36,8 @@
 
         <ui:define name="body">
         <ui:insert>
-        <ui:include src="registration_page.xhtml"/>
-        <!-- Keep the cart Page in case the user is logged in-->
-        <ui:include src="user_basket_page.xhtml"/>
-        <!-- showing the registered users as reference -->
-        <ui:include src="user_list_page.xhtml"/>
-        <!-- Showing the add item option as reference for the admin-->
+        <ui:include src="registrationPage.xhtml"/>
+        <ui:include src="userListPage.xhtml"/>
         <ui:include src="addEmp.xhtml"/>
         </ui:insert>
         </ui:define>
