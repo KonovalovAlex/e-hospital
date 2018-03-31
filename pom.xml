@@ -304,13 +304,9 @@
     <!-- More Project Information -->
     <name>e-hospital</name>
     <description>Web-based application to automate the process of medical hospital</description>
-    <url>e-hospital.kz</url>
+
     <inceptionYear>2014</inceptionYear>
 
-    <organization>
-        <name>Ast On Line</name>
-        <url>http://astonline.kz</url>
-    </organization>
 
     <!-- Environment Settings -->
     <!--<issueManagement>...</issueManagement>-->
