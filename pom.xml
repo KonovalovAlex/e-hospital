@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <!-- The Basics -->
-    <groupId>kz.astonline.ehospital</groupId>
+    <groupId>kz.online.ehospital</groupId>
     <artifactId>e-hospital</artifactId>
     <version>1.0.0</version>
 

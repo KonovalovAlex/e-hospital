@@ -22,7 +22,7 @@
     </application>
 
     <factory>
-        <exception-handler-factory>kz.astonline.ehospital.handler.ViewExpiredExceptionHandlerFactory</exception-handler-factory>
+        <exception-handler-factory>kz.online.ehospital.handler.ViewExpiredExceptionHandlerFactory</exception-handler-factory>
     </factory>
 
     <converter>
@@ -31,7 +31,7 @@
     </converter>
 
     <lifecycle>
-        <phase-listener id="nocache">kz.astonline.ehospital.jsf.listener.CacheControlPhaseListener</phase-listener>
+        <phase-listener id="nocache">kz.online.ehospital.jsf.listener.CacheControlPhaseListener</phase-listener>
     </lifecycle>
 
     <navigation-rule>

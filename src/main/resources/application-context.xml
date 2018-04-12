@@ -19,14 +19,14 @@
         >
 
     <context:annotation-config/>
-    <context:component-scan base-package="kz.astonline.ehospital"/>
-    <jpa:repositories base-package="kz.astonline.ehospital.repository"/>
+    <context:component-scan base-package="kz.online.ehospital"/>
+    <jpa:repositories base-package="kz.online.ehospital.repository"/>
 
     <bean class="org.springframework.beans.factory.config.CustomScopeConfigurer">
         <property name="scopes">
             <map>
                 <entry key="view">
-                    <bean class="kz.astonline.ehospital.spring.scope.ViewScope"/>
+                    <bean class="kz.online.ehospital.spring.scope.ViewScope"/>
                 </entry>
             </map>
         </property>
@@ -40,7 +40,7 @@
     <bean id="entityManagerFactory"
           class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" p:jtaDataSource-ref="dataSource"
           p:persistenceUnitName="unitManager" p:jpaVendorAdapter-ref="jpaVendorAdapter">
-        <property name="packagesToScan" value="kz.astonline.ehospital"/>
+        <property name="packagesToScan" value="kz.online.ehospital"/>
 
     </bean>
 
@@ -54,7 +54,7 @@
 
     <!--For method cache begin-->
     <!--<cache:annotation-driven cache-manager="cacheManager" mode="proxy" key-generator="advancedKeyGenerator"/>-->
-    <!--<bean id="advancedKeyGenerator" class="kz.astonline.ehospital.spring.caching.AdvancedKeyGenerator" />-->
+    <!--<bean id="advancedKeyGenerator" class="kz.online.ehospital.spring.caching.AdvancedKeyGenerator" />-->
 
     <!--<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">-->
         <!--<property name="cacheManager" ref="ehcache"/>-->

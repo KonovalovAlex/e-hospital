@@ -1,2 +1,2 @@
-kz.astonline.ehospital.jpa.hibernate.LocalDateUserTypesIntegrator
-kz.astonline.ehospital.jpa.hibernate.LocalDateTimeUserTypesIntegrator
+kz.online.ehospital.jpa.hibernate.LocalDateUserTypesIntegrator
+kz.online.ehospital.jpa.hibernate.LocalDateTimeUserTypesIntegrator

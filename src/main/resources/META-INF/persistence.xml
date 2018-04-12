@@ -8,26 +8,26 @@
     <persistence-unit name="unitManager" transaction-type="JTA">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-        <class>kz.astonline.ehospital.model.Employee</class>
-        <class>kz.astonline.ehospital.model.Role</class>
-        <class>kz.astonline.ehospital.model.Department</class>       
-        <class>kz.astonline.ehospital.model.Alert</class>
-        <class>kz.astonline.ehospital.model.Card</class>
-        <class>kz.astonline.ehospital.model.Form</class>
-        <class>kz.astonline.ehospital.model.TypeForm</class>
-        <class>kz.astonline.ehospital.model.Patient</class>
-        <class>kz.astonline.ehospital.model.Analysis</class>
+        <class>kz.online.ehospital.model.Employee</class>
+        <class>kz.online.ehospital.model.Role</class>
+        <class>kz.online.ehospital.model.Department</class>
+        <class>kz.online.ehospital.model.Alert</class>
+        <class>kz.online.ehospital.model.Card</class>
+        <class>kz.online.ehospital.model.Form</class>
+        <class>kz.online.ehospital.model.TypeForm</class>
+        <class>kz.online.ehospital.model.Patient</class>
+        <class>kz.online.ehospital.model.Analysis</class>
 
 
         <!--Converter class register begin-->
-        <class>kz.astonline.ehospital.converter.datetime.LocalDatePersistenceConverter</class>
-        <class>kz.astonline.ehospital.converter.datetime.LocalDateTimePersistenceConverter</class>
+        <class>kz.online.ehospital.converter.datetime.LocalDatePersistenceConverter</class>
+        <class>kz.online.ehospital.converter.datetime.LocalDateTimePersistenceConverter</class>
         <!--Converter class register end-->
 
-        <class>kz.astonline.ehospital.jpa.hibernate.usertypes.LocalDateTimeUserType</class>
-        <class>kz.astonline.ehospital.jpa.hibernate.usertypes.LocalDateUserType</class>
-        <class>kz.astonline.ehospital.jpa.hibernate.LocalDateTimeUserTypesIntegrator</class>
-        <class>kz.astonline.ehospital.jpa.hibernate.LocalDateUserTypesIntegrator</class>
+        <class>kz.online.ehospital.jpa.hibernate.usertypes.LocalDateTimeUserType</class>
+        <class>kz.online.ehospital.jpa.hibernate.usertypes.LocalDateUserType</class>
+        <class>kz.online.ehospital.jpa.hibernate.LocalDateTimeUserTypesIntegrator</class>
+        <class>kz.online.ehospital.jpa.hibernate.LocalDateUserTypesIntegrator</class>
 
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL9Dialect"/>
